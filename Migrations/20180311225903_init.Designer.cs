@@ -8,16 +8,18 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace AngularSPAWebAPI.Data.Migrations
+namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180311225903_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
+                .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
+                .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
             modelBuilder.Entity("AngularSPAWebAPI.Models.ApplicationUser", b =>
                 {
@@ -71,6 +73,102 @@ namespace AngularSPAWebAPI.Data.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Address", b =>
+                {
+                    b.Property<int>("AddressID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Number");
+
+                    b.Property<string>("Street");
+
+                    b.Property<string>("Zipcode");
+
+                    b.HasKey("AddressID");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Company", b =>
+                {
+                    b.Property<int>("CompanyID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("AddressID");
+
+                    b.Property<string>("CompanyName");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.HasKey("CompanyID");
+
+                    b.HasIndex("AddressID");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Weight", b =>
+                {
+                    b.Property<int>("WeightID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Metric");
+
+                    b.Property<float>("WeightX");
+
+                    b.HasKey("WeightID");
+
+                    b.ToTable("Weights");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
+                {
+                    b.Property<int>("OogstkaartItemID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AfbeeldingURL");
+
+                    b.Property<string>("Afmetingen");
+
+                    b.Property<string>("Coating");
+
+                    b.Property<int?>("CompanyID");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DatumBeschikbaar");
+
+                    b.Property<string>("Glassamenstelling");
+
+                    b.Property<int>("Hoeveelheid");
+
+                    b.Property<string>("Jansenserie");
+
+                    b.Property<string>("Omschrijving");
+
+                    b.Property<string>("Status");
+
+                    b.Property<bool>("TransportInbegrepen");
+
+                    b.Property<float>("VraagPrijsPerEenheid");
+
+                    b.Property<float>("VraagPrijsTotaal");
+
+                    b.Property<int?>("WeightID");
+
+                    b.HasKey("OogstkaartItemID");
+
+                    b.HasIndex("CompanyID");
+
+                    b.HasIndex("WeightID");
+
+                    b.ToTable("OogstkaartItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -178,6 +276,24 @@ namespace AngularSPAWebAPI.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Company", b =>
+                {
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressID");
+                });
+
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
+                {
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyID");
+
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Weight", "Weight")
+                        .WithMany()
+                        .HasForeignKey("WeightID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
