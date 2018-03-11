@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using AngularSPAWebAPI.Data;
 using AngularSPAWebAPI.Models;
@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace AngularSPAWebAPI
 {
@@ -32,6 +33,8 @@ namespace AngularSPAWebAPI
             // SQLite & Identity.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+    
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -84,7 +87,7 @@ namespace AngularSPAWebAPI
                 services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
                     {
-                        options.Authority = "http://angularspawebapi.azurewebsites.net/";
+                        options.Authority = "localhost:4200";
                         options.RequireHttpsMetadata = false;
 
                         options.ApiName = "WebAPI";
@@ -103,6 +106,11 @@ namespace AngularSPAWebAPI
             }
 
             services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,28 +120,12 @@ namespace AngularSPAWebAPI
             {
                 app.UseDeveloperExceptionPage();
 
-                // Starts "npm start" command using Shell extension.
-                app.Shell("npm start");
+         
             }
 
-            // Router on the server must match the router on the client (see app.routing.module.ts) to use PathLocationStrategy.
-            var appRoutes = new[] {
-                 "/home",
-                 "/account/signin",
-                 "/account/signup",
-                 "/resources",
-                 "/dashboard"
-            };
+           
 
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Path.HasValue && appRoutes.Contains(context.Request.Path.Value))
-                {
-                    context.Request.Path = new PathString("/");
-                }
-
-                await next();
-            });
+          
 
             app.UseIdentityServer();
 
@@ -144,6 +136,14 @@ namespace AngularSPAWebAPI
             app.UseDefaultFiles();
             // Uses static file for the current path.
             app.UseStaticFiles();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
         }
     }
 }

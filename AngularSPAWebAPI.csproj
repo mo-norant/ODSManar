@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +17,8 @@
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.0.0" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Pomelo.Data.MySql" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,8 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\**\*" CopyToPublishDirectory="PreserveNewest" />
-    <Content Update="e2e\*" CopyToPublishDirectory="Never" />
     <Content Update="src\*" CopyToPublishDirectory="Never" />
     <Content Update="package*.json" CopyToPublishDirectory="Never" />
     <Content Update="?angular*.json" CopyToPublishDirectory="Never" />
