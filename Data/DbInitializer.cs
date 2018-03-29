@@ -1,4 +1,4 @@
-﻿using AngularSPAWebAPI.Data;
+using AngularSPAWebAPI.Data;
 using AngularSPAWebAPI.Models;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
@@ -39,8 +39,6 @@ namespace AngularSPAWebAPI.Services
             // Seeds an admin user.
             var user = new ApplicationUser
             {
-                GivenName = "Admin",
-                FamilyName = "Admin",
                 AccessFailedCount = 0,
                 Email = "admin@gmail.com",
                 EmailConfirmed = false,
@@ -60,8 +58,7 @@ namespace AngularSPAWebAPI.Services
                 await _userManager.AddToRoleAsync(adminUser, "administrator");
                 // Assigns claims.
                 var claims = new List<Claim> {
-                    new Claim(type: JwtClaimTypes.GivenName, value: user.GivenName),
-                    new Claim(type: JwtClaimTypes.FamilyName, value: user.FamilyName),
+                    new Claim(type: JwtClaimTypes.PreferredUserName, value: user.UserName)
                 };
                 await _userManager.AddClaimsAsync(adminUser, claims);
             }

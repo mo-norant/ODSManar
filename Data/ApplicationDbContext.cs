@@ -17,6 +17,9 @@ namespace AngularSPAWebAPI.Data
         public DbSet<Company> Companies { get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<OogstkaartItem> OogstkaartItems { get; set; }
+        public DbSet<AfbeeldingsURL> AfbeeldingsURLs { get; set; }
+        public DbSet<Location> Locations { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

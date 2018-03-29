@@ -10,6 +10,7 @@ namespace AngularSPAWebAPI.Models.DatabaseModels.General
         public int CompanyID { get; set; }
         public string CompanyName { get; set; }
         public DateTime CreateDate { get; set; }
+        public string Phone { get; set; }
         public Address Address { get; set; }
 
     }

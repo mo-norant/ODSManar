@@ -6,12 +6,12 @@ using AngularSPAWebAPI.Services;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+
 namespace AngularSPAWebAPI
 {
     public class Startup
@@ -33,12 +33,6 @@ namespace AngularSPAWebAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            
-
-     
-
-
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -54,8 +48,8 @@ namespace AngularSPAWebAPI
                 options.Password.RequireLowercase = false;
                 // Lockout settings.
                 options.Lockout.AllowedForNewUsers = true;
-                options.Lockout.MaxFailedAccessAttempts = 3;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(1);
+               // options.Lockout.MaxFailedAccessAttempts = 3;
+             //   options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(1);
             });
 
             // Role based Authorization: policy based role checks.
@@ -85,19 +79,19 @@ namespace AngularSPAWebAPI
                 .AddInMemoryClients(Config.GetClients())
                 .AddAspNetIdentity<ApplicationUser>(); // IdentityServer4.AspNetIdentity.
 
-            if (currentEnvironment.IsProduction())
-            {
+
+            
+            /*
                 services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
                     {
-                        options.Authority = "localhost:4200";
+                        options.Authority = "http://localhost:4200";
                         options.RequireHttpsMetadata = false;
 
                         options.ApiName = "WebAPI";
                     });
-            }
-            else
-            {
+            
+            */
                 services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
                     {
@@ -106,14 +100,20 @@ namespace AngularSPAWebAPI
 
                         options.ApiName = "WebAPI";
                     });
-            }
 
-            services.AddMvc();
+
+     
+           
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme() { In = "header", Description = "Please insert JWT with Bearer into field", Name = "Authorization", Type = "apiKey" });
+
             });
+
+            services.AddCors();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,20 +126,18 @@ namespace AngularSPAWebAPI
          
             }
 
-           
 
-          
 
+
+            app.UseAuthentication();
             app.UseIdentityServer();
 
-            app.UseMvc();
 
             // Microsoft.AspNetCore.StaticFiles: API for starting the application from wwwroot.
             // Uses default files as index.html.
             app.UseDefaultFiles();
             // Uses static file for the current path.
             app.UseStaticFiles();
-
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -147,6 +145,11 @@ namespace AngularSPAWebAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors(
+        options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+    );
+
+            app.UseMvc();
         }
     }
 }

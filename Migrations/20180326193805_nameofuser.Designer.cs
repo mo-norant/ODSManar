@@ -11,9 +11,10 @@ using System;
 namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180326193805_nameofuser")]
+    partial class nameofuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,8 +201,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<bool>("TransportInbegrepen");
 
                     b.Property<string>("UserID");
-
-                    b.Property<int>("Views");
 
                     b.Property<float>("VraagPrijsPerEenheid");
 

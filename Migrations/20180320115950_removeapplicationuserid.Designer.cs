@@ -11,9 +11,10 @@ using System;
 namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180320115950_removeapplicationuserid")]
+    partial class removeapplicationuserid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,8 +33,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("CreateDate");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -42,8 +41,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -58,8 +55,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("SubscripedWithCompany");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -177,6 +172,8 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<string>("Coating");
 
+                    b.Property<int?>("CompanyID");
+
                     b.Property<string>("Concept");
 
                     b.Property<DateTime>("CreateDate");
@@ -199,10 +196,6 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<bool>("TransportInbegrepen");
 
-                    b.Property<string>("UserID");
-
-                    b.Property<int>("Views");
-
                     b.Property<float>("VraagPrijsPerEenheid");
 
                     b.Property<float>("VraagPrijsTotaal");
@@ -210,6 +203,8 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<int?>("WeightID");
 
                     b.HasKey("OogstkaartItemID");
+
+                    b.HasIndex("CompanyID");
 
                     b.HasIndex("LocationID");
 
@@ -348,6 +343,10 @@ namespace AngularSPAWebAPI.Migrations
 
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
                 {
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyID");
+
                     b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID");

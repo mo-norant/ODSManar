@@ -11,9 +11,10 @@ using System;
 namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180313143119_categoryinoogstkaartitem")]
+    partial class categoryinoogstkaartitem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,23 +28,21 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int?>("CompanyID");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FamilyName");
+
+                    b.Property<string>("GivenName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -59,16 +58,12 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<bool>("SubscripedWithCompany");
-
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyID");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -150,20 +145,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.ToTable("Weights");
                 });
 
-            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.Location", b =>
-                {
-                    b.Property<int>("LocationID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longtitude");
-
-                    b.HasKey("LocationID");
-
-                    b.ToTable("Locations");
-                });
-
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
                 {
                     b.Property<int>("OogstkaartItemID")
@@ -171,13 +152,11 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<string>("Afmetingen");
 
-                    b.Property<string>("Artikelnaam");
-
                     b.Property<string>("Category");
 
                     b.Property<string>("Coating");
 
-                    b.Property<string>("Concept");
+                    b.Property<int?>("CompanyID");
 
                     b.Property<DateTime>("CreateDate");
 
@@ -189,19 +168,11 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.Property<string>("Jansenserie");
 
-                    b.Property<int?>("LocationID");
-
                     b.Property<string>("Omschrijving");
-
-                    b.Property<bool>("OnlineStatus");
 
                     b.Property<string>("Status");
 
                     b.Property<bool>("TransportInbegrepen");
-
-                    b.Property<string>("UserID");
-
-                    b.Property<int>("Views");
 
                     b.Property<float>("VraagPrijsPerEenheid");
 
@@ -211,7 +182,7 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.HasKey("OogstkaartItemID");
 
-                    b.HasIndex("LocationID");
+                    b.HasIndex("CompanyID");
 
                     b.HasIndex("WeightID");
 
@@ -325,13 +296,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AngularSPAWebAPI.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyID");
-                });
-
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.AfbeeldingsURL", b =>
                 {
                     b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem")
@@ -348,9 +312,9 @@ namespace AngularSPAWebAPI.Migrations
 
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
                 {
-                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.Location", "Location")
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("LocationID");
+                        .HasForeignKey("CompanyID");
 
                     b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Weight", "Weight")
                         .WithMany()

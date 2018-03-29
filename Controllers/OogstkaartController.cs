@@ -8,10 +8,14 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using IdentityServer4.AccessTokenValidation;
 
 namespace AngularSPAWebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme, Policy = "Access Resources")]
     public class OogstkaartController : Controller
     {
         private readonly UserManager<ApplicationUser> Usermanager;
@@ -43,12 +47,14 @@ namespace AngularSPAWebAPI.Controllers
         {
             var now = DateTime.Now;
 
+            var user = await Usermanager.GetUserAsync(User);
+
             if (ModelState.IsValid)
             {
-                oogstkaartItem.Company.CreateDate = now;
+                oogstkaartItem.OnlineStatus = true;
+                oogstkaartItem.UserID = user.Id;
                 oogstkaartItem.CreateDate = now;
-
-                await context.AddAsync(oogstkaartItem);
+                await context.OogstkaartItems.AddAsync(oogstkaartItem);
                 await context.SaveChangesAsync();
 
                 return Ok(oogstkaartItem.OogstkaartItemID);
@@ -59,28 +65,102 @@ namespace AngularSPAWebAPI.Controllers
             return BadRequest();
         }
 
+        
+        [HttpPost("Location")]
+        public async Task<IActionResult> Post([FromBody] Location Location, [FromQuery] int OogstkaartitemID )
+        {
+
+            if (ModelState.IsValid)
+            {
+                var item = await context.OogstkaartItems.FirstOrDefaultAsync(o => o.OogstkaartItemID == OogstkaartitemID);
+
+                if(item != null)
+                {
+                    item.Location = Location;
+                    await context.SaveChangesAsync();
+                    return Ok();
+                }
+
+
+            }
+
+            return BadRequest();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var artikels = await context.OogstkaartItems.Include(i => i.Company).Include(i => i.Weight).ToListAsync();
+            var user = await Usermanager.GetUserAsync(User);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+
+            var allitems = await context.OogstkaartItems.Where(c => c.UserID == user.Id).Include(c => c.Weight).Include(i => i.Location).ToListAsync();
+            var filtereditems = allitems.Where(i => i.Location != null).ToList();
+
+            return Ok(filtereditems);
+
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get([FromRoute] int id  )
+        {
+
+            var tempuser = await Usermanager.GetUserAsync(User);
+
+            if(tempuser == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Location).Include(i => i.Weight).ToListAsync();
+
+            if(!items.Any())
+            {
+                return NotFound("user has no items");
+            }
+
+            var item = items.Where(i => i.OogstkaartItemID == id).FirstOrDefault();
+            if(item == null)
+            {
+                return NotFound("user has no item with provided ID");
+            }
+
+
+
+            
+
+            return Ok(item);
+
+
+           
+
+           // return NotFound();
+
+        }
+
+        [AllowAnonymous]
+        [HttpGet("mapview")]
+        public async Task<IActionResult> GetAdmin()
+        {
+            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Include(i => i.Weight).ToListAsync();
+
+
 
             return Ok(artikels);
 
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int OogstkaartitemID)
-        {
-            if (ModelState.IsValid)
-            {
+        
 
 
-                //TODO: Delete excisting item from array
-
-                return Ok();
-            }
-            return BadRequest();
-        }
 
     }
 }

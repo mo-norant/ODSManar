@@ -1,5 +1,7 @@
-﻿using AngularSPAWebAPI.Models;
+using AngularSPAWebAPI.Data;
+using AngularSPAWebAPI.Models;
 using AngularSPAWebAPI.Models.AccountViewModels;
+using AngularSPAWebAPI.Models.DatabaseModels.General;
 using AngularSPAWebAPI.Services;
 using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
@@ -7,9 +9,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using AngularSPAWebAPI.Models.DatabaseModels.Users;
 
 namespace AngularSPAWebAPI.Controllers
 {
@@ -26,19 +31,21 @@ namespace AngularSPAWebAPI.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly ApplicationDbContext context;
 
         public IdentityController(
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<IdentityController> logger)
+            ILogger<IdentityController> logger, ApplicationDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            this.context = context;
         }
 
         /// <summary>
@@ -64,30 +71,42 @@ namespace AngularSPAWebAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody]CreateViewModel model)
         {
+
             var user = new ApplicationUser
             {
-                GivenName = model.givenName,
-                FamilyName = model.familyName,
                 AccessFailedCount = 0,
-                Email = model.username,
+                Email = model.email,
                 EmailConfirmed = false,
-                LockoutEnabled = true,
-                NormalizedEmail = model.username.ToUpper(),
-                NormalizedUserName = model.username.ToUpper(),
+                LockoutEnabled = false,
+                NormalizedEmail = model.email.ToUpper(),
+                NormalizedUserName = model.email.ToUpper(),
                 TwoFactorEnabled = false,
-                UserName = model.username
+                UserName = model.email,
+                CreateDate = DateTime.Now,
+                Name = model.name
+                
+                
             };
+
+            if(model.password != model.password2)
+            {
+                return BadRequest("passwords are not alike");
+            }
 
             var result = await _userManager.CreateAsync(user, model.password);
 
             if (result.Succeeded)
             {
-                await addToRole(model.username, "user");
-                await addClaims(model.username);
+                await addToRole(model.email, "user");
+                await addClaims(model.email);
+                return new JsonResult(user.Id);
             }
 
-            return new JsonResult(result);
+            return BadRequest(result);
+
+            
         }
+       
 
         /// <summary>
         /// Deletes a user.
@@ -104,6 +123,8 @@ namespace AngularSPAWebAPI.Controllers
             return new JsonResult(result);
         }
 
+      
+
         private async Task addToRole(string userName, string roleName)
         {
             var user = await _userManager.FindByNameAsync(userName);
@@ -114,8 +135,7 @@ namespace AngularSPAWebAPI.Controllers
         {
             var user = await _userManager.FindByNameAsync(userName);
             var claims = new List<Claim> {
-                new Claim(type: JwtClaimTypes.GivenName, value: user.GivenName),
-                new Claim(type: JwtClaimTypes.FamilyName, value: user.FamilyName),
+                new Claim(type: JwtClaimTypes.Name, value: user.UserName)
             };
             await _userManager.AddClaimsAsync(user, claims);
         }

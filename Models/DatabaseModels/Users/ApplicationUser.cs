@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
+using AngularSPAWebAPI.Models.DatabaseModels.General;
+using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace AngularSPAWebAPI.Models
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-        /// <summary>Given name(s) or first name(s) of the End-User.</summary>
-        public virtual string GivenName { get; set; }
-        /// <summary>Surname(s) or last name(s) of the End-User.</summary>
-        public virtual string FamilyName { get; set; }
+
+        public Company Company { get; set; }
+        public DateTime CreateDate { get; set; }
+        public bool SubscripedWithCompany { get; set; }
+        public string Name { get; set; }
+
     }
 }
