@@ -17,7 +17,17 @@ namespace AngularSPAWebAPI
     {
         public static void Main(string[] args)
         {
-            var host = BuildWebHost(args);
+
+           var host = new WebHostBuilder()
+      .UseKestrel()
+      .UseContentRoot(Directory.GetCurrentDirectory())
+      .UseSetting("detailedErrors", "true")
+      .UseIISIntegration()
+      .UseStartup<Startup>()
+      .CaptureStartupErrors(true)
+      .Build();
+
+            host.Run();
 
             // Initializes db.
             using (var scope = host.Services.CreateScope())
@@ -35,6 +45,10 @@ namespace AngularSPAWebAPI
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+
+           
+
+            host.Run();
 
             host.Run();
         }

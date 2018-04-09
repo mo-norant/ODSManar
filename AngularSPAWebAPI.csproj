@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\**" />
-    <Content Remove="wwwroot\**" />
-    <EmbeddedResource Remove="wwwroot\**" />
-    <None Remove="wwwroot\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Properties\PublishProfiles\ods.be - Web Deploy.pubxml" />
   </ItemGroup>
 
@@ -24,6 +17,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
+  
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +36,12 @@
     <Content Update="package*.json" CopyToPublishDirectory="Never" />
     <Content Update="?angular*.json" CopyToPublishDirectory="Never" />
     <Content Update="ts*.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tempkey.rsa">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

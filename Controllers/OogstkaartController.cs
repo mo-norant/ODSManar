@@ -11,6 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.IO;
+using AngularSPAWebAPI.Models.DatabaseModels.General;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AngularSPAWebAPI.Controllers
 {
@@ -24,19 +29,22 @@ namespace AngularSPAWebAPI.Controllers
         private readonly IEmailSender EmailSender;
         private readonly ILogger Logger;
         private readonly ApplicationDbContext context;
+        private readonly IHostingEnvironment _appEnvironment;
 
         public OogstkaartController(
             UserManager<ApplicationUser> Usermanager,
             RoleManager<IdentityRole> Rolemanager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<IdentityController> logger,
+            IHostingEnvironment _appEnvironment,
+        ILogger<IdentityController> logger,
             ApplicationDbContext context)
         {
             this.Usermanager = Usermanager;
             this.Rolemanager = Rolemanager;
             SignInManager = signInManager;
             EmailSender = emailSender;
+            this._appEnvironment = _appEnvironment;
             Logger = logger;
             this.context = context;
         }
@@ -146,20 +154,174 @@ namespace AngularSPAWebAPI.Controllers
 
         }
 
+        [HttpPost("productstatus/{id}")]
+        public async Task<IActionResult> PostProduct([FromRoute] int id)
+        {
+
+            var user = await Usermanager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                var item = await context.OogstkaartItems.Where(o => o.UserID == user.Id).Where(o => o.OogstkaartItemID == id).FirstOrDefaultAsync();
+
+                if (item != null)
+                {
+                    item.OnlineStatus = !item.OnlineStatus;
+                    await context.SaveChangesAsync();
+                    return Ok();
+                }
+
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPost("oogstkaartavatar/{id}")]
+        public async Task<IActionResult> oogstkaartavatar([FromRoute] int id)
+        {
+            var user = await Usermanager.GetUserAsync(User);
+
+            if(user != null)
+            {
+                var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => i.UserID == user.Id).SingleAsync();
+                var files = HttpContext.Request.Form.Files;
+
+                foreach (var image in files)
+                {
+                    if (image != null && image.Length > 0)
+                    {
+                        var file = image;
+                        var uploads = Path.Combine(_appEnvironment.WebRootPath, ".\\img");
+                        if (file.Length > 0)
+                        {
+                            var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                            using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                            {
+                                await file.CopyToAsync(fileStream);
+                                item.Avatar = new Image
+                                {
+                                    Date = DateTime.Now,
+                                    uri = fileName,
+                                    Name = file.Name
+                                };
+                            }
+
+
+
+                        }
+                    }
+
+                }
+                await context.SaveChangesAsync();
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+
+        [HttpPost("files/{id}"), DisableRequestSizeLimit]
+        public async Task<IActionResult> PostFiles([FromRoute] int id)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var files = HttpContext.Request.Form.Files;
+
+                var user = await Usermanager.GetUserAsync(User);
+
+                var oogstkaartitem = await context.OogstkaartItems.Where(i => i.UserID == user.Id).Where(i => i.OogstkaartItemID == id).Include(i => i.Avatar).Include(i => i.Gallery).FirstOrDefaultAsync();
+
+                if (user != null && oogstkaartitem != null)
+                {
+                    
+
+                    foreach (var Image in files)
+                    {
+                        if (Image != null && Image.Length > 0)
+                        {
+                            var file = Image;
+                            var uploads = Path.Combine(_appEnvironment.WebRootPath, ".\\img");
+                            if (file.Length > 0)
+                            {
+
+                                
+                                
+                                    var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                                    {
+                                        await file.CopyToAsync(fileStream);
+                                        oogstkaartitem.Gallery.Add(new Image
+                                        {
+                                            Date = DateTime.Now,
+                                            uri = fileName,
+                                            Name = file.Name
+                                        });
+                                    }
+                                
+                                
+
+                            }
+                        }
+                    }
+
+                    await context.SaveChangesAsync();
+                    return Ok();
+
+                }
+
+            }
+
+
+                return BadRequest();
+        }
+
+
+
+        
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteID([FromRoute] int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await Usermanager.GetUserAsync(User);
+
+                if(user != null)
+                {
+                    var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).SingleAsync();
+
+                    if(item != null)
+                    {
+                        context.OogstkaartItems.Remove(item);
+                        await context.SaveChangesAsync();
+                        return Ok();
+
+                    }
+                }
+
+
+
+            }
+
+            return BadRequest();
+        }
+
+
+
+
         [AllowAnonymous]
         [HttpGet("mapview")]
         public async Task<IActionResult> GetAdmin()
         {
-            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Include(i => i.Weight).ToListAsync();
+            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Include(i => i.Avatar)
+             .Include(i => i.Gallery).Include(i => i.Weight).ToListAsync();
 
 
 
             return Ok(artikels);
 
         }
-
-        
-
 
 
     }

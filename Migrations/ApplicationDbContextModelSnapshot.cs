@@ -136,6 +136,26 @@ namespace AngularSPAWebAPI.Migrations
                     b.ToTable("Companies");
                 });
 
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Image", b =>
+                {
+                    b.Property<int>("ImageID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("OogstkaartItemID");
+
+                    b.Property<string>("uri");
+
+                    b.HasKey("ImageID");
+
+                    b.HasIndex("OogstkaartItemID");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Weight", b =>
                 {
                     b.Property<int>("WeightID")
@@ -172,6 +192,8 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<string>("Afmetingen");
 
                     b.Property<string>("Artikelnaam");
+
+                    b.Property<int?>("AvatarImageID");
 
                     b.Property<string>("Category");
 
@@ -210,6 +232,8 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<int?>("WeightID");
 
                     b.HasKey("OogstkaartItemID");
+
+                    b.HasIndex("AvatarImageID");
 
                     b.HasIndex("LocationID");
 
@@ -346,8 +370,19 @@ namespace AngularSPAWebAPI.Migrations
                         .HasForeignKey("AddressID");
                 });
 
+            modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Image", b =>
+                {
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem")
+                        .WithMany("Gallery")
+                        .HasForeignKey("OogstkaartItemID");
+                });
+
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.OogstkaartItem", b =>
                 {
+                    b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.General.Image", "Avatar")
+                        .WithMany()
+                        .HasForeignKey("AvatarImageID");
+
                     b.HasOne("AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID");

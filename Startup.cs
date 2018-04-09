@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using AngularSPAWebAPI.Data;
 using AngularSPAWebAPI.Models;
@@ -135,9 +136,7 @@ namespace AngularSPAWebAPI
 
             // Microsoft.AspNetCore.StaticFiles: API for starting the application from wwwroot.
             // Uses default files as index.html.
-            app.UseDefaultFiles();
-            // Uses static file for the current path.
-            app.UseStaticFiles();
+         
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -149,7 +148,22 @@ namespace AngularSPAWebAPI
         options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
     );
 
-            app.UseMvc();
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404 &&
+                   !Path.HasExtension(context.Request.Path.Value) &&
+                   !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+
+            app.UseMvcWithDefaultRoute();
+
+            app.UseDefaultFiles();
+            // Uses static file for the current path.
+            app.UseStaticFiles();
         }
     }
 }

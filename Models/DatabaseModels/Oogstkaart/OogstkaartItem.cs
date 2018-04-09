@@ -30,6 +30,7 @@ namespace AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart
         public bool OnlineStatus { get; set; }
         public string UserID { get; set; }
         public int Views { get; set; }
-
+        public Image Avatar { get; set; }
+        public ICollection<Image> Gallery { get; set; }
     }
 }

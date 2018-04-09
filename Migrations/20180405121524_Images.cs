@@ -4,21 +4,16 @@ using System.Collections.Generic;
 
 namespace AngularSPAWebAPI.Migrations
 {
-    public partial class phonetocompany : Migration
+    public partial class Images : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Phone",
-                table: "Companies",
-                nullable: true);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Phone",
-                table: "Companies");
+
         }
     }
 }
