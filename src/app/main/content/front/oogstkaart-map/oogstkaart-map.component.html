@@ -1,0 +1,143 @@
+
+<div class="page-layout carded left-sidenav" fusePerfectScrollbar>
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg mat-accent-bg">
+
+  </div>
+  <!-- / TOP BACKGROUND -->
+
+  <mat-sidenav-container>
+
+    <!-- SIDENAV -->
+    <mat-sidenav class="sidenav" align="start" opened="true" mode="side" fuseMatSidenavHelper="carded-left-sidenav" mat-is-locked-open="gt-md">
+
+      <!-- SIDENAV HEADER -->
+      <div class="header p-24" ngClass="mat-accent-bg" ngClass.gt-md="white-fg">
+
+
+      </div>
+      <!-- / SIDENAV HEADER -->
+
+      <!-- SIDENAV CONTENT -->
+      <div class="content p-24 primary" fusePerfectScrollbar>
+        <button class="mat-accent-bg m-4" routerLink='' mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+
+        <!--
+          <mat-chip-list  >
+            <mat-chip *ngFor="let id of filtersid" selected="true" >
+              {{id}} <mat-icon class="chip">cancel</mat-icon>
+            </mat-chip> 
+          </mat-chip-list>
+
+        -->
+        <h1>Filter
+          <h5> {{oogstkaartitems?.length }} producten</h5>
+        </h1>
+
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Categorie
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <mat-checkbox [(ngModel)]="filters.categorie['jansenprofiel']" id="jansenprofiel" name="category" (change)="filtertoggle($event)">Jansenprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie['constructieprofiel']" id="constructieprofiel" name="category" (change)="filtertoggle($event)">Constructieprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie['deur']" id="deur" name="category" (change)="filtertoggle($event)">Deur</mat-checkbox>
+            <br/>
+            <mat-checkbox [(ngModel)]="filters.categorie['raam']" id="raam" name="category" (change)="filtertoggle($event)">Raam</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie['geveldeel']" id="geveldeel" name="category" (change)="filtertoggle($event)">Geveldeel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie['overige']" id="overige" name="category" (change)="filtertoggle($event)">Overige</mat-checkbox>
+
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Jansenserie
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <mat-checkbox id="ART-15" name="serie" (change)="filtertoggle($event)">ART-15</mat-checkbox>
+            <mat-checkbox id="Janisol ARTE" name="serie" (change)="filtertoggle($event)">Janisol ARTE</mat-checkbox>
+            <mat-checkbox id="Economy" name="serie" (change)="filtertoggle($event)">Economy</mat-checkbox>
+            <mat-checkbox id="Janisol" name="serie" (change)="filtertoggle($event)">Janisol</mat-checkbox>
+            <mat-checkbox id="Janisol HI" name="serie" (change)="filtertoggle($event)">Janisol HI</mat-checkbox>
+            <mat-checkbox id="Janisol 2" name="serie" (change)="filtertoggle($event)">Janisol 2</mat-checkbox>
+            <mat-checkbox id="Janisol C4" name="serie" (change)="filtertoggle($event)">Janisol C4</mat-checkbox>
+            <mat-checkbox id="Janisol Viss" name="serie" (change)="filtertoggle($event)">Janisol Viss</mat-checkbox>
+
+
+
+
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Concept
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <mat-checkbox id="concept" name="Te huur" (change)="filtertoggle($event)">Te huur</mat-checkbox>
+            <mat-checkbox id="concept" name="Te koop" (change)="filtertoggle($event)">Te koop</mat-checkbox>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+      <!-- / SIDENAV CONTENT -->
+
+    </mat-sidenav>
+    <!-- / SIDENAV -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+      <!-- CONTENT HEADER -->
+      <div class="header white-fg p-24">
+
+      </div>
+      <!-- / CONTENT HEADER -->
+
+      <!-- CONTENT CARD -->
+      <div class="content-card mat-white-bg">
+
+        <!-- CONTENT TOOLBAR -->
+        <div class="toolbar px-24 py-8">
+          <button mat-button class="mat-icon-button sidenav-toggle" fuseMatSidenavToggler="carded-left-sidenav" fxHide.gt-md>
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <h1>ODS Oogstkaart</h1>
+        </div>
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <mat-progress-bar *ngIf="!itemsloading" mode="indeterminate"></mat-progress-bar>
+
+        <div class="content p-24" fusePerfectScrollbar>
+
+          <agm-map [latitude]="51.2627187555929" [zoom]="zoom" [longitude]="4.5024117984374925">
+
+            <agm-marker (markerClick)="opendialog(item)" *ngFor="let item of oogstkaartitems;" [iconUrl]="'assets/icons/markers/' + item.category + '.png'"
+              [latitude]="item.location.latitude" [longitude]="item.location.longtitude">
+            </agm-marker>
+          </agm-map>
+        </div>
+        <!-- / CONTENT -->
+
+      </div>
+      <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+  </mat-sidenav-container>
+
+</div>

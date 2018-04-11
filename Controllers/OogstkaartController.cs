@@ -16,10 +16,11 @@ using System.Collections.Generic;
 using System.IO;
 using AngularSPAWebAPI.Models.DatabaseModels.General;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Cors;
 
 namespace AngularSPAWebAPI.Controllers
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme, Policy = "Access Resources")]
     public class OogstkaartController : Controller
     {
@@ -183,15 +184,24 @@ namespace AngularSPAWebAPI.Controllers
 
             if(user != null)
             {
-                var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => i.UserID == user.Id).SingleAsync();
-                var files = HttpContext.Request.Form.Files;
+                var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => i.UserID == user.Id).SingleOrDefaultAsync();
+
+        
+                if(item == null)
+        {
+          return NotFound();
+        }  
+
+        var files = HttpContext.Request.Form.Files;
 
                 foreach (var image in files)
                 {
                     if (image != null && image.Length > 0)
                     {
                         var file = image;
-                        var uploads = Path.Combine(_appEnvironment.WebRootPath, ".\\img");
+
+            
+                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads");
                         if (file.Length > 0)
                         {
                             var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
@@ -224,8 +234,11 @@ namespace AngularSPAWebAPI.Controllers
         public async Task<IActionResult> PostFiles([FromRoute] int id)
         {
 
-            if (ModelState.IsValid)
-            {
+      if (!ModelState.IsValid)
+      {
+        return BadRequest();
+      }
+
                 var files = HttpContext.Request.Form.Files;
 
                 var user = await Usermanager.GetUserAsync(User);
@@ -270,9 +283,6 @@ namespace AngularSPAWebAPI.Controllers
 
                 }
 
-            }
-
-
                 return BadRequest();
         }
 
@@ -280,11 +290,10 @@ namespace AngularSPAWebAPI.Controllers
 
         
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteID([FromRoute] int id)
+        [HttpPost("delete/{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (ModelState.IsValid)
-            {
+           
                 var user = await Usermanager.GetUserAsync(User);
 
                 if(user != null)
@@ -302,16 +311,32 @@ namespace AngularSPAWebAPI.Controllers
 
 
 
-            }
+            
 
             return BadRequest();
         }
 
 
 
+    [AllowAnonymous]
+    [HttpPost("view/{id}")]
+    public async Task<IActionResult> PostView( [FromRoute] int id)
+    {
 
-        [AllowAnonymous]
-        [HttpGet("mapview")]
+      var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).FirstOrDefaultAsync();
+
+      if(item != null)
+      {
+        item.Views++ ;
+        await context.SaveChangesAsync();
+        return Ok(item.Views);
+      }
+      
+
+      return BadRequest();
+    }
+    [AllowAnonymous]
+    [HttpGet("mapview")]
         public async Task<IActionResult> GetAdmin()
         {
             var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Include(i => i.Avatar)

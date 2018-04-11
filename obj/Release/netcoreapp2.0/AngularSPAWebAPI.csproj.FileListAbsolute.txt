@@ -1,0 +1,12 @@
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\AngularSPAWebAPI.deps.json
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\AngularSPAWebAPI.runtimeconfig.json
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\AngularSPAWebAPI.runtimeconfig.dev.json
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\AngularSPAWebAPI.dll
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\AngularSPAWebAPI.pdb
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.csprojResolveAssemblyReference.cache
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.AssemblyInfo.cs
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.dll
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.pdb
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\tempkey.rsa

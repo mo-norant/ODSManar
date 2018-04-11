@@ -5,12 +5,14 @@ using AngularSPAWebAPI.Data;
 using AngularSPAWebAPI.Models;
 using AngularSPAWebAPI.Services;
 using IdentityServer4.AccessTokenValidation;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace AngularSPAWebAPI
@@ -32,9 +34,10 @@ namespace AngularSPAWebAPI
         {
             // SQLite & Identity.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+              //  options.UseMySql("Server=192.168.64.2 ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
+              options.UseMySql("Server=localhost ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+      services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -43,12 +46,12 @@ namespace AngularSPAWebAPI
             {
                 // Password settings.
                 options.Password.RequireDigit = true;
-                options.Password.RequiredLength = 8;
+                options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = false;
                 // Lockout settings.
-                options.Lockout.AllowedForNewUsers = true;
+              //  options.Lockout.AllowedForNewUsers = true;
                // options.Lockout.MaxFailedAccessAttempts = 3;
              //   options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromDays(1);
             });
@@ -81,30 +84,31 @@ namespace AngularSPAWebAPI
                 .AddAspNetIdentity<ApplicationUser>(); // IdentityServer4.AspNetIdentity.
 
 
-            
-            /*
-                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                    .AddIdentityServerAuthentication(options =>
-                    {
-                        options.Authority = "http://localhost:4200";
-                        options.RequireHttpsMetadata = false;
 
-                        options.ApiName = "WebAPI";
-                    });
-            
-            */
-                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                    .AddIdentityServerAuthentication(options =>
-                    {
-                        options.Authority = "http://localhost:5000/";
-                        options.RequireHttpsMetadata = false;
+      /*
+          services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+              .AddIdentityServerAuthentication(options =>
+              {
+                  options.Authority = "http://localhost:5000";
+                  options.RequireHttpsMetadata = false;
+                  options.ApiName = "WebAPI";
+              });
+              
+      */
 
-                        options.ApiName = "WebAPI";
-                    });
+      
+      services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+          .AddIdentityServerAuthentication(options =>
+          {
+            options.Authority = "http://jansenbyods.com";
+            options.RequireHttpsMetadata = false;
 
+            options.ApiName = "WebAPI";
+          });
+          
 
      
-           
+          
 
             services.AddSwaggerGen(c =>
             {
@@ -113,9 +117,23 @@ namespace AngularSPAWebAPI
 
             });
 
-            services.AddCors();
-            services.AddMvc();
-        }
+
+
+      services.AddCors(options =>
+      {
+        options.AddPolicy("AllowAll",
+            builder =>
+            {
+              builder
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+            });
+      });
+      services.AddMvc();
+
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -124,31 +142,35 @@ namespace AngularSPAWebAPI
             {
                 app.UseDeveloperExceptionPage();
 
-         
-            }
+
+      }
+      else
+      { app.UseDeveloperExceptionPage();      }
 
 
 
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
+      app.UseAuthentication();
+      app.UseIdentityServer();
+
+   
 
 
-            // Microsoft.AspNetCore.StaticFiles: API for starting the application from wwwroot.
-            // Uses default files as index.html.
-         
-            app.UseSwagger();
+      // Microsoft.AspNetCore.StaticFiles: API for starting the application from wwwroot.
+      // Uses default files as index.html.
+
+      app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseCors(
-        options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
-    );
 
-            app.Use(async (context, next) => {
+      app.UseCors("AllowAll");
+    
+    
+      app.Use(async (context, next) => {
                 await next();
                 if (context.Response.StatusCode == 404 &&
                    !Path.HasExtension(context.Request.Path.Value) &&
@@ -160,10 +182,11 @@ namespace AngularSPAWebAPI
             });
 
             app.UseMvcWithDefaultRoute();
-
             app.UseDefaultFiles();
             // Uses static file for the current path.
             app.UseStaticFiles();
-        }
+
+
     }
+  }
 }

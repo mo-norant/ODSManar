@@ -12,10 +12,11 @@ using AngularSPAWebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using IdentityServer4.AccessTokenValidation;
 using AngularSPAWebAPI.Models.DatabaseModels.Users;
+using Microsoft.AspNetCore.Cors;
 
 namespace AngularSPAWebAPI.Controllers
 {
-    [Produces("application/json")]
+  [Produces("application/json")]
     [Route("api/General")]
     [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme, Policy = "Access Resources")]
     public class GeneralController : Controller
@@ -48,6 +49,27 @@ namespace AngularSPAWebAPI.Controllers
 
             return Ok(tempuser);
         }
+
+        [HttpGet("hascompany")]
+        public async Task<IActionResult> HasCompany()
+    {
+
+      var user = await  Usermanager.GetUserAsync(User);
+
+      var tempuser = await context.Users.Where(i => i.Id == user.Id).Include(i => i.Company).SingleAsync();
+
+      if(tempuser.Company != null)
+      {
+        return Ok(true);
+      }
+
+      else
+      {
+        return Ok(false);
+      }
+
+      
+    }
 
         [HttpPost("registercompany")]
         public async Task<IActionResult> PostCompany([FromBody] Company company )
