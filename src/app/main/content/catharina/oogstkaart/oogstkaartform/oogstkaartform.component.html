@@ -51,14 +51,14 @@
 
                 <mat-form-field class="row">
                   <mat-select formControlName="jansenserie" placeholder="Jansenserie">
-                    <mat-option value="ART-15">ART-15</mat-option>
-                    <mat-option value="janisol ARTE">Janisol ARTE</mat-option>
+                    <mat-option value="art15">ART-15</mat-option>
+                    <mat-option value="janisolarte">Janisol ARTE</mat-option>
                     <mat-option value="economy">Economy</mat-option>
                     <mat-option value="janisol">Janisol</mat-option>
-                    <mat-option value="janisol HI">Janisol HI</mat-option>
-                    <mat-option value="Janisol 2">Janisol 2</mat-option>
-                    <mat-option value="Janisol C4">Janisol C4</mat-option>
-                    <mat-option value="Jansen Viss">Jansen Viss</mat-option>
+                    <mat-option value="janisolhi">Janisol HI</mat-option>
+                    <mat-option value="janisol2">Janisol 2</mat-option>
+                    <mat-option value="janisolc4">Janisol C4</mat-option>
+                    <mat-option value="jansenviss">Jansen Viss</mat-option>
 
                   </mat-select>
 
@@ -67,21 +67,21 @@
 
 
                 <mat-form-field>
-                  <input matInput placeholder="Coating" formControlName="coating" required>
+                  <input matInput placeholder="Coating" formControlName="coating">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Glassamenstelling" formControlName="glassamenstelling" required>
+                  <input matInput placeholder="Glassamenstelling" formControlName="glassamenstelling">
                 </mat-form-field>
                 <br/>
 
                 <mat-form-field class="row">
-                  <input matInput placeholder="Hoeveelheid" formControlName="hoeveelheid" required>
+                  <input matInput placeholder="Hoeveelheid" formControlName="hoeveelheid">
                 </mat-form-field>
                 <mat-form-field class="row">
-                  <input matInput placeholder="Afmetingen" formControlName="afmetingen" required>
+                  <input matInput placeholder="Afmetingen" formControlName="afmetingen">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Gewicht" formControlName="weight" required>
+                  <input matInput placeholder="Gewicht" formControlName="weight">
                 </mat-form-field>
 
                 <mat-form-field>
@@ -93,10 +93,10 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <input matInput placeholder="Vraagprijs per eenheid" formControlName="vraagPrijsPerEenheid" required>
+                  <input matInput placeholder="Vraagprijs per eenheid" formControlName="vraagPrijsPerEenheid">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Totale vraagprijs" formControlName="vraagPrijsTotaal" required>
+                  <input matInput placeholder="Totale vraagprijs" formControlName="vraagPrijsTotaal">
                 </mat-form-field>
                 <br/>
 
@@ -107,14 +107,14 @@
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="row">
-                  <input matInput placeholder="Status" formControlName="status" required>
+                  <input matInput placeholder="Status" formControlName="status">
                 </mat-form-field>
 
                 <mat-form-field class="row">
-                  <mat-select formControlName="concept" placeholder="Concept" required>
-                    <mat-option value="Te huur">Te huur</mat-option>
-                    <mat-option value="Te Koop">Te koop</mat-option>
-                    <mat-option value="Te Koop of Te huur">Te koop of te huur</mat-option>
+                  <mat-select formControlName="concept" placeholder="Concept">
+                    <mat-option value="tehuur">Te huur</mat-option>
+                    <mat-option value="tekoop">Te koop</mat-option>
+                    <mat-option value="tekoopentehuur">Te koop of te huur</mat-option>
 
 
                   </mat-select>
@@ -148,8 +148,7 @@
             <mat-step [stepControl]="thirdFormGroup">
               <ng-template matStepLabel>Upload foto's</ng-template>
               <h1>Upload een productfoto als voorbeeld</h1>
-              <button mat-raised-button color="primary" (click)='complete()' [disabled]="!buttonuploadzone" class="mb-2"
-              mat-raised-button>Volgende</button>
+              <button mat-raised-button color="primary" (click)='complete()' [disabled]="!buttonuploadzone" class="mb-2" mat-raised-button>Volgende</button>
               <input #file type="file" multiple (change)="upload(file.files)" />
               <br/>
               <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
@@ -167,6 +166,9 @@
 
 
               <div>
+
+
+              
               </div>
             </mat-step>
             <mat-step>
@@ -192,7 +194,7 @@
 
                 <div>
                   <button mat-raised-button color="primary" (click)="stepper.reset()">Nieuw artikel</button>
-                  <button mat-raised-button color="primary" [routerLink]="'/catharina/oogstkaart'">Uw oogstkaartartikelen</button>
+                  <button mat-raised-button color="primary" routerLink="catharina/oogstkaart">Uw oogstkaartartikelen</button>
 
                 </div>
 

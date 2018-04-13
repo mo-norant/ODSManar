@@ -35,7 +35,23 @@ export class OogstkaartMapComponent implements OnInit {
       { raam: false },
       { geveldeel: false },
       { overige: false }
-    ]
+    ],
+   jansenserie :[
+    { art15: false},
+     { janisolarte: false},
+     { economy: false},
+     { janisol: false},
+     { janisolhi: false},
+     { janisol2: false},
+     { janisolc4: false},
+     { jansenviss: false}
+   ],
+   concept: [
+     {tekoop: false},
+     {tehuur: false},
+     {tekoopentehuur: false}
+
+   ]
   }
 
   icons: [
@@ -48,6 +64,8 @@ export class OogstkaartMapComponent implements OnInit {
   ]
 
   filtersid: string[] = [];
+  filterconcept: string[] = [];
+  filterserie: string[] = [];
 
   constructor(
     private fuseConfig: FuseConfigService,
@@ -71,7 +89,7 @@ export class OogstkaartMapComponent implements OnInit {
   ngOnInit() {
 
     this.http.get<OogstKaartItem[]>(this.link).subscribe(res => {
-      
+
       this.oogstkaartitems = res;
       this.activatefilters(res);
       this.itemsloading = true;
@@ -110,12 +128,28 @@ export class OogstkaartMapComponent implements OnInit {
 
     oogstkaartitems.forEach(element => {
       this.filtersid.push(element.category);
+      
+      this.filterserie.push(element.jansenserie.toLowerCase().replace(/ /g,'').replace('-',''));
+      this.filterconcept.push(element.concept.toLowerCase().replace(/ /g,''));
     });
 
+    console.log(this.filterserie);
+    console.log(this.filterconcept);
+
     this.filtersid = _.uniq(this.filtersid);
+    this.filterserie = _.uniq(this.filterserie);
+    this.filterconcept = _.uniq(this.filterconcept);
 
     this.filtersid.forEach(element => {
       this.filters.categorie[element] = true;
+    });
+
+    this.filterconcept.forEach(element => {
+      this.filters.concept[element] = true;
+    });
+
+    this.filterserie.forEach(element => {
+      this.filters.jansenserie[element] = true;
     });
 
 

@@ -20,11 +20,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public createUser(user : RegisterUser){
-    return this.http.post(Utils.getRoot()  + "Identity/Create", user);
+    return this.http.post(Utils.getRoot()  + "api/Identity/Create", user);
   }
 
   public createCompany(company : Company, id: string){
-    return this.http.post(Utils.getRoot()  + "Identity/Companyinfo?id=" + id , company);
+    console.log(Utils.getRoot()  + "api/Identity/Companyinfo?id=" + id )
+    return this.http.post(Utils.getRoot()  + "api/Identity/Companyinfo?id=" + id , company);
   }
 
 
@@ -90,7 +91,7 @@ export class AuthService {
   }
 
    public postCompany(company: Company){
-    return this.http.post(Utils.getRoot() + + 'api/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
+    return this.http.post(Utils.getRoot() + 'api/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
    }
 
    public hasCompany(){

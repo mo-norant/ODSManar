@@ -26,7 +26,7 @@ export class OogstkaartService {
 
 
 
-    return this.http.post<number>(this.link, item, { headers: this.auth.getAuthorizationHeaders() });
+    return this.http.post<number>(Utils.getRoot() + this.link, item, { headers: this.auth.getAuthorizationHeaders() });
   }
 
   /**
