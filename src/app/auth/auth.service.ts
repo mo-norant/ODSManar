@@ -90,7 +90,7 @@ export class AuthService {
   }
 
    public postCompany(company: Company){
-    return this.http.post(Utils.getRoot() + + '/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
+    return this.http.post(Utils.getRoot() + '/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
    }
 
    public hasCompany(){
