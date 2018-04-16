@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
     color = 'primary';
     mode = 'indeterminate';
 
-    loginLoad: boolean = true;
+    loading: boolean;
+    err: string;
 
     constructor(
         private fuseConfig: FuseConfigService,
@@ -60,13 +61,15 @@ export class LoginComponent implements OnInit {
 
     private locallogin() {
 
+        this.loading = true;
+
         setTimeout(() => {
 
             if (!this.auth.tokenExpired() && this.auth.hasToken()) {
                 this.router.navigate(['/catharina']);
             }
             else {
-                this.loginLoad = false;
+                this.loading = false;
             }
         
         },
@@ -94,14 +97,18 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
+
+        this.loading = true;
+
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
             this.auth.saveToken(res);
             this.router.navigate(['catharina']);
 
         }, err => {
-            console.log(err)
+            this.err = "Gebruikersnaam of/en  wachtwoord zijn verkeerd";
+            this.loading = false;
         }, () => {
-
+        this.loading = false;
         })
     }
 

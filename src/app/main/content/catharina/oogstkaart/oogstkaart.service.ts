@@ -7,7 +7,9 @@ import { Utils } from '../../../../models/Util';
 @Injectable()
 export class OogstkaartService {
 
-  link = 'api/Oogstkaart'
+  link = 'Oogstkaart'
+  locationlink = "Oogstkaart/Location"
+  adminlink = "Oogstkaart/productstatus"
 
   constructor(public http: HttpClient, public auth: AuthService) { }
 
@@ -16,17 +18,14 @@ export class OogstkaartService {
   public GetOogstkaartitems() {
 
 
-    return this.http.get<OogstKaartItem[]>(Utils.getRoot()+ this.link, { headers: this.auth.getAuthorizationHeaders() });
+    return this.http.get<OogstKaartItem[]>(Utils.getRoot() + this.link, { headers: this.auth.getAuthorizationHeaders() });
 
 
   }
-  locationlink = "api/Oogstkaart/Location"
-  adminlink = "api/Oogstkaart/mapvi/api/Oogstkaart/productstatusew"
+  
   public postOogstkaartItem(item: OogstKaartItem) {
 
-
-
-    return this.http.post<number>(this.link, item, { headers: this.auth.getAuthorizationHeaders() });
+    return this.http.post<number>(Utils.getRoot() + this.link, item, { headers: this.auth.getAuthorizationHeaders() });
   }
 
   /**
@@ -48,14 +47,14 @@ oogstkaartid : number   */
   }
 
   public PostSetStatusProduct(id: number) {
-    return this.http.post(Utils.getRoot() + '/api/Oogstkaart/productstatus/' + id, {}, { headers: this.auth.getAuthorizationHeaders() })
+    return this.http.post(Utils.getRoot() + 'Oogstkaart/productstatus/' + id, {}, { headers: this.auth.getAuthorizationHeaders() })
   }
 
   /**
    * DeleteItem
    */
   public DeleteItem(id: number) {
-    return this.http.post<OogstKaartItem>(Utils.getRoot() + '/api/Oogstkaart/delete/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
+    return this.http.post<OogstKaartItem>(Utils.getRoot() + 'Oogstkaart/delete/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
   }
 
   /**
@@ -70,7 +69,7 @@ oogstkaartid : number   */
    // headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json')
 
-    return this.http.post(Utils.getRoot() + "/api/Oogstkaart/oogstkaartavatar/"+id, formData,{headers:headers});
+    return this.http.post(Utils.getRoot() + "Oogstkaart/oogstkaartavatar/"+id, formData,{headers:headers});
 
   }
 

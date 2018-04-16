@@ -190,7 +190,7 @@ export class OogstkaartformComponent implements OnInit {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', Utils.getRoot() + `/api/Oogstkaart/oogstkaartavatar/` +  this.oogstkaartID, formData, {
+    const uploadReq = new HttpRequest('POST', Utils.getRoot() + `Oogstkaart/oogstkaartavatar/` +  this.oogstkaartID, formData, {
       reportProgress: true,
       headers : this.auth.getAuthorizationHeaders()
     });

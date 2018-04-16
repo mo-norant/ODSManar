@@ -200,12 +200,12 @@ namespace AngularSPAWebAPI.Controllers
                     {
                         var file = image;
 
-            
-                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads");
+                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+
                         if (file.Length > 0)
                         {
-                            var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-                            using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+              var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+              using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                             {
                                 await file.CopyToAsync(fileStream);
                                 item.Avatar = new Image

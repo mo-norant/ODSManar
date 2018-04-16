@@ -2,13 +2,26 @@
 
   <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
 
+
       <div id="login-form" *fuseIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+
+            <mat-progress-bar *ngIf="loading" color="warn" mode="indeterminate"></mat-progress-bar>
+
+            
+    
 
           <div class="logo">
                 <img src="assets/images/logos/logo-ods.png">
             </div>
 
           <div class="title">Login</div>
+
+          <div *ngIf="err" class="mat-warn-bg">
+    
+               <p> {{err}}  </p> 
+    
+            </div> 
 
           <form name="loginForm" [formGroup]="loginForm" novalidate>
 
@@ -55,12 +68,7 @@
               <a class="link" routerLink=''>Home</a>
 
           </div>
-          <mat-progress-bar  *ngIf="loginLoad"
-          class="example-margin"
-          [color]="color"
-          [mode]="mode"
-         >
-      </mat-progress-bar>
+        
 
       </div>
 

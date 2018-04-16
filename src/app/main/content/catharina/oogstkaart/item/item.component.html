@@ -61,7 +61,8 @@
 
             <!-- CONTENT -->
             <div class="content p-24" fusePerfectScrollbar>
-                <form [formGroup]="secondFormGroup">
+                    <mat-progress-bar *ngIf="!oogstkaartitem" color="warn" mode="indeterminate"></mat-progress-bar>
+                <form *ngIf="oogstkaartitem"  [formGroup]="secondFormGroup">
                     <mat-form-field class="row">
                         <input matInput placeholder="Artikel" formControlName="artikelnaam" required>
                     </mat-form-field>
@@ -84,8 +85,8 @@
 
                     <mat-form-field class="row">
                         <mat-select formControlName="jansenserie" placeholder="Jansenserie">
-                            <mat-option value="ART-15">ART-15</mat-option>
-                            <mat-option value="janisol ARTE">Janisol ARTE</mat-option>
+                            <mat-option value="art15">ART-15</mat-option>
+                            <mat-option value="janisolarte">Janisol ARTE</mat-option>
                             <mat-option value="economy">Economy</mat-option>
                             <mat-option value="janisol">Janisol</mat-option>
                             <mat-option value="janisol HI">Janisol HI</mat-option>
@@ -135,8 +136,8 @@
 
                     <mat-form-field class="row">
                         <mat-select formControlName="transportInbegrepen" placeholder="Transport inbegrepen">
-                            <mat-option value="true">Ja</mat-option>
-                            <mat-option value="false">Neen</mat-option>
+                            <mat-option [value]="true">Ja</mat-option>
+                            <mat-option [value]="false">Neen</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="row">
