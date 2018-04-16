@@ -13,19 +13,18 @@ export class AuthService {
   private client_id =  'AngularSPA'
   private grant_type =  'password'
   private scope  = 'WebAPI'
-
+  
 
 
 
   constructor(private http: HttpClient) { }
 
   public createUser(user : RegisterUser){
-    return this.http.post(Utils.getRoot()  + "api/Identity/Create", user);
+    return this.http.post(Utils.getRoot()  + "Identity/Create", user);
   }
 
   public createCompany(company : Company, id: string){
-    console.log(Utils.getRoot()  + "api/Identity/Companyinfo?id=" + id )
-    return this.http.post(Utils.getRoot()  + "api/Identity/Companyinfo?id=" + id , company);
+    return this.http.post(Utils.getRoot()  + "Identity/Companyinfo?id=" + id , company);
   }
 
 
@@ -39,7 +38,7 @@ export class AuthService {
     .set('grant_type', this.grant_type)
 
 
-    return this.http.post<JWTToken>(Utils.getRoot() + this.connectlink, body.toString(), {
+    return this.http.post<JWTToken>(Utils.getRoot().replace("/api", "") + this.connectlink, body.toString(), {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
     })
@@ -87,15 +86,15 @@ export class AuthService {
   }
 
   public getUserInfo(){
-    return this.http.get(Utils.getRoot()  + 'api/General/user', {headers: this.getAuthorizationHeaders()});
+    return this.http.get(Utils.getRoot()  + '/General/user', {headers: this.getAuthorizationHeaders()});
   }
 
    public postCompany(company: Company){
-    return this.http.post(Utils.getRoot() + 'api/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
+    return this.http.post(Utils.getRoot() + + '/General/registercompany', company, {headers: this.getAuthorizationHeaders()});
    }
 
    public hasCompany(){
-    return this.http.get<boolean>(Utils.getRoot()+ 'api/General/hascompany', {headers: this.getAuthorizationHeaders()});
+    return this.http.get<boolean>(Utils.getRoot()+ '/General/hascompany', {headers: this.getAuthorizationHeaders()});
    }
   
   public getAuthorizationHeaders() : HttpHeaders{

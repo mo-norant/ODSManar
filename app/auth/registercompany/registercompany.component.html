@@ -1,0 +1,80 @@
+<div id="register" fxLayout="row" fxLayoutAlign="start">
+
+    <div id="register-intro" fxFlex fxHide fxShow.gt-xs>
+
+        <div class="logo" *fuseIfOnDom [@animate]="{value:'*',params:{scale:'0.2'}}">
+            <img src="assets/images/logos/logo-ods.png">
+        </div>
+
+
+
+    </div>
+
+    <div id="register-form-wrapper" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="register-form">
+
+            <div class="logo" fxHide.gt-xs>
+                <span>F</span>
+            </div>
+
+            <div class="title">Stap 2: registreer uw bedrijf</div>
+
+            <form name="registerForm" [formGroup]="registerForm" novalidate>
+
+                <mat-form-field>
+                    <input matInput placeholder="Uw bedrijf" formControlName="companyName" required>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Telefoon" formControlName="phone" required>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Straat" formControlName="street" required>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Nummer" formControlName="number" required>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Postcode" formControlName="zipcode" required>
+
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Stad" formControlName="city" required>
+
+                </mat-form-field>
+                <mat-select placeholder="Land" formControlName="country" required>
+                        <mat-option [value]="'belgië'">
+                            België
+                        </mat-option>
+                        <mat-option [value]="'nederland'">
+                            Nederland
+                        </mat-option>
+                        
+                    
+                    </mat-select>
+
+                <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-checkbox name="terms" aria-label="Accept" required>
+                        <span>Accept</span>
+                    </mat-checkbox>
+                    <a href="#">terms and conditions</a>
+                </div>
+
+                <button (click)="onsubmit()" [disabled]="!registerForm.valid" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT" [disabled]="registerForm.invalid">
+                    CREATE AN ACCOUNT
+                </button>
+
+            </form>
+
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">Already have an account?</span>
+                <a class="link" href="/auth">Login</a>
+            </div>
+        </div>
+    </div>
+</div>

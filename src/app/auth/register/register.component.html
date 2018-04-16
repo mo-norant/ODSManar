@@ -15,12 +15,15 @@
 
         <div id="register-form">
 
+             <mat-progress-bar *ngIf="loading" color="warn" mode="indeterminate"></mat-progress-bar>
+
+
             <div class="logo" fxHide.gt-xs>
                 <span>F</span>
             </div>
 
             <div class="title">Maak een account</div>
-
+            <div *ngIf="err" class="mat-red-bg"> {{err}} </div>
             <form name="registerForm" [formGroup]="registerForm" novalidate>
 
                 <mat-form-field>

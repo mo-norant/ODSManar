@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     registerFormErrors: any;
 
+    loading : boolean;
+    err;
+
     constructor(
         private fuseConfig: FuseConfigService,
         private formBuilder: FormBuilder,
@@ -74,11 +77,13 @@ export class RegisterComponent implements OnInit {
 
        if(this.checkPasswords(this.registerForm.value.password, this.registerForm.value.passwordConfirm)){
            let user : RegisterUser = new RegisterUser(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.passwordConfirm, this.registerForm.value.Name);
+           
+           this.loading = true;
            this.auth.createUser(user).subscribe(res => {
                this.auth.login(this.registerForm.value.email, this.registerForm.value.password).subscribe(res => {
                 this.auth.saveToken(res);
                 this.router.navigate(['auth/companyregistration']);
-               });
+               }, err => this.err = err, () => this.loading = false);
            })
        }
 

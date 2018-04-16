@@ -10,3 +10,5 @@
 \\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.dll
 \\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.pdb
 \\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\bin\Release\netcoreapp2.0\tempkey.rsa
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.Properties.Resources.resources
+\\Mac\Home\Desktop\ODS\backend\AngularSPAWebAPI\obj\Release\netcoreapp2.0\AngularSPAWebAPI.csproj.GenerateResource.cache

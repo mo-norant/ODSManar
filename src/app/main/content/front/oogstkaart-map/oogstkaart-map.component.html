@@ -63,17 +63,16 @@
 
             </mat-expansion-panel-header>
 
-            
-            <mat-checkbox [(ngModel)]="filters.jansenserie['art15']" id="ART-15" name="serie" (change)="filtertoggle($event)">ART-15</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['janisolarte']" id="Janisol ARTE" name="serie" (change)="filtertoggle($event)">Janisol ARTE</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['economy']" id="Economy" name="serie" (change)="filtertoggle($event)">Economy</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['janisol']" id="Janisol" name="serie" (change)="filtertoggle($event)">Janisol</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['janisolhi']" id="Janisol HI" name="serie" (change)="filtertoggle($event)">Janisol HI</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['janisol2']" id="Janisol 2" name="serie" (change)="filtertoggle($event)">Janisol 2</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['janisolc4']" id="Janisol C4" name="serie" (change)="filtertoggle($event)">Janisol C4</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.jansenserie['jansenviss']"id="Jansen Viss" name="serie" (change)="filtertoggle($event)">Janisol Viss</mat-checkbox>
+            <mat-checkbox id="ART-15" name="serie" (change)="filtertoggle($event)">ART-15</mat-checkbox>
+            <mat-checkbox id="Janisol ARTE" name="serie" (change)="filtertoggle($event)">Janisol ARTE</mat-checkbox>
+            <mat-checkbox id="Economy" name="serie" (change)="filtertoggle($event)">Economy</mat-checkbox>
+            <mat-checkbox id="Janisol" name="serie" (change)="filtertoggle($event)">Janisol</mat-checkbox>
+            <mat-checkbox id="Janisol HI" name="serie" (change)="filtertoggle($event)">Janisol HI</mat-checkbox>
+            <mat-checkbox id="Janisol 2" name="serie" (change)="filtertoggle($event)">Janisol 2</mat-checkbox>
+            <mat-checkbox id="Janisol C4" name="serie" (change)="filtertoggle($event)">Janisol C4</mat-checkbox>
+            <mat-checkbox id="Janisol Viss" name="serie" (change)="filtertoggle($event)">Janisol Viss</mat-checkbox>
 
-            
+
 
 
           </mat-expansion-panel>
@@ -84,11 +83,10 @@
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-              
-            <mat-checkbox [(ngModel)]="filters.concept['tehuur']" id="tehuur" name="concept" (change)="filtertoggle($event)">Te huur</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.concept['tekoop']" id="tekoop" name="concept" (change)="filtertoggle($event)">Te koop</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.concept['tehuurentekoop']" id="tekoopentehuur" name="concept" (change)="filtertoggle($event)">Te koop en te huur</mat-checkbox>
-              
+
+            <mat-checkbox id="concept" name="Te huur" (change)="filtertoggle($event)">Te huur</mat-checkbox>
+            <mat-checkbox id="concept" name="Te koop" (change)="filtertoggle($event)">Te koop</mat-checkbox>
+
           </mat-expansion-panel>
         </mat-accordion>
 

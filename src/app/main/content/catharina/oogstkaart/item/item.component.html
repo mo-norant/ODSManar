@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="oogstkaartitem" >
+                <div  >
                         <a mat-raised-button (click)="deleteproduct()" class="reference-button 
                     mat-red-bg ml-12 ">
                             <mat-icon>delete</mat-icon>
@@ -61,11 +61,7 @@
 
             <!-- CONTENT -->
             <div class="content p-24" fusePerfectScrollbar>
-
-                    <mat-spinner *ngIf="!oogstkaartitem"></mat-spinner>
-
-
-                <form *ngIf="oogstkaartitem" [formGroup]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
                     <mat-form-field class="row">
                         <input matInput placeholder="Artikel" formControlName="artikelnaam" required>
                     </mat-form-field>

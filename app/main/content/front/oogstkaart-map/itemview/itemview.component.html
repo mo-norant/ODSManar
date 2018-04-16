@@ -1,0 +1,30 @@
+
+
+
+<div class="card">
+
+  <!-- PREVIEW -->
+  <div class="card-preview">
+
+      <div class="fuse-card">
+
+          <img [src]="'http://jansenbyods.com/uploads/' + data.item.avatar?.uri">
+
+          <div class="p-16">
+              <h1>{{item.artikelnaam}}</h1>
+          </div>
+
+          <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                  <button mat-button (click)="onNoClick()"  color="accent">Terug</button>
+                  <button mat-button (click)="openDetailview()" color="accent">Meer</button>
+              </div>
+
+
+      </div>
+
+  </div>
+  <!-- / PREVIEW -->
+
+
+</div>

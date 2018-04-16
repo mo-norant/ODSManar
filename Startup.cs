@@ -34,8 +34,8 @@ namespace AngularSPAWebAPI
         {
             // SQLite & Identity.
             services.AddDbContext<ApplicationDbContext>(options =>
-              //  options.UseMySql("Server=192.168.64.2 ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
-              options.UseMySql("Server=localhost ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
+                options.UseMySql("Server=192.168.64.2 ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
+             // options.UseMySql("Server=localhost ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -85,7 +85,7 @@ namespace AngularSPAWebAPI
 
 
 
-      /*
+     
           services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
               .AddIdentityServerAuthentication(options =>
               {
@@ -93,24 +93,24 @@ namespace AngularSPAWebAPI
                   options.RequireHttpsMetadata = false;
                   options.ApiName = "WebAPI";
               });
-              
-      */
 
-      
-      services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-          .AddIdentityServerAuthentication(options =>
-          {
-            options.Authority = "http://jansenbyods.com";
-            options.RequireHttpsMetadata = false;
 
-            options.ApiName = "WebAPI";
-          });
-          
+      /*
 
-     
-          
+     services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+         .AddIdentityServerAuthentication(options =>
+         {
+           options.Authority = "http://jansenbyods.com";
+           options.RequireHttpsMetadata = false;
 
-            services.AddSwaggerGen(c =>
+           options.ApiName = "WebAPI";
+         });
+
+  */
+
+
+
+      services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme() { In = "header", Description = "Please insert JWT with Bearer into field", Name = "Authorization", Type = "apiKey" });

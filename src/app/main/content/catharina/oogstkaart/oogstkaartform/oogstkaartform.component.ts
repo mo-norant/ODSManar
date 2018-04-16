@@ -5,6 +5,7 @@ import { MatHorizontalStepper, MatStepper } from '@angular/material';
 import { OogstkaartService } from '../oogstkaart.service';
 import { OogstKaartItem, Weight, LocationOogstKaartItem } from '../../../../../models/models';
 import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
+import { Utils } from '../../../../../models/Util';
 
 
 @Component({
@@ -189,7 +190,7 @@ export class OogstkaartformComponent implements OnInit {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', `http://jansenbyods.com/api/Oogstkaart/oogstkaartavatar/` +  this.oogstkaartID, formData, {
+    const uploadReq = new HttpRequest('POST', Utils.getRoot() + `/api/Oogstkaart/oogstkaartavatar/` +  this.oogstkaartID, formData, {
       reportProgress: true,
       headers : this.auth.getAuthorizationHeaders()
     });
