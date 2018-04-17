@@ -111,7 +111,7 @@ namespace AngularSPAWebAPI.Controllers
                 return NotFound();
             }
 
-            var allitems = await context.OogstkaartItems.Where(c => c.UserID == user.Id).Include(c => c.Weight).Include(i => i.Location).ToListAsync();
+            var allitems = await context.OogstkaartItems.Where(c => c.UserID == user.Id).Include(c => c.Specificaties).Include(i => i.Location).ToListAsync();
             var filtereditems = allitems.Where(i => i.Location != null).ToList();
 
             return Ok(filtereditems);
@@ -129,7 +129,7 @@ namespace AngularSPAWebAPI.Controllers
                 return NotFound("User not found");
             }
 
-            var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Location).Include(i => i.Weight).ToListAsync();
+            var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Location).Include(i => i.Specificaties).ToListAsync();
 
             if(!items.Any())
             {
@@ -200,18 +200,21 @@ namespace AngularSPAWebAPI.Controllers
                     {
                         var file = image;
 
-                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+            DirectoryInfo di = Directory.CreateDirectory(Path.Combine(_appEnvironment.WebRootPath, "uploads\\image").ToString());
 
-                        if (file.Length > 0)
+            var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+
+
+            if (file.Length > 0)
                         {
-              var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-              using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+                            var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                            using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                             {
                                 await file.CopyToAsync(fileStream);
-                                item.Avatar = new Image
+                                item.Avatar = new Afbeelding
                                 {
-                                    Date = DateTime.Now,
-                                    uri = fileName,
+                                    Create = DateTime.Now,
+                                    URI = fileName,
                                     Name = file.Name
                                 };
                             }
@@ -264,10 +267,10 @@ namespace AngularSPAWebAPI.Controllers
                                     using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                                     {
                                         await file.CopyToAsync(fileStream);
-                                        oogstkaartitem.Gallery.Add(new Image
+                                        oogstkaartitem.Gallery.Add(new Afbeelding
                                         {
-                                            Date = DateTime.Now,
-                                            uri = fileName,
+                                            Create = DateTime.Now,
+                                            URI = fileName,
                                             Name = file.Name
                                         });
                                     }
@@ -339,8 +342,8 @@ namespace AngularSPAWebAPI.Controllers
     [HttpGet("mapview")]
         public async Task<IActionResult> GetAdmin()
         {
-            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Include(i => i.Avatar)
-             .Include(i => i.Gallery).Include(i => i.Weight).ToListAsync();
+            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Where(i => i.Location != null).Include(i => i.Avatar)
+             .Include(i => i.Gallery).Include(i => i.Specificaties).ToListAsync();
 
 
 

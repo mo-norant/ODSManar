@@ -1,3 +1,4 @@
+import { Specificatie } from './../../../../../models/models';
 import { AuthService } from './../../../../../auth/auth.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -52,7 +53,7 @@ export class OogstkaartformComponent implements OnInit {
   public progress: number;
   public message: string;
 
-
+  specificaties: Specificatie[] = [];
 
 
   constructor(private _formBuilder: FormBuilder, private oogstkaartservice: OogstkaartService, private http : HttpClient, private auth: AuthService) {
@@ -65,21 +66,12 @@ export class OogstkaartformComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       omschrijving: ['', Validators.required],
       jansenserie: ['', Validators.required],
-      coating: ['', Validators.required],
-      glassamenstelling: ['', Validators.required],
-      afmetingen: ['', Validators.required],
-      weight: ['', Validators.required],
       vraagPrijsPerEenheid: ['', Validators.required],
       vraagPrijsTotaal: ['', Validators.required],
-      status: ['', Validators.required],
       artikelnaam:  ['', Validators.required],
       categorie: ['', Validators.required],
-      metric: ['', Validators.required],
-      transportInbegrepen: ['', Validators.required],
       hoeveelheid: ['', Validators.required],
       concept: ['', Validators.required],
-
-
     });
 
     this.thirdFormGroup = this._formBuilder.group({
@@ -94,23 +86,17 @@ export class OogstkaartformComponent implements OnInit {
   postartikel() {
 
     let item: OogstKaartItem = new OogstKaartItem;
-    item.weight = new Weight;
     item.hoeveelheid = this.secondFormGroup.value.hoeveelheid;
     item.omschrijving = this.secondFormGroup.value.omschrijving;
     item.artikelnaam = this.secondFormGroup.value.artikelnaam;
     item.jansenserie = this.secondFormGroup.value.jansenserie;
-    item.coating = this.secondFormGroup.value.coating;
     item.category = this.secondFormGroup.value.categorie;
     item.concept = this.secondFormGroup.value.concept;
-    item.glassamenstelling = this.secondFormGroup.value.glassamenstelling;
-    item.afmetingen = this.secondFormGroup.value.afmetingen;
-    item.weight.weightX = this.secondFormGroup.value.weight;
-    item.weight.metric = this.secondFormGroup.value.metric;
+
     item.vraagPrijsPerEenheid = this.secondFormGroup.value.vraagPrijsPerEenheid;
     item.vraagPrijsTotaal = this.secondFormGroup.value.vraagPrijsTotaal;
-    item.status = this.secondFormGroup.value.status;
-    item.transportInbegrepen = this.secondFormGroup.value.transportInbegrepen;
-
+    item.specificaties = this.specificaties;
+  
     if(this.buttondisabled == false){
       this.buttondisabled = true;
       this.oogstkaartservice.postOogstkaartItem(item).subscribe(res => {
@@ -126,7 +112,7 @@ export class OogstkaartformComponent implements OnInit {
           this.buttondisabled = false;
           this.err = err;
           this.postsucces = false;
-          this.stepper.selectedIndex = 3;
+          this.stepper.selectedIndex = 4;
         }, () => {
           this.buttondisabled = false;
         })
@@ -148,7 +134,7 @@ export class OogstkaartformComponent implements OnInit {
       this.deleteItem(this.oogstkaartID);
       this.err = err;
       this.postsucces = false;
-      this.stepper.selectedIndex = 4;
+      this.stepper.selectedIndex = 5;
     })
   }
 
@@ -210,13 +196,32 @@ export class OogstkaartformComponent implements OnInit {
     console.log("item removed")
     this.oogstkaartservice.DeleteItem(id).subscribe( res => {
       this.postsucces = false;
-      this.stepper.selectedIndex = 3;
+      this.stepper.selectedIndex = 4;
     });
    
   }
 
   private complete(){
-    this.stepper.selectedIndex = 3;
+    this.stepper.selectedIndex = 4;
+  }
+
+  private addSpecificatie(){
+    
+    this.specificaties.push(new Specificatie());
+    
+  }
+
+  private reset(){
+    this.stepper.reset();
+    this.specificaties = [];
+  }
+
+  private removeItem(index){
+
+    if (index !== -1) {
+      this.specificaties.splice(index, 1);
+  }   
+    console.log(this.specificaties);
   }
 
 

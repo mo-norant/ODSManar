@@ -1,7 +1,7 @@
 import { ConfirmdeleteComponent } from './confirmdelete/confirmdelete.component';
 import { OogstKaartItem } from './../../../../../models/models';
 import { OogstkaartService } from './../oogstkaart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,10 +19,12 @@ export class ItemComponent implements OnInit {
   oogstkaartitem: OogstKaartItem;
 
   buttonlock: boolean ;
-
+  changed: boolean;
   constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) { }
 
   ngOnInit() {
+
+
 
     this.route.params.subscribe(data => {
 
@@ -33,22 +35,17 @@ export class ItemComponent implements OnInit {
         this.secondFormGroup = this._formBuilder.group({
           omschrijving: [res.omschrijving, Validators.required],
           jansenserie: [res.jansenserie, Validators.required],
-          coating: [res.coating, Validators.required],
-          glassamenstelling: [res.glassamenstelling, Validators.required],
-          afmetingen: [res.afmetingen, Validators.required],
-          weight: [res.weight.weightX, Validators.required],
           vraagPrijsPerEenheid: [res.vraagPrijsPerEenheid, Validators.required],
           vraagPrijsTotaal: [res.vraagPrijsTotaal, Validators.required],
-          status: [res.status, Validators.required],
           artikelnaam:  [res.artikelnaam, Validators.required],
           categorie: [res.category, Validators.required],
-          metric: [res.weight.metric ,Validators.required],
-          transportInbegrepen: [res.transportInbegrepen, Validators.required],
           hoeveelheid: [res.hoeveelheid, Validators.required],
-          concept: [res.concept, Validators.required],
-    
+          concept: [res.concept, Validators.required]
+          
+        
     
         });
+        this.onChanges();
 
       }, err => {
         this.snackBar.open("Geen product gevonden", "", {
@@ -58,7 +55,7 @@ export class ItemComponent implements OnInit {
       })
     });
 
-   
+
 
   }
 
@@ -89,4 +86,12 @@ export class ItemComponent implements OnInit {
       console.log('The dialog was closed');
     });  }
 
+    onChanges(): void {
+      this.secondFormGroup.valueChanges.subscribe(val => {
+        this.changed = true;
+        
+      });
+    }
+
 }
+ 

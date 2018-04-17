@@ -32,35 +32,41 @@
         oogstkaartItemID: number;
         createDate: Date;
         omschrijving: string;
-        afbeeldingURL: string;
         artikelnaam: string;
         jansenserie: string;
-        coating: string;
-        glassamenstelling: string;
         datumBeschikbaar: Date;
         company: Company;
         location: LocationOogstKaartItem;
         hoeveelheid: number;
         category: string
-        afmetingen: string;
-        weight: Weight;
         vraagPrijsPerEenheid: number;
         vraagPrijsTotaal: number;
-        transportInbegrepen: boolean;
-        status: string;
         onlineStatus: boolean;
         concept: string;    
         userID: string;  
         Views: number;
-        avatar : Avatar;
-        
+        avatar : Afbeelding;
+        specificaties: Specificatie[];
+        gallerij : Afbeelding[];
+
     }
 
-    export class Avatar {
-        date : Date;
-        imageID: number;
-        name : string;
+    export class Afbeelding {
+        afbeeldingID: number;
         uri: string;
+        create: Date;
+        name: string;
+        omschrijving: string;
     }
+
+    export class Specificatie {
+        specificatieID: number;
+        specificatieSleutel: string;
+        specificatieValue: string;
+        specificatieEenheid: string;
+        specificatieOmschrijving: string;
+    }
+
+
 
         

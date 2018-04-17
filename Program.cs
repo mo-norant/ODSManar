@@ -27,7 +27,6 @@ namespace AngularSPAWebAPI
       .CaptureStartupErrors(true)
       .Build();
 
-            host.Run();
 
             // Initializes db.
             using (var scope = host.Services.CreateScope())
@@ -35,10 +34,10 @@ namespace AngularSPAWebAPI
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
-                    var dbInitializer = services.GetRequiredService<IDbInitializer>();
-                    dbInitializer.Initialize(context).GetAwaiter().GetResult();
-                }
+          var context = services.GetRequiredService<ApplicationDbContext>();
+          var dbInitializer = services.GetRequiredService<IDbInitializer>();
+          dbInitializer.Initialize(context).GetAwaiter().GetResult();
+        }
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
@@ -48,7 +47,6 @@ namespace AngularSPAWebAPI
 
            
 
-            host.Run();
 
             host.Run();
         }

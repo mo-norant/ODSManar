@@ -12,7 +12,7 @@
     <div class="container">
 
       <div class="mb-5">
-        <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="stepper.selectedIndex * 33.33">
+        <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="stepper.selectedIndex * 20">
         </mat-progress-bar>
       </div>
 
@@ -66,31 +66,12 @@
                 <br/>
 
 
-                <mat-form-field>
-                  <input matInput placeholder="Coating" formControlName="coating" required>
-                </mat-form-field>
-                <mat-form-field>
-                  <input matInput placeholder="Glassamenstelling" formControlName="glassamenstelling" required>
-                </mat-form-field>
-                <br/>
+
 
                 <mat-form-field class="row">
                   <input matInput placeholder="Hoeveelheid" formControlName="hoeveelheid" required>
                 </mat-form-field>
-                <mat-form-field class="row">
-                  <input matInput placeholder="Afmetingen" formControlName="afmetingen" required>
-                </mat-form-field>
-                <mat-form-field>
-                  <input matInput placeholder="Gewicht" formControlName="weight" required>
-                </mat-form-field>
 
-                <mat-form-field>
-                  <mat-select formControlName="metric" placeholder="Eenheid">
-                    <mat-option value="kg">kg</mat-option>
-                    <mat-option value="ton">ton</mat-option>
-                    <mat-option value="ton">Vierkante meter</mat-option>
-                  </mat-select>
-                </mat-form-field>
 
                 <mat-form-field>
                   <input matInput placeholder="Vraagprijs per eenheid" formControlName="vraagPrijsPerEenheid" required>
@@ -100,15 +81,6 @@
                 </mat-form-field>
                 <br/>
 
-                <mat-form-field class="row">
-                  <mat-select formControlName="transportInbegrepen" placeholder="Transport inbegrepen">
-                    <mat-option value="true">Ja</mat-option>
-                    <mat-option value="false">Neen</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field class="row">
-                  <input matInput placeholder="Status" formControlName="status" required>
-                </mat-form-field>
 
                 <mat-form-field class="row">
                   <mat-select formControlName="concept" placeholder="Concept" required>
@@ -122,9 +94,48 @@
                 </mat-form-field>
                 <div>
                   <button mat-raised-button color="warn" matStepperPrevious>Terug</button>
-                  <button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" (click)="postartikel()">Volgende</button>
+                  <button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" (click)="nextstep()">Volgende</button>
                 </div>
               </form>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Specificaties</ng-template>
+
+              <div  class="m-12">
+                <span>
+                  <button mat-mini-fab color="accent">
+                      <mat-icon (click)="addSpecificatie()" class="m-4" class="mat-24" >add</mat-icon>
+                    </button>
+                    Voeg nieuwe specificatie toe
+                    </span>
+
+              </div>
+
+              <div *ngFor="let item of specificaties; let i = index " class="row">
+                <span class="m-12">
+                  
+                  <button mat-mini-fab color="warn">
+                    <mat-icon (click)="removeItem(i)" class="mat-24">remove</mat-icon>
+                  </button>
+
+                </span>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="specificaties[i].specificatieSleutel" placeholder="Specificatie" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="specificaties[i].specificatieValue"  placeholder="Waarde" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="specificaties[i].specificatieOmschrijving" placeholder="Omschrijving">
+                </mat-form-field>
+              </div>
+
+              <div>
+                  <button mat-raised-button color="warn" matStepperPrevious>Terug</button>
+                  <button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" (click)="postartikel()">Volgende</button>
+                </div>
+
             </mat-step>
 
             <mat-step>
@@ -148,8 +159,7 @@
             <mat-step [stepControl]="thirdFormGroup">
               <ng-template matStepLabel>Upload foto's</ng-template>
               <h1>Upload een productfoto als voorbeeld</h1>
-              <button mat-raised-button color="primary" (click)='complete()' [disabled]="!buttonuploadzone" class="mb-2"
-              mat-raised-button>Volgende</button>
+              <button mat-raised-button color="primary" (click)='complete()' [disabled]="!buttonuploadzone" class="mb-2" mat-raised-button>Volgende</button>
               <input #file type="file" multiple (change)="upload(file.files)" />
               <br/>
               <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
@@ -191,7 +201,7 @@
                 </ng-template>
 
                 <div>
-                  <button mat-raised-button color="primary" (click)="stepper.reset()">Nieuw artikel</button>
+                  <button mat-raised-button color="primary" (click)="reset()">Nieuw artikel</button>
                   <button mat-raised-button color="primary" [routerLink]="'/catharina/oogstkaart'">Uw oogstkaartartikelen</button>
 
                 </div>

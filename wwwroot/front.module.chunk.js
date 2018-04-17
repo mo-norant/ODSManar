@@ -17577,6 +17577,7 @@ module.exports = "agm-map {\n  height: 100%;\n  width: 100%; }\n\nmat-chip {\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__itemview_itemview_component__ = __webpack_require__("./src/app/main/content/front/oogstkaart-map/itemview/itemview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_Util__ = __webpack_require__("./src/app/models/Util.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17593,6 +17594,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var OogstkaartMapComponent = /** @class */ (function () {
     function OogstkaartMapComponent(fuseConfig, http, dialog, landermapservice) {
         this.fuseConfig = fuseConfig;
@@ -17600,7 +17602,7 @@ var OogstkaartMapComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.landermapservice = landermapservice;
         this.zoom = 7;
-        this.link = 'http://jansenbyods.com/api/Oogstkaart/mapview';
+        this.link = 'Oogstkaart/mapview';
         this.filters = {
             categorie: [
                 { jansenprofiel: false },
@@ -17622,7 +17624,7 @@ var OogstkaartMapComponent = /** @class */ (function () {
     }
     OogstkaartMapComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get(this.link).subscribe(function (res) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_7__models_Util__["a" /* Utils */].getRoot() + this.link).subscribe(function (res) {
             _this.oogstkaartitems = res;
             _this.activatefilters(res);
             _this.itemsloading = true;

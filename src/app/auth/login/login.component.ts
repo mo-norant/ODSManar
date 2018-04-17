@@ -105,7 +105,14 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['catharina']);
 
         }, err => {
-            this.err = "Gebruikersnaam of/en  wachtwoord zijn verkeerd";
+
+            if(err.status === 400){
+                this.err = "Gebruikersnaam of/en  wachtwoord zijn verkeerd";
+
+            }
+            if(err.status === 500)
+            this.err = "Server reageert niet.";
+
             this.loading = false;
         }, () => {
         this.loading = false;

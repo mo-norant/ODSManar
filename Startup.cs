@@ -84,20 +84,9 @@ namespace AngularSPAWebAPI
                 .AddAspNetIdentity<ApplicationUser>(); // IdentityServer4.AspNetIdentity.
 
 
-
-     
-          services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-              .AddIdentityServerAuthentication(options =>
-              {
-                  options.Authority = "http://localhost:5000";
-                  options.RequireHttpsMetadata = false;
-                  options.ApiName = "WebAPI";
-              });
-
-
-      /*
-
-     services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+      if (currentEnvironment.IsProduction())
+      {
+        services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
          .AddIdentityServerAuthentication(options =>
          {
            options.Authority = "http://jansenbyods.com";
@@ -105,8 +94,23 @@ namespace AngularSPAWebAPI
 
            options.ApiName = "WebAPI";
          });
+      }
 
-  */
+      else
+      {
+        services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                   .AddIdentityServerAuthentication(options =>
+                   {
+                     options.Authority = "http://localhost:5000";
+                     options.RequireHttpsMetadata = false;
+                     options.ApiName = "WebAPI";
+                   });
+
+      }
+
+
+
+
 
 
 
