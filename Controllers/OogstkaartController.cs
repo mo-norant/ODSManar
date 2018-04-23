@@ -169,7 +169,6 @@ namespace AngularSPAWebAPI.Controllers
                     if (image != null && image.Length > 0)
                     {
                         var file = image;
-                        DirectoryInfo di = Directory.CreateDirectory(Path.Combine(_appEnvironment.WebRootPath, "uploads\\image").ToString());
                         var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
                         if (file.Length > 0)
                         {
@@ -256,10 +255,18 @@ namespace AngularSPAWebAPI.Controllers
                 var user = await Usermanager.GetUserAsync(User);
                 if(user != null)
                 {
-                    var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).SingleAsync();
+                    var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).Include(i => i.Location).Include(i => i.Specificaties).SingleAsync();
 
                     if(item != null)
                     {
+
+          foreach (var specificatie in item.Specificaties)
+          {
+            context.Specificaties.Remove(specificatie);
+          }
+
+          context.Locations.Remove(item.Location);
+                        
                         context.OogstkaartItems.Remove(item);
                         await context.SaveChangesAsync();
                         return Ok();

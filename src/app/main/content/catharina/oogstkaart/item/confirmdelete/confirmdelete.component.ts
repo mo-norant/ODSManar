@@ -27,7 +27,7 @@ export class ConfirmdeleteComponent implements OnInit {
         duration: 2000
       });
 
-      this.router.navigate(['/catharina/oostkaart']);
+      this.dialogRef.close();
       
     })
     }else{

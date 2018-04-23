@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="uploads\NewFolder\**" />
     <Compile Remove="wwwroot\img\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="uploads\NewFolder\**" />
     <Content Remove="wwwroot\img\**" />
     <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="uploads\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\img\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="uploads\NewFolder\**" />
     <None Remove="wwwroot\img\**" />
     <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>

@@ -161,6 +161,8 @@
               <h1>Upload een productfoto als voorbeeld</h1>
               <button mat-raised-button color="primary" (click)='complete()' [disabled]="!buttonuploadzone" class="mb-2" mat-raised-button>Volgende</button>
               <input #file type="file" multiple (change)="upload(file.files)" />
+              <button mat-raised-button color="primary" ngIf="uploaderror" (click)='upload()' class="mb-2" mat-raised-button>Probeer opnieuw</button>
+
               <br/>
               <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
                 {{progress}}%

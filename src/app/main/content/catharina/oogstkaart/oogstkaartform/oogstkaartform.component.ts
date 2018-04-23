@@ -49,6 +49,7 @@ export class OogstkaartformComponent implements OnInit {
 
   buttondisabled : boolean = false;
   buttonuploadzone:boolean = false;
+  uploaderror: boolean = false;
   
   public progress: number;
   public message: string;
@@ -104,11 +105,7 @@ export class OogstkaartformComponent implements OnInit {
         
       },
         err => {
-  
-          this.buttondisabled = false;
-          this.err = err;
-          this.postsucces = false;
-          this.stepper.selectedIndex = 4;
+          this.onPostError(err);
         }, () => {
           this.buttondisabled = false;
         })
@@ -116,6 +113,15 @@ export class OogstkaartformComponent implements OnInit {
 
     
 
+  }
+
+
+  onPostError(err){
+
+    this.buttondisabled = false;
+    this.err = err;
+    this.postsucces = false;
+    this.stepper.selectedIndex = 4;
   }
 
   postLocation() {
@@ -128,9 +134,8 @@ export class OogstkaartformComponent implements OnInit {
       this.stepper.next();
     }, err => {
       this.deleteItem(this.oogstkaartID);
-      this.err = err;
-      this.postsucces = false;
-      this.stepper.selectedIndex = 5;
+      this.onPostError(err);
+
     })
   }
 
@@ -155,6 +160,7 @@ export class OogstkaartformComponent implements OnInit {
          this.stepper.next();
        }, err => {
          this.deleteItem(this.oogstkaartID);
+         this.onPostError(err);
        })
       };
     }
@@ -185,7 +191,7 @@ export class OogstkaartformComponent implements OnInit {
         this.buttonuploadzone = true;
       }
 
-    });
+    }, err => this.uploaderror = true);
   }
 
   private deleteItem(id : number){
@@ -193,7 +199,7 @@ export class OogstkaartformComponent implements OnInit {
     this.oogstkaartservice.DeleteItem(id).subscribe( res => {
       this.postsucces = false;
       this.stepper.selectedIndex = 4;
-    });
+    }, err => this.onPostError(err));
    
   }
 
