@@ -67,9 +67,9 @@
 
             <!-- CONTENT -->
             <div class="content p-24" fusePerfectScrollbar>
-                    <mat-progress-bar *ngIf="!oogstkaartitem" color="warn" mode="indeterminate"></mat-progress-bar>
+                    <mat-progress-bar *ngIf="loading" color="warn" mode="indeterminate"></mat-progress-bar>
                
-               <mat-tab-group  *ngIf="oogstkaartitem">
+               <mat-tab-group  *ngIf="!loading">
                     <mat-tab label="Algemeen">
                         <div class="m-12">
                             <form  [formGroup]="secondFormGroup">

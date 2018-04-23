@@ -295,6 +295,9 @@ namespace AngularSPAWebAPI.Controllers
         item.Hoeveelheid = updatingitem.Hoeveelheid;
         item.Jansenserie = updatingitem.Jansenserie;
 
+        item.Omschrijving = updatingitem.Omschrijving;
+        item.VraagPrijsPerEenheid = updatingitem.VraagPrijsPerEenheid;
+        item.VraagPrijsTotaal = updatingitem.VraagPrijsTotaal;
 
         item.Location.Latitude = updatingitem.Location.Latitude;
         item.Location.Longtitude = updatingitem.Location.Longtitude;
@@ -307,7 +310,7 @@ namespace AngularSPAWebAPI.Controllers
           foreach (var specificatie in updatingitem.Specificaties)
           {
 
-            if (specificatie.SpecificatieID == 0 && specificatie.SpecificatieSleutel != null && specificatie.SpecificatieValue !=  null)
+            if (specificatie.SpecificatieID == 0 && specificatie.SpecificatieSleutel != null && specificatie.SpecificatieValue != null)
             {
               item.Specificaties.Add(specificatie);
             }
@@ -329,18 +332,7 @@ namespace AngularSPAWebAPI.Controllers
               temp.SpecificatieEenheid = specificatie.SpecificatieEenheid;
             }
 
-
-
-
           }
-
-          item.Omschrijving = updatingitem.Omschrijving;
-          item.VraagPrijsPerEenheid = updatingitem.VraagPrijsPerEenheid;
-          item.VraagPrijsTotaal = updatingitem.VraagPrijsTotaal;
-
-
-
-
 
         }
 
@@ -351,16 +343,17 @@ namespace AngularSPAWebAPI.Controllers
           {
             context.Specificaties.Remove(specificatie);
           }
+
         }
 
         await context.SaveChangesAsync();
-
         return Ok();
-        
         
 
       }
+
       return BadRequest();
+      
     }
 
 

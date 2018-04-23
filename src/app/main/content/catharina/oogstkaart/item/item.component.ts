@@ -20,12 +20,9 @@ export class ItemComponent implements OnInit {
 
   buttonlock: boolean ;
   changed: boolean;
+  loading: boolean;
   constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) {
 
-
-
-
-    
    }
 
   ngOnInit() {
@@ -33,7 +30,7 @@ export class ItemComponent implements OnInit {
 
 
     this.route.params.subscribe(data => {
-
+    this.loading = true
       this.OogstkaartService.getOogstkaartItem(data['id']).subscribe(res => {
         this.oogstkaartitem = res;
         this.secondFormGroup = this._formBuilder.group({
@@ -49,11 +46,12 @@ export class ItemComponent implements OnInit {
         this.onChanges();
 
       }, err => {
+        this.loading = false;
         this.snackBar.open("Geen product gevonden", "", {
           duration: 2000
         }); 
         this.router.navigate(["catharina/oostkaart"])
-      })
+      }, () => this.loading = false)
     });
 
 
@@ -90,12 +88,19 @@ export class ItemComponent implements OnInit {
     onChanges(): void {
       this.secondFormGroup.valueChanges.subscribe(val => {
         this.changedstate();
+
+        for (let key in val) {
+          let value = val[key];
+          this.oogstkaartitem[key] = value;
+      }
+
       });
     }
 
     private changedstate(){
       this.changed = true;
     }
+
 
     removeSpecificatie( i : number){
       if (i !== -1) {
@@ -111,8 +116,8 @@ export class ItemComponent implements OnInit {
     }
 
     updateItem(){
-      
-      this.OogstkaartService.UpdateOogstkaartitem(this.oogstkaartitem).subscribe();
+            this.loading = true;
+            this.OogstkaartService.UpdateOogstkaartitem(this.oogstkaartitem).subscribe(res => {this.changed = false}, err => this.loading = false , () => this.loading = false);
     }
 
 }
