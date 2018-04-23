@@ -1,5 +1,5 @@
 import { ConfirmdeleteComponent } from './confirmdelete/confirmdelete.component';
-import { OogstKaartItem } from './../../../../../models/models';
+import { OogstKaartItem, Specificatie } from './../../../../../models/models';
 import { OogstkaartService } from './../oogstkaart.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,13 @@ export class ItemComponent implements OnInit {
 
   buttonlock: boolean ;
   changed: boolean;
-  constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) { }
+  constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) {
+
+
+
+
+    
+   }
 
   ngOnInit() {
 
@@ -29,9 +35,7 @@ export class ItemComponent implements OnInit {
     this.route.params.subscribe(data => {
 
       this.OogstkaartService.getOogstkaartItem(data['id']).subscribe(res => {
-
         this.oogstkaartitem = res;
-
         this.secondFormGroup = this._formBuilder.group({
           omschrijving: [res.omschrijving, Validators.required],
           jansenserie: [res.jansenserie, Validators.required],
@@ -41,9 +45,6 @@ export class ItemComponent implements OnInit {
           categorie: [res.category, Validators.required],
           hoeveelheid: [res.hoeveelheid, Validators.required],
           concept: [res.concept, Validators.required]
-          
-        
-    
         });
         this.onChanges();
 
@@ -88,9 +89,30 @@ export class ItemComponent implements OnInit {
 
     onChanges(): void {
       this.secondFormGroup.valueChanges.subscribe(val => {
-        this.changed = true;
-        
+        this.changedstate();
       });
+    }
+
+    private changedstate(){
+      this.changed = true;
+    }
+
+    removeSpecificatie( i : number){
+      if (i !== -1) {
+        this.changedstate();
+        this.oogstkaartitem.specificaties.splice(i, 1);
+      }
+    }
+
+    addSpecificatie(){
+      this.changedstate();
+      this.oogstkaartitem.specificaties.push(new Specificatie());
+      
+    }
+
+    updateItem(){
+      
+      this.OogstkaartService.UpdateOogstkaartitem(this.oogstkaartitem).subscribe();
     }
 
 }

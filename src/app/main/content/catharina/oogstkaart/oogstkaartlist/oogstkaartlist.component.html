@@ -21,6 +21,7 @@
     <!-- CONTENT -->
     <div class="content p-24">
 
+        <mat-progress-bar *ngIf="!rows" color="warn" mode="indeterminate"></mat-progress-bar>
 
         <ngx-datatable (activate)='onUserEvent($event)' class="material" [rows]="rows" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
             [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true" [reorderable]="reorderable" [limit]="10">

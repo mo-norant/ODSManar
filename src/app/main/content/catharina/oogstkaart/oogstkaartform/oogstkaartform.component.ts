@@ -77,10 +77,6 @@ export class OogstkaartformComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       productimage: null,
     });
-
-
-
-
   }
 
   postartikel() {
@@ -221,7 +217,6 @@ export class OogstkaartformComponent implements OnInit {
     if (index !== -1) {
       this.specificaties.splice(index, 1);
   }   
-    console.log(this.specificaties);
   }
 
 

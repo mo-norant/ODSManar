@@ -16,7 +16,9 @@
 
             <h2> Oogstkaartartikel</h2>
 
-
+            <div>
+                    <button (click)="updateItem()" mat-raised-button class="reference-button mat-white-bg m-16 mt-sm-0" color="primary" [disabled]="!changed">Opslaan</button>
+                 </div>
 
 
         </div>
@@ -47,13 +49,17 @@
                     </div>
                 </div>
 
-                <div  >
+                <div>
                         <a mat-raised-button (click)="deleteproduct()" class="reference-button 
                     mat-red-bg ml-12 ">
                             <mat-icon>delete</mat-icon>
                             <span>Verwijder product</span>
                         </a>
                 </div>
+
+               
+
+
             </div>
 
          
@@ -62,101 +68,116 @@
             <!-- CONTENT -->
             <div class="content p-24" fusePerfectScrollbar>
                     <mat-progress-bar *ngIf="!oogstkaartitem" color="warn" mode="indeterminate"></mat-progress-bar>
-                <form *ngIf="oogstkaartitem"  [formGroup]="secondFormGroup">
-                    <mat-form-field class="row">
-                        <input matInput placeholder="Artikel" formControlName="artikelnaam" required>
-                    </mat-form-field>
-                    <br/>
-                    <mat-form-field class="row">
-                        <input matInput placeholder="Omschrijving" formControlName="omschrijving" required>
-                    </mat-form-field>
-                    <mat-form-field class="row">
-                        <mat-select formControlName="categorie" placeholder="Selecteer een categorie">
-                            <mat-option value="jansenprofiel">Jansenprofiel</mat-option>
-                            <mat-option value="constructieprofiel">Constructieprofiel</mat-option>
-                            <mat-option value="deur">Deur</mat-option>
-                            <mat-option value="raam">Raam</mat-option>
-                            <mat-option value="geveldeel">Geveldeel</mat-option>
-                            <mat-option value="overige">Overige</mat-option>
+               
+               <mat-tab-group  *ngIf="oogstkaartitem">
+                    <mat-tab label="Algemeen">
+                        <div class="m-12">
+                            <form  [formGroup]="secondFormGroup">
+                                    <mat-form-field class="row">
+                                        <input matInput placeholder="Artikel" formControlName="artikelnaam" required>
+                                    </mat-form-field>
+                                    <br/>
+                                    <mat-form-field class="row">
+                                        <input matInput placeholder="Omschrijving" formControlName="omschrijving" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="row">
+                                        <mat-select formControlName="categorie" placeholder="Selecteer een categorie">
+                                            <mat-option value="jansenprofiel">Jansenprofiel</mat-option>
+                                            <mat-option value="constructieprofiel">Constructieprofiel</mat-option>
+                                            <mat-option value="deur">Deur</mat-option>
+                                            <mat-option value="raam">Raam</mat-option>
+                                            <mat-option value="geveldeel">Geveldeel</mat-option>
+                                            <mat-option value="overige">Overige</mat-option>
+                
+                                        </mat-select>
+                
+                                    </mat-form-field>
+                
+                                    <mat-form-field class="row">
+                                        <mat-select formControlName="jansenserie" placeholder="Jansenserie">
+                                            <mat-option value="ART-15">ART-15</mat-option>
+                                            <mat-option value="Janisol ARTE">Janisol ARTE</mat-option>
+                                            <mat-option value="Economy">Economy</mat-option>
+                                            <mat-option value="Janisol">Janisol</mat-option>
+                                            <mat-option value="janisol HI">Janisol HI</mat-option>
+                                            <mat-option value="Janisol 2">Janisol 2</mat-option>
+                                            <mat-option value="Janisol C4">Janisol C4</mat-option>
+                                            <mat-option value="Jansen Viss">Jansen Viss</mat-option>
+                
+                                        </mat-select>
+                
+                                    </mat-form-field>
+                                    <br/>
+                
+                
+                                   
+                
+                                    <mat-form-field class="row">
+                                        <input matInput placeholder="Hoeveelheid" formControlName="hoeveelheid" required>
+                                    </mat-form-field>
+                                    
+                                    <mat-form-field>
+                                        <input matInput placeholder="Vraagprijs per eenheid" formControlName="vraagPrijsPerEenheid" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Totale vraagprijs" formControlName="vraagPrijsTotaal" required>
+                                    </mat-form-field>
+                                    <br/>
+                
+                                    
+                
+                                    <mat-form-field class="row">
+                                        <mat-select formControlName="concept" placeholder="Concept" required>
+                                            <mat-option value="Te huur">Te huur</mat-option>
+                                            <mat-option value="Te koop">Te koop</mat-option>
+                
+                
+                                        </mat-select>
+                
+                                    </mat-form-field>
+                                   
+                                </form>
+                            </div>
+                    </mat-tab>
+                    <mat-tab label="Specificaties">
 
-                        </mat-select>
+                            <div  class="m-12">
+                                    <span>
+                                      <button (click)="addSpecificatie()" mat-mini-fab color="accent">
+                                          <mat-icon  class="m-4" class="mat-24" >add</mat-icon>
+                                        </button>
+                                        Voeg nieuwe specificatie toe
+                                        </span>
+                    
+                                  </div>
 
-                    </mat-form-field>
+                            <div class="m-12">
+                            <div *ngFor="let item of oogstkaartitem?.specificaties; let i = index " class="row">
+                                    <span class="m-12">
+                                      
+                                      <button (click)="removeSpecificatie(i)" mat-mini-fab color="warn">
+                                        <mat-icon class="mat-24">remove</mat-icon>
+                                      </button>
+                    
+                                    </span>
+                                    <mat-form-field>
+                                      <input matInput (click)="changedstate()" [(ngModel)]="item.specificatieSleutel" placeholder="Specificatie" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                      <input matInput (click)="changedstate()" [(ngModel)]="item.specificatieValue"  placeholder="Waarde" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                      <input matInput  (click)="changedstate()" [(ngModel)]="item.specificatieOmschrijving" placeholder="Omschrijving">
+                                    </mat-form-field>
+                                  </div>
 
-                    <mat-form-field class="row">
-                        <mat-select formControlName="jansenserie" placeholder="Jansenserie">
-                            <mat-option value="art15">ART-15</mat-option>
-                            <mat-option value="janisolarte">Janisol ARTE</mat-option>
-                            <mat-option value="economy">Economy</mat-option>
-                            <mat-option value="janisol">Janisol</mat-option>
-                            <mat-option value="janisol HI">Janisol HI</mat-option>
-                            <mat-option value="Janisol 2">Janisol 2</mat-option>
-                            <mat-option value="Janisol C4">Janisol C4</mat-option>
-                            <mat-option value="Jansen Viss">Jansen Viss</mat-option>
+                            </div>
+                    </mat-tab>
+                    <mat-tab label="Afbeeldingen"></mat-tab>
 
-                        </mat-select>
-
-                    </mat-form-field>
-                    <br/>
-
-
-                    <mat-form-field>
-                        <input matInput placeholder="Coating" formControlName="coating" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Glassamenstelling" formControlName="glassamenstelling" required>
-                    </mat-form-field>
-                    <br/>
-
-                    <mat-form-field class="row">
-                        <input matInput placeholder="Hoeveelheid" formControlName="hoeveelheid" required>
-                    </mat-form-field>
-                    <mat-form-field class="row">
-                        <input matInput placeholder="Afmetingen" formControlName="afmetingen" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Gewicht" formControlName="weight" required>
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-select formControlName="metric" placeholder="Eenheid">
-                            <mat-option value="kg">kg</mat-option>
-                            <mat-option value="ton">ton</mat-option>
-                            <mat-option value="ton">Vierkante meter</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <input matInput placeholder="Vraagprijs per eenheid" formControlName="vraagPrijsPerEenheid" required>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput placeholder="Totale vraagprijs" formControlName="vraagPrijsTotaal" required>
-                    </mat-form-field>
-                    <br/>
-
-                    <mat-form-field class="row">
-                        <mat-select formControlName="transportInbegrepen" placeholder="Transport inbegrepen">
-                            <mat-option [value]="true">Ja</mat-option>
-                            <mat-option [value]="false">Neen</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="row">
-                        <input matInput placeholder="Status" formControlName="status" required>
-                    </mat-form-field>
-
-                    <mat-form-field class="row">
-                        <mat-select formControlName="concept" placeholder="Concept" required>
-                            <mat-option value="tehuur">Te huur</mat-option>
-                            <mat-option value="tekoop">Te koop</mat-option>
-
-
-                        </mat-select>
-
-                    </mat-form-field>
-                    <div>
-                        <button mat-raised-button color="primary" [disabled]=" !secondFormGroup.valid">Opslaan</button>
-                    </div>
-                </form>
+                </mat-tab-group>
+             
+                  
 
             </div>
             <!-- / CONTENT -->

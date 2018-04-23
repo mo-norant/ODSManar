@@ -73,6 +73,10 @@ oogstkaartid : number   */
 
   }
 
+  public UpdateOogstkaartitem(item : OogstKaartItem){
+  return this.http.post(Utils.getRoot() + "Oogstkaart/update", item, { headers: this.auth.getAuthorizationHeaders() })
+  }
+
 
 
 }

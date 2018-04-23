@@ -55,7 +55,6 @@ namespace AngularSPAWebAPI.Controllers
         public async Task<IActionResult> Post([FromBody] OogstkaartItem oogstkaartItem)
         {
             var now = DateTime.Now;
-
             var user = await Usermanager.GetUserAsync(User);
 
             if (ModelState.IsValid)
@@ -65,10 +64,7 @@ namespace AngularSPAWebAPI.Controllers
                 oogstkaartItem.CreateDate = now;
                 await context.OogstkaartItems.AddAsync(oogstkaartItem);
                 await context.SaveChangesAsync();
-
                 return Ok(oogstkaartItem.OogstkaartItemID);
-
-
             }
 
             return BadRequest();
@@ -78,7 +74,6 @@ namespace AngularSPAWebAPI.Controllers
         [HttpPost("Location")]
         public async Task<IActionResult> Post([FromBody] Location Location, [FromQuery] int OogstkaartitemID )
         {
-
             if (ModelState.IsValid)
             {
                 var item = await context.OogstkaartItems.FirstOrDefaultAsync(o => o.OogstkaartItemID == OogstkaartitemID);
@@ -89,10 +84,7 @@ namespace AngularSPAWebAPI.Controllers
                     await context.SaveChangesAsync();
                     return Ok();
                 }
-
-
             }
-
             return BadRequest();
         }
 
@@ -113,7 +105,6 @@ namespace AngularSPAWebAPI.Controllers
 
             var allitems = await context.OogstkaartItems.Where(c => c.UserID == user.Id).Include(c => c.Specificaties).Include(i => i.Location).ToListAsync();
             var filtereditems = allitems.Where(i => i.Location != null).ToList();
-
             return Ok(filtereditems);
 
         }
@@ -121,59 +112,40 @@ namespace AngularSPAWebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] int id  )
         {
-
             var tempuser = await Usermanager.GetUserAsync(User);
-
             if(tempuser == null)
             {
                 return NotFound("User not found");
             }
-
             var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Location).Include(i => i.Specificaties).ToListAsync();
-
             if(!items.Any())
             {
                 return NotFound("user has no items");
             }
-
             var item = items.Where(i => i.OogstkaartItemID == id).FirstOrDefault();
             if(item == null)
             {
                 return NotFound("user has no item with provided ID");
             }
 
-
-
-            
-
             return Ok(item);
-
-
-           
-
-           // return NotFound();
 
         }
 
         [HttpPost("productstatus/{id}")]
         public async Task<IActionResult> PostProduct([FromRoute] int id)
         {
-
             var user = await Usermanager.GetUserAsync(User);
-
             if (user != null)
             {
                 var item = await context.OogstkaartItems.Where(o => o.UserID == user.Id).Where(o => o.OogstkaartItemID == id).FirstOrDefaultAsync();
-
                 if (item != null)
                 {
                     item.OnlineStatus = !item.OnlineStatus;
                     await context.SaveChangesAsync();
                     return Ok();
                 }
-
             }
-
             return BadRequest();
         }
 
@@ -181,31 +153,25 @@ namespace AngularSPAWebAPI.Controllers
         public async Task<IActionResult> oogstkaartavatar([FromRoute] int id)
         {
             var user = await Usermanager.GetUserAsync(User);
-
             if(user != null)
             {
                 var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => i.UserID == user.Id).SingleOrDefaultAsync();
 
-        
-                if(item == null)
-        {
-          return NotFound();
-        }  
+            if(item == null)
+            {
+                 return NotFound();
+            }  
 
-        var files = HttpContext.Request.Form.Files;
+               var files = HttpContext.Request.Form.Files;
 
                 foreach (var image in files)
                 {
                     if (image != null && image.Length > 0)
                     {
                         var file = image;
-
-            DirectoryInfo di = Directory.CreateDirectory(Path.Combine(_appEnvironment.WebRootPath, "uploads\\image").ToString());
-
-            var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
-
-
-            if (file.Length > 0)
+                        DirectoryInfo di = Directory.CreateDirectory(Path.Combine(_appEnvironment.WebRootPath, "uploads\\image").ToString());
+                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+                        if (file.Length > 0)
                         {
                             var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
                             using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
@@ -218,9 +184,6 @@ namespace AngularSPAWebAPI.Controllers
                                     Name = file.Name
                                 };
                             }
-
-
-
                         }
                     }
 
@@ -237,10 +200,10 @@ namespace AngularSPAWebAPI.Controllers
         public async Task<IActionResult> PostFiles([FromRoute] int id)
         {
 
-      if (!ModelState.IsValid)
-      {
-        return BadRequest();
-      }
+           if (!ModelState.IsValid)
+           {
+                return BadRequest();
+           }
 
                 var files = HttpContext.Request.Form.Files;
 
@@ -260,9 +223,6 @@ namespace AngularSPAWebAPI.Controllers
                             var uploads = Path.Combine(_appEnvironment.WebRootPath, ".\\img");
                             if (file.Length > 0)
                             {
-
-                                
-                                
                                     var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
                                     using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                                     {
@@ -274,9 +234,6 @@ namespace AngularSPAWebAPI.Controllers
                                             Name = file.Name
                                         });
                                     }
-                                
-                                
-
                             }
                         }
                     }
@@ -296,9 +253,7 @@ namespace AngularSPAWebAPI.Controllers
         [HttpPost("delete/{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-           
                 var user = await Usermanager.GetUserAsync(User);
-
                 if(user != null)
                 {
                     var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).SingleAsync();
@@ -311,13 +266,102 @@ namespace AngularSPAWebAPI.Controllers
 
                     }
                 }
-
-
-
-            
-
+                
             return BadRequest();
         }
+
+    [HttpPost("update")]
+    public async Task<IActionResult> Update( [FromBody] OogstkaartItem updatingitem )
+    {
+
+      var user = await Usermanager.GetUserAsync(User);
+      if (user != null)
+      {
+        var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == updatingitem.OogstkaartItemID).Where(i => i.UserID == user.Id).Include(i => i.Location).Include(i => i.Specificaties).FirstOrDefaultAsync();
+
+        if(item == null)
+        {
+          return NotFound();
+        }
+
+        
+        item.Artikelnaam = updatingitem.Artikelnaam;
+        item.Avatar = updatingitem.Avatar;
+        item.Category = updatingitem.Category;
+        item.Concept = updatingitem.Concept;
+        item.CreateDate = updatingitem.CreateDate;
+        item.DatumBeschikbaar = updatingitem.DatumBeschikbaar;
+        item.Gallery = updatingitem.Gallery;
+        item.Hoeveelheid = updatingitem.Hoeveelheid;
+        item.Jansenserie = updatingitem.Jansenserie;
+
+
+        item.Location.Latitude = updatingitem.Location.Latitude;
+        item.Location.Longtitude = updatingitem.Location.Longtitude;
+
+        if (updatingitem.Specificaties.Count() > 0)
+        {
+
+
+
+          foreach (var specificatie in updatingitem.Specificaties)
+          {
+
+            if (specificatie.SpecificatieID == 0 && specificatie.SpecificatieSleutel != null && specificatie.SpecificatieValue !=  null)
+            {
+              item.Specificaties.Add(specificatie);
+            }
+
+
+            foreach (var existingChild in item.Specificaties.ToList())
+            {
+              if (!updatingitem.Specificaties.Any(c => c.SpecificatieID == existingChild.SpecificatieID))
+                context.Specificaties.Remove(existingChild);
+            }
+
+            var temp = await context.Specificaties.Where(i => i.SpecificatieID == specificatie.SpecificatieID).FirstOrDefaultAsync();
+
+            if (temp != null)
+            {
+
+              temp.SpecificatieOmschrijving = specificatie.SpecificatieOmschrijving;
+              temp.SpecificatieSleutel = specificatie.SpecificatieSleutel;
+              temp.SpecificatieEenheid = specificatie.SpecificatieEenheid;
+            }
+
+
+
+
+          }
+
+          item.Omschrijving = updatingitem.Omschrijving;
+          item.VraagPrijsPerEenheid = updatingitem.VraagPrijsPerEenheid;
+          item.VraagPrijsTotaal = updatingitem.VraagPrijsTotaal;
+
+
+
+
+
+        }
+
+
+        else
+        {
+          foreach (var specificatie in item.Specificaties)
+          {
+            context.Specificaties.Remove(specificatie);
+          }
+        }
+
+        await context.SaveChangesAsync();
+
+        return Ok();
+        
+        
+
+      }
+      return BadRequest();
+    }
 
 
 
@@ -334,22 +378,17 @@ namespace AngularSPAWebAPI.Controllers
         await context.SaveChangesAsync();
         return Ok(item.Views);
       }
-      
-
       return BadRequest();
     }
+
     [AllowAnonymous]
     [HttpGet("mapview")]
-        public async Task<IActionResult> GetAdmin()
-        {
-            var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Where(i => i.Location != null).Include(i => i.Avatar)
-             .Include(i => i.Gallery).Include(i => i.Specificaties).ToListAsync();
-
-
-
-            return Ok(artikels);
-
-        }
+    public async Task<IActionResult> GetAdmin()
+    {
+      var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Where(i => i.Location != null).Include(i => i.Avatar)
+      .Include(i => i.Gallery).Include(i => i.Specificaties).ToListAsync();
+      return Ok(artikels);
+    }
 
 
     }
