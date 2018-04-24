@@ -30,7 +30,7 @@ namespace AngularSPAWebAPI.Controllers
         private readonly IEmailSender EmailSender;
         private readonly ILogger Logger;
         private readonly ApplicationDbContext context;
-        private readonly IHostingEnvironment _appEnvironment;
+        private readonly IHostingEnvironment env;
 
         public OogstkaartController(
             UserManager<ApplicationUser> Usermanager,
@@ -45,7 +45,7 @@ namespace AngularSPAWebAPI.Controllers
             this.Rolemanager = Rolemanager;
             SignInManager = signInManager;
             EmailSender = emailSender;
-            this._appEnvironment = _appEnvironment;
+            this.env = _appEnvironment;
             Logger = logger;
             this.context = context;
         }
@@ -169,7 +169,7 @@ namespace AngularSPAWebAPI.Controllers
                     if (image != null && image.Length > 0)
                     {
                         var file = image;
-                        var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+                        var uploads = Path.Combine(env.WebRootPath, "uploads\\image");
                         if (file.Length > 0)
                         {
                             var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
@@ -221,12 +221,16 @@ namespace AngularSPAWebAPI.Controllers
           item.Gallery = new List<Afbeelding>();
         }
 
+     
+
+       
+
         foreach (var image in files)
         {
           if (image != null && image.Length > 0)
           {
             var file = image;
-            var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+            var uploads = Path.Combine(env.WebRootPath, "uploads\\image");
             if (file.Length > 0)
             {
               var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
@@ -266,7 +270,7 @@ namespace AngularSPAWebAPI.Controllers
                 var user = await Usermanager.GetUserAsync(User);
                 if(user != null)
                 {
-                    var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).Include(i => i.Location).Include(i => i.Specificaties).SingleAsync();
+                    var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => user.Id == i.UserID).Include(i => i.Gallery).Include(i => i.Location).Include(i => i.Specificaties).SingleAsync();
 
                     if(item != null)
                     {
@@ -274,6 +278,11 @@ namespace AngularSPAWebAPI.Controllers
           foreach (var specificatie in item.Specificaties)
           {
             context.Specificaties.Remove(specificatie);
+          }
+
+          foreach (var foto in item.Gallery)
+          {
+            context.Afbeeldingen.Remove(foto);
           }
 
           context.Locations.Remove(item.Location);

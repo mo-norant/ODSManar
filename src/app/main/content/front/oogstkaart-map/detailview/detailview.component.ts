@@ -23,14 +23,29 @@ export class DetailviewComponent implements OnInit {
   hidemap : boolean;
   rootplace : string;
 
+  imagesources : string [] = [];
+  currentsrc: string;
+
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+
   constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
 
     this.item = this.landerservice.oogstkaartitem;
-
+    this.rootplace = Utils.getRoot().replace("/api", "");
     if(this.item === undefined){
       this.router.navigate(['lander/map'])
     }
+    else{
+     this.currentsrc = this.rootplace + '/uploads/image/' + this.item.avatar.uri;
+      this.item.gallery.forEach(element => {
+        this.imagesources.push(this.rootplace +  '/uploads/image/' + element.uri)
+      });
 
+      
+
+    }
+    
+    
     this.fuseConfig.setConfig({
       layout: {
         navigation: 'none',
@@ -40,7 +55,7 @@ export class DetailviewComponent implements OnInit {
     });
 
     this.navigation = this.landerservice.navigation;
-    this.rootplace = Utils.getRoot().replace("/api", "");
+   
 
 
    }
@@ -61,6 +76,10 @@ export class DetailviewComponent implements OnInit {
   loading: boolean = true
 onLoad() {
     this.loading = false;
+}
+
+test($event){
+
 }
 
 }

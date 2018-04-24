@@ -51,7 +51,7 @@
 
                         <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
                             </mat-progress-spinner>
-                            <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />
+                            <img [hidden]="loading" (load)="onLoad()" currentsrc [src]="currentsrc" />
                 
 
                 </div>
@@ -112,6 +112,8 @@
                             <div class="tab-content p-24" fusePerfectScrollbar>
                                 <div fxLayout="row wrap" fxLayoutAlign="start start">
 
+                                    <angular-image-slider [images]="imagesources"></angular-image-slider>
+
 
                                 </div>
                             </div>
@@ -124,13 +126,15 @@
 
                         <mat-tab label="Kaart">
                             <div class="tab-content p-24" fusePerfectScrollbar>
-                                <agm-map *ngIf="!hidemap" [latitude]="item.location.latitude" [zoom]="7" [longitude]="item.location.longtitude" #map>
+                                <agm-map *ngIf="!hidemap" [latitude]="item.location.latitude" [zoom]="12" [longitude]="item.location.longtitude" #map>
 
-                                    <agm-marker [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
+                                    <agm-marker [iconUrl]="'assets/icons/markers/' + item.category + '.png'" [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
                                 </agm-map>
                             </div>
                         </mat-tab>
                     </mat-tab-group>
+
+                  
                 </div>
                 <!-- / CONTENT -->
 

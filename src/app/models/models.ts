@@ -47,7 +47,7 @@
         Views: number;
         avatar : Afbeelding;
         specificaties: Specificatie[];
-        gallerij : Afbeelding[];
+        gallery : Afbeelding[];
 
     }
 

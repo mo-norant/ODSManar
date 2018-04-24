@@ -13,7 +13,7 @@ import { OogstkaartMapComponent } from './oogstkaart-map/oogstkaart-map.componen
 import { AgmCoreModule  } from '@agm/core';
 import { ItemviewComponent } from './oogstkaart-map/itemview/itemview.component';
 import { DetailviewComponent } from './oogstkaart-map/detailview/detailview.component';
-
+import { SliderModule } from 'angular-image-slider';
 
 const routes: Route[] = [
   {
@@ -36,6 +36,7 @@ const routes: Route[] = [
     CommonModule,
     FuseSharedModule,
     RouterModule.forChild(routes),
+    SliderModule,
     MaterialModule,
     FuseNavigationModule,
     AgmCoreModule.forRoot({

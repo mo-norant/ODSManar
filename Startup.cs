@@ -94,6 +94,8 @@ namespace AngularSPAWebAPI
 
            options.ApiName = "WebAPI";
          });
+
+
       }
 
       else
@@ -105,6 +107,8 @@ namespace AngularSPAWebAPI
                      options.RequireHttpsMetadata = false;
                      options.ApiName = "WebAPI";
                    });
+
+       
 
       }
 
@@ -136,6 +140,8 @@ namespace AngularSPAWebAPI
             });
       });
       services.AddMvc();
+
+      
 
     }
 
