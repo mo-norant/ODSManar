@@ -5,7 +5,7 @@
 
         <div class="fuse-card">
 
-            <mat-progress-spinner *ngIf="loading" color="primary" mode="indeterminate">
+            <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
             </mat-progress-spinner>
             <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + data.item.avatar?.uri" />
 

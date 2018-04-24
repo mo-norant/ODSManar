@@ -36,12 +36,13 @@ export class ItemComponent implements OnInit {
         this.secondFormGroup = this._formBuilder.group({
           omschrijving: [res.omschrijving, Validators.required],
           jansenserie: [res.jansenserie, Validators.required],
-          vraagPrijsPerEenheid: [res.vraagPrijsPerEenheid, Validators.required],
-          vraagPrijsTotaal: [res.vraagPrijsTotaal, Validators.required],
+          vraagPrijsPerEenheid: [res.vraagPrijsPerEenheid, [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
+          vraagPrijsTotaal: [res.vraagPrijsTotaal, [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
           artikelnaam:  [res.artikelnaam, Validators.required],
           categorie: [res.category, Validators.required],
-          hoeveelheid: [res.hoeveelheid, Validators.required],
-          concept: [res.concept, Validators.required]
+          hoeveelheid: [res.hoeveelheid, [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
+          concept: [res.concept, Validators.required],
+          datumBeschikbaar: [res.datumBeschikbaar, Validators.required]
         });
         this.onChanges();
 
@@ -98,7 +99,12 @@ export class ItemComponent implements OnInit {
     }
 
     private changedstate(){
-      this.changed = true;
+      if(this.secondFormGroup.valid){
+        this.changed = true;
+
+      }else{
+        this.changed = false;
+      }
     }
 
 

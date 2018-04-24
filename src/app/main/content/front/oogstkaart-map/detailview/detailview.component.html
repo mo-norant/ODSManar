@@ -49,7 +49,10 @@
 
                 <div name="productForm" class="product w-100-p" fxLayout="column">
 
-                    <img [src]="'http://jansenbyods.com/uploads/' + item.avatar?.uri">
+                        <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
+                            </mat-progress-spinner>
+                            <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />
+                
 
                 </div>
 

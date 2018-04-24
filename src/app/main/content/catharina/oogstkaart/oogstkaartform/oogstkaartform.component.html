@@ -92,6 +92,13 @@
                   </mat-select>
 
                 </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="datumBeschikbaar" [matDatepicker]="picker" placeholder="Beschikbaar vanaf">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
                 <div>
                   <button mat-raised-button color="warn" matStepperPrevious>Terug</button>
                   <button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" (click)="nextstep()">Volgende</button>
@@ -172,10 +179,8 @@
                 {{message}}
               </span>
 
-              <div class="row">
-                <img *ngIf="avatarpreviewurl" class="heightimg" [src]="avatarpreviewurl">
+         
 
-              </div>
 
 
               <div>

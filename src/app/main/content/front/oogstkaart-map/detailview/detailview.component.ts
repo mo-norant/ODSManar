@@ -5,6 +5,7 @@ import { FuseConfigService } from '../../../../../../@fuse/services/config.servi
 import { fuseAnimations } from '../../../../../../@fuse/animations';
 import { Router } from '@angular/router';
 import { AgmMap } from '@agm/core';
+import { Utils } from '../../../../../models/Util';
 
 @Component({
   selector: 'app-detailview',
@@ -20,6 +21,8 @@ export class DetailviewComponent implements OnInit {
   zoom  = 10;
   navigation;
   hidemap : boolean;
+  rootplace : string;
+
   constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
 
     this.item = this.landerservice.oogstkaartitem;
@@ -37,6 +40,7 @@ export class DetailviewComponent implements OnInit {
     });
 
     this.navigation = this.landerservice.navigation;
+    this.rootplace = Utils.getRoot().replace("/api", "");
 
 
    }
@@ -53,5 +57,10 @@ export class DetailviewComponent implements OnInit {
       this.hidemap = true;
     }
   }
+
+  loading: boolean = true
+onLoad() {
+    this.loading = false;
+}
 
 }

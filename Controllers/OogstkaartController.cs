@@ -204,45 +204,55 @@ namespace AngularSPAWebAPI.Controllers
                 return BadRequest();
            }
 
-                var files = HttpContext.Request.Form.Files;
+      var user = await Usermanager.GetUserAsync(User);
+      if (user != null)
+      {
+        var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Where(i => i.UserID == user.Id).Include(i => i.Gallery).SingleOrDefaultAsync();
 
-                var user = await Usermanager.GetUserAsync(User);
+        if (item == null)
+        {
+          return NotFound();
+        }
 
-                var oogstkaartitem = await context.OogstkaartItems.Where(i => i.UserID == user.Id).Where(i => i.OogstkaartItemID == id).Include(i => i.Avatar).Include(i => i.Gallery).FirstOrDefaultAsync();
+        var files = HttpContext.Request.Form.Files;
 
-                if (user != null && oogstkaartitem != null)
+        if(item.Gallery == null)
+        {
+          item.Gallery = new List<Afbeelding>();
+        }
+
+        foreach (var image in files)
+        {
+          if (image != null && image.Length > 0)
+          {
+            var file = image;
+            var uploads = Path.Combine(_appEnvironment.WebRootPath, "uploads\\image");
+            if (file.Length > 0)
+            {
+              var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+              using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
+              {
+                await file.CopyToAsync(fileStream);
+
+                var afbeelding = new Afbeelding
                 {
-                    
+                  Create = DateTime.Now,
+                  URI = fileName,
+                  Name = file.Name
+                };
 
-                    foreach (var Image in files)
-                    {
-                        if (Image != null && Image.Length > 0)
-                        {
-                            var file = Image;
-                            var uploads = Path.Combine(_appEnvironment.WebRootPath, ".\\img");
-                            if (file.Length > 0)
-                            {
-                                    var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-                                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
-                                    {
-                                        await file.CopyToAsync(fileStream);
-                                        oogstkaartitem.Gallery.Add(new Afbeelding
-                                        {
-                                            Create = DateTime.Now,
-                                            URI = fileName,
-                                            Name = file.Name
-                                        });
-                                    }
-                            }
-                        }
-                    }
+                item.Gallery.Add(afbeelding);
+               
+              }
+            }
+          }
 
-                    await context.SaveChangesAsync();
-                    return Ok();
+        }
+        await context.SaveChangesAsync();
+        return Ok();
+      }
 
-                }
-
-                return BadRequest();
+      return BadRequest();
         }
 
 

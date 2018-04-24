@@ -16,7 +16,7 @@ import { Utils } from '../../../../../models/Util';
 })
 
 export class OogstkaartformComponent implements OnInit {
-  isLinear = true;
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -67,12 +67,13 @@ export class OogstkaartformComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       omschrijving: ['', Validators.required],
       jansenserie: ['', Validators.required],
-      vraagPrijsPerEenheid: ['', Validators.required],
-      vraagPrijsTotaal: ['', Validators.required],
+      vraagPrijsPerEenheid: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
+      vraagPrijsTotaal: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
       artikelnaam:  ['', Validators.required],
       categorie: ['', Validators.required],
-      hoeveelheid: ['', Validators.required],
+      hoeveelheid: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
       concept: ['', Validators.required],
+      datumBeschikbaar: ['']
     });
 
     this.thirdFormGroup = this._formBuilder.group({
@@ -89,6 +90,7 @@ export class OogstkaartformComponent implements OnInit {
     item.jansenserie = this.secondFormGroup.value.jansenserie;
     item.category = this.secondFormGroup.value.categorie;
     item.concept = this.secondFormGroup.value.concept;
+    item.datumBeschikbaar = this.secondFormGroup.value.beschikbaarvanaf;
 
     item.vraagPrijsPerEenheid = this.secondFormGroup.value.vraagPrijsPerEenheid;
     item.vraagPrijsTotaal = this.secondFormGroup.value.vraagPrijsTotaal;
