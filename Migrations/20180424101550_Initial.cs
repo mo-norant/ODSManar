@@ -1,15 +1,14 @@
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
 namespace AngularSPAWebAPI.Migrations
 {
-    public partial class specificaties : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
@@ -266,7 +265,7 @@ namespace AngularSPAWebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Afbeelding",
+                name: "Afbeeldingen",
                 columns: table => new
                 {
                     AfbeeldingID = table.Column<int>(nullable: false)
@@ -279,9 +278,9 @@ namespace AngularSPAWebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Afbeelding", x => x.AfbeeldingID);
+                    table.PrimaryKey("PK_Afbeeldingen", x => x.AfbeeldingID);
                     table.ForeignKey(
-                        name: "FK_Afbeelding_OogstkaartItems_OogstkaartItemID",
+                        name: "FK_Afbeeldingen_OogstkaartItems_OogstkaartItemID",
                         column: x => x.OogstkaartItemID,
                         principalTable: "OogstkaartItems",
                         principalColumn: "OogstkaartItemID",
@@ -312,8 +311,8 @@ namespace AngularSPAWebAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Afbeelding_OogstkaartItemID",
-                table: "Afbeelding",
+                name: "IX_Afbeeldingen_OogstkaartItemID",
+                table: "Afbeeldingen",
                 column: "OogstkaartItemID");
 
             migrationBuilder.CreateIndex(
@@ -379,10 +378,10 @@ namespace AngularSPAWebAPI.Migrations
                 column: "OogstkaartItemID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_OogstkaartItems_Afbeelding_AvatarAfbeeldingID",
+                name: "FK_OogstkaartItems_Afbeeldingen_AvatarAfbeeldingID",
                 table: "OogstkaartItems",
                 column: "AvatarAfbeeldingID",
-                principalTable: "Afbeelding",
+                principalTable: "Afbeeldingen",
                 principalColumn: "AfbeeldingID",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -390,8 +389,8 @@ namespace AngularSPAWebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Afbeelding_OogstkaartItems_OogstkaartItemID",
-                table: "Afbeelding");
+                name: "FK_Afbeeldingen_OogstkaartItems_OogstkaartItemID",
+                table: "Afbeeldingen");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -430,7 +429,7 @@ namespace AngularSPAWebAPI.Migrations
                 name: "OogstkaartItems");
 
             migrationBuilder.DropTable(
-                name: "Afbeelding");
+                name: "Afbeeldingen");
 
             migrationBuilder.DropTable(
                 name: "Locations");

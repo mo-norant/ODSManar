@@ -119,7 +119,7 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.HasIndex("OogstkaartItemID");
 
-                    b.ToTable("Afbeelding");
+                    b.ToTable("Afbeeldingen");
                 });
 
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Company", b =>

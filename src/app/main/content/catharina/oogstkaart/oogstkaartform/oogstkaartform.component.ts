@@ -7,6 +7,7 @@ import { OogstkaartService } from '../oogstkaart.service';
 import { OogstKaartItem, Weight, LocationOogstKaartItem } from '../../../../../models/models';
 import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
 import { Utils } from '../../../../../models/Util';
+import { FileSystemFileEntry, FileSystemDirectoryEntry, UploadFile, UploadEvent } from 'ngx-file-drop';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { Utils } from '../../../../../models/Util';
 })
 
 export class OogstkaartformComponent implements OnInit {
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -53,8 +54,8 @@ export class OogstkaartformComponent implements OnInit {
   
   public progress: number;
   public message: string;
-
-  specificaties: Specificatie[] = [];
+  public specificaties: Specificatie[] = [];
+  public files: UploadFile[] = [];
 
 
   constructor(private _formBuilder: FormBuilder, private oogstkaartservice: OogstkaartService, private http : HttpClient, private auth: AuthService) {
@@ -179,7 +180,6 @@ export class OogstkaartformComponent implements OnInit {
 
     for (let file of files)
       formData.append(file.name, file);
-
     const uploadReq = new HttpRequest('POST', Utils.getRoot() + `Oogstkaart/oogstkaartavatar/` +  this.oogstkaartID, formData, {
       reportProgress: true,
       headers : this.auth.getAuthorizationHeaders()
@@ -226,6 +226,66 @@ export class OogstkaartformComponent implements OnInit {
       this.specificaties.splice(index, 1);
   }   
   }
+
+
+  
+ 
+  public dropped(event : UploadEvent) {
+  
+
+    
+    for (const droppedFile of event.files) {
+ 
+      if (droppedFile.fileEntry.isFile && this.isImage(droppedFile.relativePath)) {
+        this.files.push(droppedFile);
+      }
+    }
+  }
+
+  private uploadfotos(){
+    const formData = new FormData();
+  
+    this.files.forEach(element => {
+      const fileEntry = element.fileEntry as FileSystemFileEntry;
+      fileEntry.file((file: File) => {
+        formData.append(file.name, file);
+      });
+    });
+
+    const uploadReq = new HttpRequest('POST', Utils.getRoot() + `Oogstkaart/files/` +  this.oogstkaartID, formData, {
+      reportProgress: true,
+      headers : this.auth.getAuthorizationHeaders()
+    });
+
+    this.http.request(uploadReq).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress)
+        this.progress = Math.round(100 * event.loaded / event.total);
+      else if (event.type === HttpEventType.Response){
+        console.log(event.type);
+        
+      }
+
+    }, err => this.uploaderror = true);
+
+  }
+ 
+   private getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+
+   private isImage(filename) {
+    var ext = this.getExtension(filename);
+    switch (ext.toLowerCase()) {
+    case 'jpg':
+    case 'gif':
+    case 'bmp':
+    case 'png':
+        
+        return true;
+    }
+    return false;
+}
 
 
 }

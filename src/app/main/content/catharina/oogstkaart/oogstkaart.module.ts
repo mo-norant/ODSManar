@@ -12,6 +12,8 @@ import { TokenGuard } from '../../../../auth/token.guard';
 import { AuthModule } from 'app/auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ConfirmdeleteComponent } from './item/confirmdelete/confirmdelete.component';
+import { FileDropModule } from 'ngx-file-drop';
+
 const routes: Routes = [
   {
       path     : 'catharina/oostkaart',
@@ -35,6 +37,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    FileDropModule,
     CommonModule,
     FuseSharedModule,
     NgxDatatableModule,

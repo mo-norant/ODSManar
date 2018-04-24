@@ -11,8 +11,8 @@ using System;
 namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180417100923_specificaties")]
-    partial class specificaties
+    [Migration("20180424101550_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,7 +120,7 @@ namespace AngularSPAWebAPI.Migrations
 
                     b.HasIndex("OogstkaartItemID");
 
-                    b.ToTable("Afbeelding");
+                    b.ToTable("Afbeeldingen");
                 });
 
             modelBuilder.Entity("AngularSPAWebAPI.Models.DatabaseModels.General.Company", b =>

@@ -241,6 +241,7 @@ namespace AngularSPAWebAPI.Controllers
                   Name = file.Name
                 };
 
+                
                 item.Gallery.Add(afbeelding);
                
               }

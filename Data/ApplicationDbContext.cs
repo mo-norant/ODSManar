@@ -12,16 +12,16 @@ namespace AngularSPAWebAPI.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<OogstkaartItem> OogstkaartItems { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Specificatie> Specificaties { get; set; }
+        public DbSet<Afbeelding> Afbeeldingen { get; set; }
 
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
