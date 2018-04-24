@@ -1,180 +1,137 @@
-
 <div id="product" class="page-layout carded fullwidth" fusePerfectScrollbar>
 
-  <!-- TOP BACKGROUND -->
-  <div class="top-bg mat-accent-bg">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg mat-accent-bg">
 
-  </div>
-  <!-- / TOP BACKGROUND -->
+    </div>
+    <!-- / TOP BACKGROUND -->
 
-  <!-- CENTER -->
-  <div class="center">
+    <!-- CENTER -->
+    <div class="center">
 
-    <!-- HEADER -->
-    <div class="header white-fg" fxLayout="row" fxLayoutAlign="space-between center">
+        <!-- HEADER -->
+        <div class="header white-fg" fxLayout="row" fxLayoutAlign="space-between center">
 
-      <!-- APP TITLE -->
-      <div fxLayout="row" fxLayoutAlign="start center">
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
 
-        <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/lander/map'">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
+                <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/lander/map'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
 
-        <div fxLayout="column" fxLayoutAlign="start start" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-            <h1>{{item?.artikelnaam}}</h1>
+                <div fxLayout="column" fxLayoutAlign="start start" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <h1>{{item?.artikelnaam}}</h1>
 
-          <div class="subtitle secondary-text">
-            <span>Product uitgelicht</span>
-          </div>
-        </div>
-      </div>
-
-      <button mat-raised-button
-                    class="save-product-button mat-white-bg mt-16 mt-sm-0">
-                <span> <h3> {{item.Views}} keer bekeken </h3></span>
-            </button>
-      </div>
-      <!-- / APP TITLE -->
-
-
-
-
-    <!-- / HEADER -->
-
-    <!-- CONTENT CARD -->
-    <div class="content-card mat-white-bg"  >
-
-      <!-- CONTENT -->
-      <div class="content">
-
-          <div name="productForm" class="product w-100-p" fxLayout="column" >
-
-              <img [src]="'http://jansenbyods.com/uploads/' + item.avatar?.uri">
-            
+                    <div class="subtitle secondary-text">
+                        <span>Product uitgelicht</span>
+                    </div>
+                </div>
             </div>
 
-        <div name="productForm" class="product w-100-p" fxLayout="column" >
+            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0">
+                <span>
+                    <h3> {{item.Views}} keer bekeken </h3>
+                </span>
+            </button>
+        </div>
+        <!-- / APP TITLE -->
 
-          <mat-tab-group (selectedTabChange)="checkmap($event)"> 
 
-            <mat-tab label="Algemeen">
-              <div class="tab-content p-24" fusePerfectScrollbar>
-                <table class="simple">
-                    <thead>
-                        <tr>
-                            <th>Naam</th>
-                            <th>Categorie</th>
-                            <th>Concept</th>
-                            <th>Gemaakt op</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div fxLayout="row" fxLayoutAlign="start center">
-                                    <span class=" text-truncate">
-                                      
-                                      {{item.artikelnaam}}
 
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class=" text-truncate"> 
 
-                                    {{item.category}}
+        <!-- / HEADER -->
 
-                                </span>
-                            </td>
-                            <td>
-                                <span class=" text-truncate">
-                                    {{item.concept}}
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
 
-                                </span>
-                            </td>
-                            <td>
-                                <span class=" text-truncate">
-                                    {{item.createDate}}
+            <!-- CONTENT -->
+            <div class="content">
 
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div name="productForm" class="product w-100-p" fxLayout="column">
 
-                <table class="simple">
-                    <thead>
-                        <tr>
-                            <th>Hoeveelheid</th>
-            <th>Jansenserie</th>
-            <th>Status</th>
-            <th>Transport inbegrepen</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div fxLayout="row" fxLayoutAlign="start center">
-                                    <span class=" text-truncate">
-                                        {{item.hoeveelheid}}
-
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class=" text-truncate">
-                                    {{item.jansenserie}}
-
-                                   </span>
-                            </td>
-                            <td>
-                                <span class=" text-truncate"> 
-                                    {{item.status}}
-
-                                </span>
-                            </td>
-                            <td>
-                                <span class=" text-truncate">
-                                    {{item.transportInbegrepen ? 'Ja' : 'Nee'}}
-
-                                  </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-              </div>
-            </mat-tab>
-
-            <mat-tab label="Foto's">
-              <div class="tab-content p-24" fusePerfectScrollbar>
-                <div fxLayout="row wrap" fxLayoutAlign="start start">
-
+                    <img [src]="'http://jansenbyods.com/uploads/' + item.avatar?.uri">
 
                 </div>
-              </div>
-            </mat-tab>
 
-            <mat-tab label="Contact">
-              <div class="tab-content p-24" fusePerfectScrollbar>
-              </div>
-            </mat-tab>
+                <div name="productForm" class="product w-100-p" fxLayout="column">
 
-            <mat-tab label="Kaart">
-              <div class="tab-content p-24" fusePerfectScrollbar>
-                  <agm-map *ngIf="!hidemap"  [latitude]="item.location.latitude" [zoom]="7" [longitude]="item.location.longtitude" #map>
+                    <mat-tab-group (selectedTabChange)="checkmap($event)">
 
-            <agm-marker [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
-                    </agm-map>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
+                        <mat-tab label="Algemeen">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <mat-list>
+                                    <mat-list-item>
+                                        <h3 mat-line>Artikel</h3>
+                                        <p mat-line> {{item.artikelnaam}} </p>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <h3 mat-line>Categorie</h3>
+                                        <p mat-line> {{item.category}} </p>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <h3 mat-line>Jansenserie</h3>
+                                        <p mat-line> {{item.jansenserie}} </p>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <h3 mat-line>Hoeveelheid</h3>
+                                        <p mat-line> {{item.hoeveelheid}} </p>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <h3 mat-line>Concept</h3>
+                                        <p mat-line> {{item.concept}} </p>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <h3 mat-line>Gemaakt</h3>
+                                        <p mat-line> {{item.createDate | date}} </p>
+                                    </mat-list-item>
+                                </mat-list>
+
+                                <mat-list *ngIf="item.specificaties.length > 0">
+                                        <h3 mat-subheader>Specificaties</h3>
+                                        <mat-list-item *ngFor="let specificatie of item.specificaties">
+                                          <mat-icon mat-list-icon>folder</mat-icon>
+                                          <h4 mat-line>{{specificatie.specificatieSleutel}}</h4>
+                                          <p mat-line> {{specificatie.specificatieValue}} </p>
+                                          <p mat-line> {{specificatie.specificatieOmschrijving}} </p>
+                                        </mat-list-item>
+                                        <mat-divider></mat-divider>
+                                </mat-list>
+
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Foto's">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div fxLayout="row wrap" fxLayoutAlign="start start">
+
+
+                                </div>
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Contact">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Kaart">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <agm-map *ngIf="!hidemap" [latitude]="item.location.latitude" [zoom]="7" [longitude]="item.location.longtitude" #map>
+
+                                    <agm-marker [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
+                                </agm-map>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
         </div>
-        <!-- / CONTENT -->
-
-      </div>
-      </div>
-  </div>
+    </div>
 </div>

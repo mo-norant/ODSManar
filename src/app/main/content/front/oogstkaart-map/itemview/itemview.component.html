@@ -1,30 +1,30 @@
-
-
-
 <div class="card">
 
-  <!-- PREVIEW -->
-  <div class="card-preview">
+    <!-- PREVIEW -->
+    <div class="card-preview">
 
-      <div class="fuse-card">
+        <div class="fuse-card">
 
-          <img [src]="'http://jansenbyods.com/uploads/' + data.item.avatar?.uri">
-
-          <div class="p-16">
-              <h1>{{item.artikelnaam}}</h1>
-          </div>
-
-          <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="space-between center">
-              <div fxLayout="row" fxLayoutAlign="start center">
-                  <button mat-button (click)="onNoClick()"  color="accent">Terug</button>
-                  <button mat-button (click)="openDetailview()" color="accent">Meer</button>
-              </div>
+            <mat-progress-spinner *ngIf="loading" color="primary" mode="indeterminate">
+            </mat-progress-spinner>
+            <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + data.item.avatar?.uri" />
 
 
-      </div>
+            <div class="p-16">
+                <h1>{{item.artikelnaam}}</h1>
+            </div>
 
-  </div>
-  <!-- / PREVIEW -->
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <button mat-button (click)="onNoClick()" color="accent">Terug</button>
+                    <button mat-button (click)="openDetailview()" color="accent">Meer info</button>
+                </div>
 
 
-</div>
+            </div>
+
+        </div>
+        <!-- / PREVIEW -->
+
+
+    </div>

@@ -23,7 +23,6 @@ export class DetailviewComponent implements OnInit {
   constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
 
     this.item = this.landerservice.oogstkaartitem;
-    console.log(this.item);
 
     if(this.item === undefined){
       this.router.navigate(['lander/map'])

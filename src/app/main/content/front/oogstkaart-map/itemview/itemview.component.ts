@@ -20,6 +20,8 @@ export class ItemviewComponent implements OnInit {
 
     item : OogstKaartItem;
 
+    rootplace : string;
+
   constructor(
     public dialogRef: MatDialogRef<ItemviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private landermapservice: LandermapService, private router : Router) {
@@ -27,7 +29,7 @@ export class ItemviewComponent implements OnInit {
       this.item = data.item;
 
       this.landermapservice.oogstkaartitem = this.item;
-
+      this.rootplace = Utils.getRoot().replace("/api", "");
      }
 
   onNoClick(): void {
@@ -36,7 +38,7 @@ export class ItemviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.post<number>(Utils.getRoot() +'/api/Oogstkaart/view/' + this.data.id, null).subscribe(
+    this.http.post<number>(Utils.getRoot() +'Oogstkaart/view/' + this.data.id, null).subscribe(
     res => {
       this.item.Views = res;
     }
@@ -49,5 +51,10 @@ export class ItemviewComponent implements OnInit {
     this.router.navigate(['lander/detail', this.item.oogstkaartItemID]);
     this.dialogRef.close();
   }
+
+  loading: boolean = true
+onLoad() {
+    this.loading = false;
+}
 
 }

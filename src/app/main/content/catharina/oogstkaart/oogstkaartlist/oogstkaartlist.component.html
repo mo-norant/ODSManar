@@ -23,6 +23,13 @@
 
         <mat-progress-bar *ngIf="!rows" color="warn" mode="indeterminate"></mat-progress-bar>
 
+
+        <mat-form-field class="example-full-width">
+            <input matInput type='text' placeholder='artikelnaam'
+                (keyup)='updateFilter($event)'>
+
+        </mat-form-field>
+
         <ngx-datatable (activate)='onUserEvent($event)' class="material" [rows]="rows" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
             [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true" [reorderable]="reorderable" [limit]="10">
 
