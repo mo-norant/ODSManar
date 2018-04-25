@@ -117,7 +117,7 @@ namespace AngularSPAWebAPI.Controllers
             {
                 return NotFound("User not found");
             }
-            var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Location).Include(i => i.Specificaties).ToListAsync();
+            var items = await context.OogstkaartItems.Where(i => i.UserID == tempuser.Id).Include(i => i.Gallery).Include(i => i.Avatar).Include(i => i.Location).Include(i => i.Specificaties).ToListAsync();
             if(!items.Any())
             {
                 return NotFound("user has no items");
