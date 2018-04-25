@@ -13,6 +13,7 @@ import { AuthModule } from 'app/auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ConfirmdeleteComponent } from './item/confirmdelete/confirmdelete.component';
 import { FileDropModule } from 'ngx-file-drop';
+import { ModalGalleryModule } from 'angular-modal-gallery';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
     NgxDatatableModule,
     AuthModule,
   RouterModule.forChild(routes),
+  ModalGalleryModule,
   AgmCoreModule.forRoot({
     apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
   }),

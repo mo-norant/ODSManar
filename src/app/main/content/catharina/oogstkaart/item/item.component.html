@@ -127,14 +127,15 @@
                                     
                 
                                     <mat-form-field class="row">
-                                        <mat-select formControlName="concept" placeholder="Concept" required>
-                                            <mat-option value="Te huur">Te huur</mat-option>
-                                            <mat-option value="Te koop">Te koop</mat-option>
-                
-                
-                                        </mat-select>
-                
-                                    </mat-form-field>
+                                            <mat-select formControlName="concept" placeholder="Concept" required>
+                                              <mat-option value="Te huur">Te huur</mat-option>
+                                              <mat-option value="Te Koop">Te koop</mat-option>
+                                              <mat-option value="Te Koop of Te huur">Te koop of te huur</mat-option>
+                          
+                          
+                                            </mat-select>
+                          
+                                          </mat-form-field>
                                     <mat-form-field>
                                             <input matInput formControlName="datumBeschikbaar" [matDatepicker]="picker" placeholder="Beschikbaar vanaf">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -178,7 +179,20 @@
 
                             </div>
                     </mat-tab>
-                    <mat-tab label="Afbeeldingen"></mat-tab>
+                    <mat-tab label="Afbeeldingen">
+                            
+                            <mat-tab-group>
+                                    <mat-tab  *ngIf="oogstkaartitem.avatar" label="Voorgrond foto">
+
+                                            <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
+                                                </mat-progress-spinner>
+                                                <img [hidden]="loading" (load)="onLoad()" currentsrc [src]="currentsrc" />
+
+
+                                    </mat-tab>
+                                    <mat-tab label="Fotogallerij"><ks-modal-gallery [modalImages]="images"></ks-modal-gallery></mat-tab>
+                                  </mat-tab-group>
+                    </mat-tab>
 
                 </mat-tab-group>
              

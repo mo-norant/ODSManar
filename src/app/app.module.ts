@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { FuseMainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { CatharinaModule } from './main/content/catharina/catharina.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -48,7 +49,7 @@ const appRoutes: Routes = [
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
         TranslateModule.forRoot(),
-
+        NgbModule.forRoot(),
         FuseModule.forRoot(fuseConfig),
         FuseSharedModule,
         FuseMainModule,

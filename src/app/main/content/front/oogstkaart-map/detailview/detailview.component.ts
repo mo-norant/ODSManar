@@ -6,7 +6,9 @@ import { fuseAnimations } from '../../../../../../@fuse/animations';
 import { Router } from '@angular/router';
 import { AgmMap } from '@agm/core';
 import { Utils } from '../../../../../models/Util';
-
+import {
+ Image
+} from 'angular-modal-gallery';
 @Component({
   selector: 'app-detailview',
   templateUrl: './detailview.component.html',
@@ -27,7 +29,9 @@ export class DetailviewComponent implements OnInit {
   currentsrc: string;
 
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+  images: Image[] = [];
 
+ 
   constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
 
     this.item = this.landerservice.oogstkaartitem;
@@ -38,7 +42,8 @@ export class DetailviewComponent implements OnInit {
     else{
      this.currentsrc = this.rootplace + '/uploads/image/' + this.item.avatar.uri;
       this.item.gallery.forEach(element => {
-        this.imagesources.push(this.rootplace +  '/uploads/image/' + element.uri)
+        this.images.push(new Image(element.afbeeldingID, {img : this.rootplace +  '/uploads/image/' + element.uri,
+        description: element.omschrijving}));
       });
 
       

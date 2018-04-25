@@ -5,6 +5,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Image } from 'angular-modal-gallery';
+import { Utils } from '../../../../../models/Util';
 
 @Component({
   selector: 'app-item',
@@ -17,12 +19,16 @@ export class ItemComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   oogstkaartitem: OogstKaartItem;
+  images: Image[] = [];
+  rootplace: string;
 
   buttonlock: boolean ;
   changed: boolean;
   loading: boolean;
-  constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) {
+  currentsrc: string;
 
+  constructor(private dialog: MatDialog, private OogstkaartService: OogstkaartService, private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar, private _formBuilder : FormBuilder) {
+    this.rootplace = Utils.getRoot().replace("/api", "");
    }
 
   ngOnInit() {
@@ -33,6 +39,16 @@ export class ItemComponent implements OnInit {
     this.loading = true
       this.OogstkaartService.getOogstkaartItem(data['id']).subscribe(res => {
         this.oogstkaartitem = res;
+
+        this.oogstkaartitem.gallery.forEach(element => {
+          this.images.push(new Image(element.afbeeldingID, {img : this.rootplace +  '/uploads/image/' + element.uri,
+          description: element.omschrijving}));
+        });
+
+
+        this.currentsrc = this.rootplace + '/uploads/image/' + this.oogstkaartitem.avatar.uri;
+
+
         this.secondFormGroup = this._formBuilder.group({
           omschrijving: [res.omschrijving, Validators.required],
           jansenserie: [res.jansenserie, Validators.required],
@@ -124,6 +140,10 @@ export class ItemComponent implements OnInit {
     updateItem(){
             this.loading = true;
             this.OogstkaartService.UpdateOogstkaartitem(this.oogstkaartitem).subscribe(res => {this.changed = false}, err => this.loading = false , () => this.loading = false);
+    }
+
+    onLoad() {
+        this.loading = false;
     }
 
 }
