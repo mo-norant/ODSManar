@@ -25,21 +25,15 @@
           <span>Home</span>
         </button>
 
-        <!--
-          <mat-chip-list  >
-            <mat-chip *ngFor="let id of filtersid" selected="true" >
-              {{id}} <mat-icon class="chip">cancel</mat-icon>
-            </mat-chip> 
-          </mat-chip-list>
-
-        -->
+        
+        <mat-slide-toggle color="accent"  [(ngModel)]="artikelview">
+            Artikelview
+          </mat-slide-toggle>
         <h1>Filter
           <h5> {{oogstkaartitems?.length }} producten</h5>
         </h1>
 
-        <mat-slide-toggle color="accent"  [(ngModel)]="artikelview">
-          Artikelview
-        </mat-slide-toggle>
+      
 
         <mat-accordion>
           <mat-expansion-panel>
@@ -138,16 +132,14 @@
             <div class="ui-g">
               <div *ngFor="let item of oogstkaartitems" class="ui-g-12 ui-md-6 ui-lg-3">
                 <p-card>
-                  <p-header class="ui-card-title">
+                  <p-header class="ui-card-title ml-15">
                     {{item.artikelnaam}}
                   </p-header>
                   <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
                   </mat-progress-spinner>
                   <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />
-      
-                  Body Content
-                  <p-footer>
-                      <button (click)="openDetailview(item.oogstkaartItemID)" mat-button (click)="openDetailview(item.oogstkaartItemID)" color="accent">Meer info</button>
+                        <p-footer>
+                      <button (click)="openDetailview(item.oogstkaartItemID)" mat-raised-button (click)="openDetailview(item.oogstkaartItemID)" color="accent">Meer info</button>
                   </p-footer>
                 </p-card>
               </div>

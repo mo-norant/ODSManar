@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
     registerFormErrors: any;
     terms: boolean = false;
     loading : boolean;
-    err;
-
+    err : any;
+    passwordnotsame: string;
 
     constructor(
         private fuseConfig: FuseConfigService,
@@ -93,20 +93,31 @@ export class RegisterComponent implements OnInit {
                this.auth.login(this.registerForm.value.email, this.registerForm.value.password).subscribe(res => {
                 this.auth.saveToken(res);
                 this.router.navigate(['auth/companyregistration']);
-               }, err => this.err = err, () => this.loading = false);
+               }, err => {
+                console.log(err)
+
+                if(err[0].code === 'DuplicateUserName'){
+                    this.err = 'Er bestaat al gebruiker met dezelfde login'
+                }
+
+                else{
+                    this.err = 'andere fout'
+                }
+
+               }, () => this.loading = false);
            }, () => {
                this.loading = false;
            })
-       }else{
-           console.log("wachtwoorden zijn niet")
        }
 
     }
 
     private checkPasswords(password: string, password2: string){
         if(password === password2){
+            this.passwordnotsame = null;
             return true
         }
+        this.passwordnotsame = "Wachtwoorden komen niet overeen"
         return false;
     }
 

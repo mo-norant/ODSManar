@@ -23,7 +23,8 @@
             </div>
 
             <div class="title">Maak een account</div>
-            <div *ngIf="err" class="mat-red-bg"> {{err}} </div>
+            <div  *ngIf="err" class="mat-red-bg"> {{err}} </div>
+
             <form name="registerForm" [formGroup]="registerForm" novalidate>
 
                 <mat-form-field>
@@ -63,6 +64,9 @@
                     </mat-error>
          
                 </mat-form-field>
+
+                <div *ngIf="passwordnotsame" class="mat-red-bg"> {{passwordnotsame}} </div>
+
 
                 <div class="terms" fxLayout="row" fxLayoutAlign="center center">
                     <mat-checkbox formControlName="terms"  name="terms" aria-label="Accept" required>

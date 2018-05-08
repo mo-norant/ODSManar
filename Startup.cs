@@ -37,7 +37,7 @@ namespace AngularSPAWebAPI
       {
         if (currentEnvironment.IsProduction())
         {
-          options.UseMySql("Server=localhost ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; ");
+          options.UseMySql("Server=localhost ;Port=3306;Database=odsbe_;Uid=odscatharina;Pwd = Catharina2018*; ");
 
 
         }
