@@ -14,6 +14,8 @@ import { AgmCoreModule  } from '@agm/core';
 import { ItemviewComponent } from './oogstkaart-map/itemview/itemview.component';
 import { DetailviewComponent } from './oogstkaart-map/detailview/detailview.component';
 import { SliderModule } from 'angular-image-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalGalleryModule } from 'angular-modal-gallery';
 
 const routes: Route[] = [
   {
@@ -38,7 +40,9 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     SliderModule,
     MaterialModule,
+    NgbModule,
     FuseNavigationModule,
+    ModalGalleryModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
     }),

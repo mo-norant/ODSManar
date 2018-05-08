@@ -1,5 +1,5 @@
 import { ItemComponent } from './item/item.component';
-import { MatStepper, MatStepperModule } from '@angular/material';
+import { MatStepperModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule } from '@angular/material';
 import { OogstkaartService } from './oogstkaart.service';
 import { OogstkaartlistComponent } from './oogstkaartlist/oogstkaartlist.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +13,8 @@ import { AuthModule } from 'app/auth/auth.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ConfirmdeleteComponent } from './item/confirmdelete/confirmdelete.component';
 import { FileDropModule } from 'ngx-file-drop';
+import { ModalGalleryModule } from 'angular-modal-gallery';
+import { MaterialModule } from '../../../../material/material.module';
 
 const routes: Routes = [
   {
@@ -42,7 +44,15 @@ const routes: Routes = [
     FuseSharedModule,
     NgxDatatableModule,
     AuthModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MaterialModule,
   RouterModule.forChild(routes),
+  ModalGalleryModule,
   AgmCoreModule.forRoot({
     apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
   }),

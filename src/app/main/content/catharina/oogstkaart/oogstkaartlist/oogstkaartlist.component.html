@@ -49,12 +49,12 @@
 
             <ngx-datatable-column name="Categorie" prop="category"></ngx-datatable-column>
             <ngx-datatable-column name="Hoeveelheid" prop="hoeveelheid"></ngx-datatable-column>
-            <ngx-datatable-column name="Aangemaakt op" prop="createDate"></ngx-datatable-column>
+            <ngx-datatable-column name="Aangemaakt op" prop="createDate">
+            </ngx-datatable-column>
+            
             <ngx-datatable-column name="Online" prop="onlineStatus">
 
                 <ng-template let-value="value" ngx-datatable-cell-template>
-
-
                     <mat-icon *ngIf="value; else other" class="active-icon mat-green-600-bg s-16">check</mat-icon>
                     <ng-template #other>
 

@@ -66,7 +66,7 @@ export class OogstkaartformComponent implements OnInit {
    
 
     this.secondFormGroup = this._formBuilder.group({
-      omschrijving: ['', Validators.required],
+      omschrijving: [''],
       jansenserie: ['', Validators.required],
       vraagPrijsPerEenheid: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
       vraagPrijsTotaal: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],

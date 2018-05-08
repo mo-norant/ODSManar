@@ -47,12 +47,12 @@
             <!-- CONTENT -->
             <div class="content">
 
-                <div name="productForm" class="product w-100-p" fxLayout="column">
+                <div name="productForm" class="product" fxLayout="column">
 
                         <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
                             </mat-progress-spinner>
                             <img [hidden]="loading" (load)="onLoad()" currentsrc [src]="currentsrc" />
-                
+                         
 
                 </div>
 
@@ -112,8 +112,7 @@
                             <div class="tab-content p-24" fusePerfectScrollbar>
                                 <div fxLayout="row wrap" fxLayoutAlign="start start">
 
-                                    <angular-image-slider [images]="imagesources"></angular-image-slider>
-
+                                    <ks-modal-gallery [modalImages]="images"></ks-modal-gallery>
 
                                 </div>
                             </div>
@@ -134,7 +133,7 @@
                         </mat-tab>
                     </mat-tab-group>
 
-                  
+                   
                 </div>
                 <!-- / CONTENT -->
 

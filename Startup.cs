@@ -31,6 +31,7 @@ namespace AngularSPAWebAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+<<<<<<< HEAD
         {
       // SQLite & Identity.
       services.AddDbContext<ApplicationDbContext>(options =>
@@ -49,6 +50,25 @@ namespace AngularSPAWebAPI
       });
 
             
+=======
+
+    {
+
+
+
+      if (currentEnvironment.IsDevelopment())
+      {
+        services.AddDbContext<ApplicationDbContext>(options =>
+     options.UseMySql("Server=192.168.64.2 ;Port=3306;Database=ODSCatharina;Uid=ods;Pwd = Catharina2018*; "));
+      }
+      else
+      {
+        services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseMySql("Server=localhost ;Port=3306;Database=odsbe_;Uid=ods;Pwd = Catharina2018*; "));
+
+      }
+
+>>>>>>> fotogallery
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
