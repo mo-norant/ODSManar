@@ -5198,14 +5198,12 @@ var FuseTranslationLoaderService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_flex_layout__ = __webpack_require__("./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fuse_directives_directives__ = __webpack_require__("./src/@fuse/directives/directives.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__fuse_pipes_pipes_module__ = __webpack_require__("./src/@fuse/pipes/pipes.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_material_material_module__ = __webpack_require__("./src/app/material/material.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -5223,8 +5221,7 @@ var FuseSharedModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_flex_layout__["a" /* FlexLayoutModule */],
                 __WEBPACK_IMPORTED_MODULE_4__fuse_directives_directives__["a" /* FuseDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_5__fuse_pipes_pipes_module__["a" /* FusePipesModule */],
-                __WEBPACK_IMPORTED_MODULE_6_app_material_material_module__["a" /* MaterialModule */]
+                __WEBPACK_IMPORTED_MODULE_5__fuse_pipes_pipes_module__["a" /* FusePipesModule */]
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_common__["CommonModule"],
@@ -5232,8 +5229,7 @@ var FuseSharedModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_flex_layout__["a" /* FlexLayoutModule */],
                 __WEBPACK_IMPORTED_MODULE_4__fuse_directives_directives__["a" /* FuseDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_5__fuse_pipes_pipes_module__["a" /* FusePipesModule */],
-                __WEBPACK_IMPORTED_MODULE_6_app_material_material_module__["a" /* MaterialModule */]
+                __WEBPACK_IMPORTED_MODULE_5__fuse_pipes_pipes_module__["a" /* FusePipesModule */]
             ]
         })
     ], FuseSharedModule);
@@ -5414,27 +5410,31 @@ var AppComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__ = __webpack_require__("./node_modules/@ngx-translate/core/@ngx-translate/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_hammerjs__ = __webpack_require__("./node_modules/hammerjs/hammer.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_hammerjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fuse_fuse_module__ = __webpack_require__("./src/@fuse/fuse.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fuse_config__ = __webpack_require__("./src/app/fuse-config.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__main_main_module__ = __webpack_require__("./src/app/main/main.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__auth_auth_module__ = __webpack_require__("./src/app/auth/auth.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__main_content_catharina_catharina_module__ = __webpack_require__("./src/app/main/content/catharina/catharina.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__("./node_modules/@ngx-translate/core/@ngx-translate/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hammerjs__ = __webpack_require__("./node_modules/hammerjs/hammer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_hammerjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fuse_fuse_module__ = __webpack_require__("./src/@fuse/fuse.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__fuse_config__ = __webpack_require__("./src/app/fuse-config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__main_main_module__ = __webpack_require__("./src/app/main/main.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__auth_auth_module__ = __webpack_require__("./src/app/auth/auth.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__main_content_catharina_catharina_module__ = __webpack_require__("./src/app/main/content/catharina/catharina.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -5471,24 +5471,26 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["BrowserModule"],
-                __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_router__["e" /* RouterModule */].forRoot(appRoutes),
-                __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__["a" /* TranslateModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_7__fuse_fuse_module__["a" /* FuseModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__fuse_config__["a" /* fuseConfig */]),
-                __WEBPACK_IMPORTED_MODULE_8__fuse_shared_module__["a" /* FuseSharedModule */],
-                __WEBPACK_IMPORTED_MODULE_11__main_main_module__["a" /* FuseMainModule */],
-                __WEBPACK_IMPORTED_MODULE_13__main_content_catharina_catharina_module__["CatharinaModule"],
-                __WEBPACK_IMPORTED_MODULE_12__auth_auth_module__["AuthModule"]
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["BrowserModule"],
+                __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_0__angular_material__["J" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["e" /* RouterModule */].forRoot(appRoutes),
+                __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["a" /* TranslateModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_8__fuse_fuse_module__["a" /* FuseModule */].forRoot(__WEBPACK_IMPORTED_MODULE_10__fuse_config__["a" /* fuseConfig */]),
+                __WEBPACK_IMPORTED_MODULE_9__fuse_shared_module__["a" /* FuseSharedModule */],
+                __WEBPACK_IMPORTED_MODULE_12__main_main_module__["a" /* FuseMainModule */],
+                __WEBPACK_IMPORTED_MODULE_14__main_content_catharina_catharina_module__["CatharinaModule"],
+                __WEBPACK_IMPORTED_MODULE_13__auth_auth_module__["AuthModule"]
             ],
             bootstrap: [
-                __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]
             ]
         })
     ], AppModule);
@@ -5512,9 +5514,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("./src/app/auth/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__register_register_component__ = __webpack_require__("./src/app/auth/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__registercompany_registercompany_component__ = __webpack_require__("./src/app/auth/registercompany/registercompany.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__register_register_component__ = __webpack_require__("./src/app/auth/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__registercompany_registercompany_component__ = __webpack_require__("./src/app/auth/registercompany/registercompany.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5538,11 +5540,11 @@ var appRoutes = [
     },
     {
         path: 'auth/register',
-        component: __WEBPACK_IMPORTED_MODULE_8__register_register_component__["a" /* RegisterComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_7__register_register_component__["a" /* RegisterComponent */]
     },
     {
         path: 'auth/companyregistration',
-        component: __WEBPACK_IMPORTED_MODULE_9__registercompany_registercompany_component__["a" /* RegistercompanyComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_8__registercompany_registercompany_component__["a" /* RegistercompanyComponent */]
     },
 ];
 var AuthModule = /** @class */ (function () {
@@ -5557,9 +5559,12 @@ var AuthModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["f" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["n" /* MatFormFieldModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_material__["q" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_7__fuse_shared_module__["a" /* FuseSharedModule */]
+                __WEBPACK_IMPORTED_MODULE_6__angular_material__["w" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_material__["u" /* MatOptionModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_material__["A" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_9__fuse_shared_module__["a" /* FuseSharedModule */]
             ],
-            declarations: [__WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_8__register_register_component__["a" /* RegisterComponent */], __WEBPACK_IMPORTED_MODULE_9__registercompany_registercompany_component__["a" /* RegistercompanyComponent */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_7__register_register_component__["a" /* RegisterComponent */], __WEBPACK_IMPORTED_MODULE_8__registercompany_registercompany_component__["a" /* RegistercompanyComponent */]],
             providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_0__token_guard__["a" /* TokenGuard */]]
         })
     ], AuthModule);
@@ -5616,7 +5621,7 @@ var AuthService = /** @class */ (function () {
             .set('scope', this.scope)
             .set('client_id', this.client_id)
             .set('grant_type', this.grant_type);
-        return this.http.post(this.connectlink, body.toString(), {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot().replace("/api", "") + this.connectlink, body.toString(), {
             headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["e" /* HttpHeaders */]()
                 .set('Content-Type', 'application/x-www-form-urlencoded')
         });
@@ -5653,13 +5658,13 @@ var AuthService = /** @class */ (function () {
         localStorage.removeItem('jwttoken');
     };
     AuthService.prototype.getUserInfo = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + 'General/user', { headers: this.getAuthorizationHeaders() });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + '/General/user', { headers: this.getAuthorizationHeaders() });
     };
     AuthService.prototype.postCompany = function (company) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + +'General/registercompany', company, { headers: this.getAuthorizationHeaders() });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + '/General/registercompany', company, { headers: this.getAuthorizationHeaders() });
     };
     AuthService.prototype.hasCompany = function () {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + 'General/hascompany', { headers: this.getAuthorizationHeaders() });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + '/General/hascompany', { headers: this.getAuthorizationHeaders() });
     };
     AuthService.prototype.getAuthorizationHeaders = function () {
         return new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["e" /* HttpHeaders */]({
@@ -5699,7 +5704,7 @@ var RegisterUser = /** @class */ (function () {
 /***/ "./src/app/auth/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"login\" fxLayout=\"column\" fusePerfectScrollbar>\n\n  <div id=\"login-form-wrapper\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div id=\"login-form\" *fuseIfOnDom [@animate]=\"{value:'*',params:{duration:'300ms',y:'100px'}}\">\n\n          <div class=\"logo\">\n                <img src=\"assets/images/logos/logo-ods.png\">\n            </div>\n\n          <div class=\"title\">Login</div>\n\n          <form name=\"loginForm\" [formGroup]=\"loginForm\" novalidate>\n\n              <mat-form-field>\n                  <input  matInput placeholder=\"Email\" formControlName=\"email\">\n                  <mat-error *ngIf=\"loginFormErrors.email.required\">\n                      Email is required\n                  </mat-error>\n                  <mat-error *ngIf=\"!loginFormErrors.email.required && loginFormErrors.email.email\">\n                      Geldig wachtwoord is vereist\n                  </mat-error>\n              </mat-form-field>\n\n              <mat-form-field>\n                  <input  matInput type=\"password\" placeholder=\"Password\" formControlName=\"password\">\n                  <mat-error *ngIf=\"loginFormErrors.password.required\">\n                      Wachtwoord is vereist.\n                  </mat-error>\n              </mat-form-field>\n\n              <div class=\"remember-forgot-password\" fxLayout=\"row\" fxLayout.xs=\"column\"\n                   fxLayoutAlign=\"space-between center\">\n                  <mat-checkbox class=\"remember-me\" aria-label=\"Remember Me\">\n                      Onthoud mij\n                  </mat-checkbox>\n\n                  <a class=\"forgot-password\" [routerLink]=\"'/pages/auth/forgot-password'\">\n                      Wachtwoord vergeten\n                  </a>\n              </div>\n\n              <button mat-raised-button color=\"accent\" class=\"submit-button\" aria-label=\"LOG IN\"\n                   (click)='login()'   [disabled]=\"loginForm.invalid\">\n                  LOGIN\n              </button>\n\n          </form>\n\n         \n\n          <div class=\"register\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n              <span class=\"text\">Nog geen ODS account?</span>\n              <a class=\"link\" routerLink='/auth/register'>Maak een ODS account</a>\n              <a class=\"link\" routerLink=''>Home</a>\n\n          </div>\n          <mat-progress-bar  *ngIf=\"loginLoad\"\n          class=\"example-margin\"\n          [color]=\"color\"\n          [mode]=\"mode\"\n         >\n      </mat-progress-bar>\n\n      </div>\n\n  </div>\n\n</div>"
+module.exports = "<div id=\"login\" fxLayout=\"column\" fusePerfectScrollbar>\n\n  <div id=\"login-form-wrapper\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n\n      <div id=\"login-form\" *fuseIfOnDom [@animate]=\"{value:'*',params:{duration:'300ms',y:'100px'}}\">\n\n\n            <mat-progress-bar *ngIf=\"loading\" color=\"warn\" mode=\"indeterminate\"></mat-progress-bar>\n\n            \n    \n\n          <div class=\"logo\">\n                <img src=\"assets/images/logos/logo-ods.png\">\n            </div>\n\n          <div class=\"title\">Login</div>\n\n          <div *ngIf=\"err\" class=\"mat-warn-bg\">\n    \n               <p> {{err}}  </p> \n    \n            </div> \n\n          <form name=\"loginForm\" [formGroup]=\"loginForm\" novalidate>\n\n              <mat-form-field>\n                  <input  matInput placeholder=\"Email\" formControlName=\"email\">\n                  <mat-error *ngIf=\"loginFormErrors.email.required\">\n                      Email is required\n                  </mat-error>\n                  <mat-error *ngIf=\"!loginFormErrors.email.required && loginFormErrors.email.email\">\n                      Geldig wachtwoord is vereist\n                  </mat-error>\n              </mat-form-field>\n\n              <mat-form-field>\n                  <input  matInput type=\"password\" placeholder=\"Password\" formControlName=\"password\">\n                  <mat-error *ngIf=\"loginFormErrors.password.required\">\n                      Wachtwoord is vereist.\n                  </mat-error>\n              </mat-form-field>\n\n              <div class=\"remember-forgot-password\" fxLayout=\"row\" fxLayout.xs=\"column\"\n                   fxLayoutAlign=\"space-between center\">\n                  <mat-checkbox class=\"remember-me\" aria-label=\"Remember Me\">\n                      Onthoud mij\n                  </mat-checkbox>\n\n                  <a class=\"forgot-password\" [routerLink]=\"'/pages/auth/forgot-password'\">\n                      Wachtwoord vergeten\n                  </a>\n              </div>\n\n              <button mat-raised-button color=\"accent\" class=\"submit-button\" aria-label=\"LOG IN\"\n                   (click)='login()'   [disabled]=\"loginForm.invalid\">\n                  LOGIN\n              </button>\n\n          </form>\n\n         \n\n          <div class=\"register\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n              <span class=\"text\">Nog geen ODS account?</span>\n              <a class=\"link\" routerLink='/auth/register'>Maak een ODS account</a>\n              <a class=\"link\" routerLink=''>Home</a>\n\n          </div>\n        \n\n      </div>\n\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -5744,7 +5749,6 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this.color = 'primary';
         this.mode = 'indeterminate';
-        this.loginLoad = true;
         this.fuseConfig.setConfig({
             layout: {
                 navigation: 'none',
@@ -5770,12 +5774,13 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.locallogin = function () {
         var _this = this;
+        this.loading = true;
         setTimeout(function () {
             if (!_this.auth.tokenExpired() && _this.auth.hasToken()) {
                 _this.router.navigate(['/catharina']);
             }
             else {
-                _this.loginLoad = false;
+                _this.loading = false;
             }
         }, 500);
     };
@@ -5795,12 +5800,19 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
+        this.loading = true;
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(function (res) {
             _this.auth.saveToken(res);
             _this.router.navigate(['catharina']);
         }, function (err) {
-            console.log(err);
+            if (err.status === 400) {
+                _this.err = "Gebruikersnaam of/en  wachtwoord zijn verkeerd";
+            }
+            if (err.status === 500)
+                _this.err = "Server reageert niet.";
+            _this.loading = false;
         }, function () {
+            _this.loading = false;
         });
     };
     LoginComponent = __decorate([
@@ -5825,7 +5837,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/auth/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"register\" fxLayout=\"row\" fxLayoutAlign=\"start\">\n\n    <div id=\"register-intro\" fxFlex fxHide fxShow.gt-xs>\n\n        <div class=\"logo\" *fuseIfOnDom [@animate]=\"{value:'*',params:{scale:'0.2'}}\">\n            <img src=\"assets/images/logos/logo-ods.png\">\n        </div>\n\n       \n\n    </div>\n\n    <div id=\"register-form-wrapper\" fusePerfectScrollbar *fuseIfOnDom\n         [@animate]=\"{value:'*',params:{delay:'300ms',x:'100%'}}\">\n\n        <div id=\"register-form\">\n\n            <div class=\"logo\" fxHide.gt-xs>\n                <span>F</span>\n            </div>\n\n            <div class=\"title\">Maak een account</div>\n\n            <form name=\"registerForm\" [formGroup]=\"registerForm\" novalidate>\n\n                <mat-form-field>\n                    <input matInput placeholder=\"Naam\" formControlName=\"Name\">\n                    <mat-error *ngIf=\"registerFormErrors.name.required\">\n                        Name is required\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput placeholder=\"Email\" formControlName=\"email\">\n                    <mat-error *ngIf=\"registerFormErrors.email.required\">\n                        Email is required\n                    </mat-error>\n                    <mat-error *ngIf=\"!registerFormErrors.email.required && registerFormErrors.email.email\">\n                        Please enter a valid email address\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput type=\"password\" placeholder=\"Wachtwoord\" formControlName=\"password\">\n                    <mat-error *ngIf=\"registerFormErrors.password.required\">\n                        Password is required\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput type=\"password\" placeholder=\"Wachtwoord (Bevestigen)\" formControlName=\"passwordConfirm\">\n                    <mat-error *ngIf=\"registerFormErrors.passwordConfirm.required\">\n                        Password confirmation is required\n                    </mat-error>\n                    <mat-error *ngIf=\"registerFormErrors.passwordConfirm.passwordsNotMatch\">\n                        Passwords must match\n                    </mat-error>\n                </mat-form-field>\n\n                <div class=\"terms\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                    <mat-checkbox name=\"terms\" aria-label=\"Accept\" required>\n                        <span>Accept</span>\n                    </mat-checkbox>\n                    <a href=\"#\">terms and conditions</a>\n                </div>\n\n                <button (click)=\"register()\" mat-raised-button color=\"accent\" class=\"submit-button\" aria-label=\"CREATE AN ACCOUNT\"\n                        [disabled]=\"registerForm.invalid\">\n                    CREATE AN ACCOUNT\n                </button>\n\n            </form>\n\n            <div class=\"register\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <span class=\"text\">Already have an account?</span>\n                <a class=\"link\" routerLink='/auth'>Login</a>\n                <a class=\"link\" routerLink=''>Home</a>\n\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div id=\"register\" fxLayout=\"row\" fxLayoutAlign=\"start\">\n\n    <div id=\"register-intro\" fxFlex fxHide fxShow.gt-xs>\n\n        <div class=\"logo\" *fuseIfOnDom [@animate]=\"{value:'*',params:{scale:'0.2'}}\">\n            <img src=\"assets/images/logos/logo-ods.png\">\n        </div>\n\n       \n\n    </div>\n\n    <div id=\"register-form-wrapper\" fusePerfectScrollbar *fuseIfOnDom\n         [@animate]=\"{value:'*',params:{delay:'300ms',x:'100%'}}\">\n\n        <div id=\"register-form\">\n\n             <mat-progress-bar *ngIf=\"loading\" color=\"warn\" mode=\"indeterminate\"></mat-progress-bar>\n\n\n            <div class=\"logo\" fxHide.gt-xs>\n                <span>F</span>\n            </div>\n\n            <div class=\"title\">Maak een account</div>\n            <div *ngIf=\"err\" class=\"mat-red-bg\"> {{err}} </div>\n            <form name=\"registerForm\" [formGroup]=\"registerForm\" novalidate>\n\n                <mat-form-field>\n                    <input matInput placeholder=\"Naam\" formControlName=\"Name\">\n                    <mat-error *ngIf=\"registerFormErrors.name.required\">\n                        Name is required\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput placeholder=\"Email\" formControlName=\"email\">\n                    <mat-error *ngIf=\"registerFormErrors.email.required\">\n                        Email is required\n                    </mat-error>\n                    <mat-error *ngIf=\"!registerFormErrors.email.required && registerFormErrors.email.email\">\n                        Please enter a valid email address\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput type=\"password\" placeholder=\"Wachtwoord\" formControlName=\"password\">\n                    <mat-error *ngIf=\"registerFormErrors.password.required\">\n                        Password is required\n                    </mat-error>\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput type=\"password\" placeholder=\"Wachtwoord (Bevestigen)\" formControlName=\"passwordConfirm\">\n                    <mat-error *ngIf=\"registerFormErrors.passwordConfirm.required\">\n                        Password confirmation is required\n                    </mat-error>\n                    <mat-error *ngIf=\"registerFormErrors.passwordConfirm.passwordsNotMatch\">\n                        Passwords must match\n                    </mat-error>\n                </mat-form-field>\n\n                <div class=\"terms\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                    <mat-checkbox name=\"terms\" aria-label=\"Accept\" required>\n                        <span>Accept</span>\n                    </mat-checkbox>\n                    <a href=\"#\">terms and conditions</a>\n                </div>\n\n                <button (click)=\"register()\" mat-raised-button color=\"accent\" class=\"submit-button\" aria-label=\"CREATE AN ACCOUNT\"\n                        [disabled]=\"registerForm.invalid\">\n                    CREATE AN ACCOUNT\n                </button>\n\n            </form>\n\n            <div class=\"register\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <span class=\"text\">Already have an account?</span>\n                <a class=\"link\" routerLink='/auth'>Login</a>\n                <a class=\"link\" routerLink=''>Home</a>\n\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -5912,11 +5924,12 @@ var RegisterComponent = /** @class */ (function () {
         var _this = this;
         if (this.checkPasswords(this.registerForm.value.password, this.registerForm.value.passwordConfirm)) {
             var user = new __WEBPACK_IMPORTED_MODULE_0__auth_service__["b" /* RegisterUser */](this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.passwordConfirm, this.registerForm.value.Name);
+            this.loading = true;
             this.auth.createUser(user).subscribe(function (res) {
                 _this.auth.login(_this.registerForm.value.email, _this.registerForm.value.password).subscribe(function (res) {
                     _this.auth.saveToken(res);
                     _this.router.navigate(['auth/companyregistration']);
-                });
+                }, function (err) { return _this.err = err; }, function () { return _this.loading = false; });
             });
         }
     };
@@ -6219,7 +6232,7 @@ var CatharinaModule = /** @class */ (function () {
 /***/ "./src/app/main/content/catharina/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n    <!-- TOP BACKGROUND -->\n    <div class=\"top-bg mat-accent-bg\"></div>\n    <!-- / TOP BACKGROUND -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n        <!-- CONTENT HEADER -->\n        <div class=\"header white-fg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n            <h2>Dashboard</h2>\n        </div>\n        <!-- / CONTENT HEADER -->\n\n        <!-- CONTENT CARD -->\n        <div class=\"content-card mat-white-bg\">\n\n            <!-- CONTENT TOOLBAR -->\n            <div class=\"toolbar px-24 py-8\">\n                <h1>Welkom {{name?.name}} </h1>\n            </div>\n            <!-- / CONTENT TOOLBAR -->\n\n            <!-- CONTENT -->\n            <div class=\"content p-24 w-100-p\" fusePerfectScrollbar>\n                <!-- WIDGET GROUP -->\n                <div class=\"widget-group\" fxLayout=\"row wrap\" fxFlex=\"100\" fxLayoutAlign=\"start start\" *fuseIfOnDom [@animateStagger]=\"{value:'50'}\">\n\n                    <!-- WIDGET 1 -->\n                    <fuse-widget [@animate]=\"{value:'*',params:{y:'100%'}}\" class=\"widget\" fxLayout=\"column\" fxFlex=\"100\" fxFlex.gt-xs=\"50\" fxFlex.gt-md=\"25\">\n\n                        <!-- Front -->\n                        <div class=\"fuse-widget-front mat-white-bg mat-elevation-z2\">\n                            <div class=\"pl-16 pr-8 py-16 h-52\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n                             f\n                                <button mat-icon-button fuseWidgetToggle aria-label=\"more\">\n                                    <mat-icon>more_vert</mat-icon>\n                                </button>\n                            </div>\n\n                            <div class=\"pt-8 pb-32\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                                <div class=\"light-blue-fg font-size-72 line-height-72\">\n                                    test\n                                </div>\n                                <div class=\"h3 secondary-text font-weight-500\">test</div>\n                            </div>\n\n                            <div class=\"p-16 grey-50-bg border-top\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                <span class=\"h4 secondary-text text-truncate\">test</span>\n                                <span class=\"h4 ml-8\">test</span>\n                            </div>\n                        </div>\n                        <!-- / Front -->\n\n                        <!-- Back -->\n                        <div class=\"fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2\">\n                            <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"Flip widget\">\n                                <mat-icon class=\"s-16\">close</mat-icon>\n                            </button>\n\n                            <div>\n                                    test                            </div>\n                        </div>\n                        <!-- / Back -->\n\n                    </fuse-widget>\n                    <!-- / WIDGET 1 -->\n\n                    <!-- WIDGET 2 -->\n                    <fuse-widget [@animate]=\"{value:'*',params:{y:'100%'}}\" class=\"widget\" fxLayout=\"column\" fxFlex=\"100\" fxFlex.gt-xs=\"50\" fxFlex.gt-md=\"25\">\n\n                        <!-- Front -->\n                        <div class=\"fuse-widget-front mat-white-bg mat-elevation-z2\">\n                            <div class=\"pl-16 pr-8 py-16 h-52\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n                                <div class=\"h3\">test</div>\n\n                                <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"more\">\n                                    <mat-icon>more_vert</mat-icon>\n                                </button>\n                            </div>\n\n                            <div class=\"pt-8 pb-32\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                                <div class=\"red-fg font-size-72 line-height-72\">\n                                        test\n                                </div>\n                                <div class=\"h3 secondary-text font-weight-500\">test</div>\n                            </div>\n\n                            <div class=\"p-16 grey-50-bg border-top\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                <span class=\"h4 secondary-text text-truncate\">test:</span>\n                                <span class=\"h4 ml-8\">test</span>\n                            </div>\n                        </div>\n                        <!-- / Front -->\n\n                        <!-- Back -->\n                        <div class=\"fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2\">\n                            <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"Flip widget\">\n                                <mat-icon class=\"s-16\">close</mat-icon>\n                            </button>\n\n                            <div>\n                                    test\n                            </div>\n                        </div>\n                        <!-- / Back -->\n\n                    </fuse-widget>\n                    <!-- / WIDGET 2 -->\n\n                    <!-- WIDGET 3 -->\n                    <fuse-widget [@animate]=\"{value:'*',params:{y:'100%'}}\" class=\"widget\" fxLayout=\"column\" fxFlex=\"100\" fxFlex.gt-xs=\"50\" fxFlex.gt-md=\"25\">\n\n                        <!-- Front -->\n                        <div class=\"fuse-widget-front mat-white-bg mat-elevation-z2\">\n                            <div class=\"pl-16 pr-8 py-16 h-52\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n                                <div class=\"h3\">test</div>\n\n                                <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"more\">\n                                    <mat-icon>more_vert</mat-icon>\n                                </button>\n                            </div>\n\n                            <div class=\"pt-8 pb-32\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                                <div class=\"orange-fg font-size-72 line-height-72\">\n                                        test\n                                </div>\n                                <div class=\"h3 secondary-text font-weight-500\">test</div>\n                            </div>\n\n                            <div class=\"p-16 grey-50-bg border-top\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                <span class=\"h4 secondary-text text-truncate\">test</span>\n                                <span class=\"h4 ml-8\">test</span>\n                            </div>\n                        </div>\n                        <!-- / Front -->\n\n                        <!-- Back -->\n                        <div class=\"fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2\">\n                            <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"Flip widget\">\n                                <mat-icon class=\"s-16\">close</mat-icon>\n                            </button>\n\n                            <div>\n                                    test\n                            </div>\n                        </div>\n                        <!-- / Back -->\n\n                    </fuse-widget>\n                    <!-- / WIDGET 3 -->\n\n                    <!-- WIDGET 4 -->\n                    <fuse-widget [@animate]=\"{value:'*',params:{y:'100%'}}\" class=\"widget\" fxLayout=\"column\" fxFlex=\"100\" fxFlex.gt-xs=\"50\" fxFlex.gt-md=\"25\">\n\n                        <!-- Front -->\n                        <div class=\"fuse-widget-front mat-white-bg mat-elevation-z2\">\n                            <div class=\"pl-16 pr-8 py-16 h-52\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n                                <div class=\"h3\">test</div>\n\n                                <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"more\">\n                                    <mat-icon>more_vert</mat-icon>\n                                </button>\n                            </div>\n\n                            <div class=\"pt-8 pb-32\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                                <div class=\"blue-grey-fg font-size-72 line-height-72\">test\n                                </div>\n                                <div class=\"h3 secondary-text font-weight-500\">test</div>\n                            </div>\n\n                            <div class=\"p-16 grey-50-bg border-top\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                <span class=\"h4 secondary-text text-truncate\">test</span>\n                                <span class=\"h4 ml-8\">test</span>\n                            </div>\n                        </div>\n                        <!-- / Front -->\n\n                        <!-- Back -->\n                        <div class=\"fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2\">\n                            <button mat-icon-button fuseWidgetToggle class=\"fuse-widget-flip-button\" aria-label=\"Flip widget\">\n                                <mat-icon class=\"s-16\">close</mat-icon>\n                            </button>\n\n                            <div>\n                                    test\n                            </div>\n                        </div>\n                        <!-- / Back -->\n\n                    </fuse-widget>\n                    <!-- / WIDGET 4 -->\n\n\n\n\n\n\n\n                </div>\n                <!-- / WIDGET GROUP -->\n\n            </div>\n            <!-- / CONTENT -->\n\n        </div>\n        <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n</div>"
+module.exports = "<div class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n    <!-- TOP BACKGROUND -->\n    <div class=\"top-bg mat-accent-bg\"></div>\n    <!-- / TOP BACKGROUND -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n        <!-- CONTENT HEADER -->\n        <div class=\"header white-fg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n            <h2>Dashboard</h2>\n        </div>\n        <!-- / CONTENT HEADER -->\n\n        <!-- CONTENT CARD -->\n        <div class=\"content-card mat-white-bg\">\n\n            <!-- CONTENT TOOLBAR -->\n            <div class=\"toolbar px-24 py-8\">\n                <h1>Welkom {{name?.name}} </h1>\n            </div>\n            <!-- / CONTENT TOOLBAR -->\n\n            <!-- CONTENT -->\n            <div class=\"content p-24 w-100-p\" fusePerfectScrollbar>\n               \n            </div>\n            <!-- / CONTENT -->\n\n        </div>\n        <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n</div>"
 
 /***/ }),
 
@@ -6342,7 +6355,7 @@ var ConfirmdeleteComponent = /** @class */ (function () {
                 _this.snackBar.open("Product verwijderd", "", {
                     duration: 2000
                 });
-                _this.router.navigate(['/catharina/oostkaart']);
+                _this.dialogRef.close();
             });
         }
         else {
@@ -6373,7 +6386,7 @@ var ConfirmdeleteComponent = /** @class */ (function () {
 /***/ "./src/app/main/content/catharina/oogstkaart/item/item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n    <!-- TOP BACKGROUND -->\n    <div class=\"top-bg mat-accent-bg\"></div>\n    <!-- / TOP BACKGROUND -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n        <!-- CONTENT HEADER -->\n        <div class=\"header white-fg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n\n            <button class=\"mr-0 mr-sm-16 \" mat-icon-button [routerLink]=\"'/catharina/oostkaart'\">\n                <mat-icon>arrow_back</mat-icon>\n            </button>\n\n            <h2> Oogstkaartartikel</h2>\n\n\n\n\n        </div>\n        <!-- / CONTENT HEADER -->\n\n        <!-- CONTENT CARD -->\n        <div class=\"content-card mat-white-bg\">\n\n            <!-- CONTENT TOOLBAR -->\n            <div  class=\"toolbar px-24 py-8\">\n                <div *ngIf=\"oogstkaartitem\">\n\n\n                <div (click)=\"setproductstatus()\" class=\"\" *ngIf=\"oogstkaartitem?.onlineStatus\">\n                        <a mat-raised-button class=\"reference-button \n                    mat-green-bg\">\n                            <mat-icon>add</mat-icon>\n                            <span>Product online</span>\n                        </a>\n                    </div>\n        \n                    <div (click)=\"setproductstatus()\"  class=\"p-12\" *ngIf=\"!oogstkaartitem?.onlineStatus\">\n                            <a mat-raised-button class=\"reference-button \n                            mat-red-bg\">\n                                    <mat-icon>add</mat-icon>\n                                    <span>product offline</span>\n                                </a>\n                    </div>\n                </div>\n\n                <div  >\n                        <a mat-raised-button (click)=\"deleteproduct()\" class=\"reference-button \n                    mat-red-bg ml-12 \">\n                            <mat-icon>delete</mat-icon>\n                            <span>Verwijder product</span>\n                        </a>\n                </div>\n            </div>\n\n         \n            <!-- / CONTENT TOOLBAR -->\n\n            <!-- CONTENT -->\n            <div class=\"content p-24\" fusePerfectScrollbar>\n                <form [formGroup]=\"secondFormGroup\">\n                    <mat-form-field class=\"row\">\n                        <input matInput placeholder=\"Artikel\" formControlName=\"artikelnaam\" required>\n                    </mat-form-field>\n                    <br/>\n                    <mat-form-field class=\"row\">\n                        <input matInput placeholder=\"Omschrijving\" formControlName=\"omschrijving\" required>\n                    </mat-form-field>\n                    <mat-form-field class=\"row\">\n                        <mat-select formControlName=\"categorie\" placeholder=\"Selecteer een categorie\">\n                            <mat-option value=\"jansenprofiel\">Jansenprofiel</mat-option>\n                            <mat-option value=\"constructieprofiel\">Constructieprofiel</mat-option>\n                            <mat-option value=\"deur\">Deur</mat-option>\n                            <mat-option value=\"raam\">Raam</mat-option>\n                            <mat-option value=\"geveldeel\">Geveldeel</mat-option>\n                            <mat-option value=\"overige\">Overige</mat-option>\n\n                        </mat-select>\n\n                    </mat-form-field>\n\n                    <mat-form-field class=\"row\">\n                        <mat-select formControlName=\"jansenserie\" placeholder=\"Jansenserie\">\n                            <mat-option value=\"ART-15\">ART-15</mat-option>\n                            <mat-option value=\"janisol ARTE\">Janisol ARTE</mat-option>\n                            <mat-option value=\"economy\">Economy</mat-option>\n                            <mat-option value=\"janisol\">Janisol</mat-option>\n                            <mat-option value=\"janisol HI\">Janisol HI</mat-option>\n                            <mat-option value=\"Janisol 2\">Janisol 2</mat-option>\n                            <mat-option value=\"Janisol C4\">Janisol C4</mat-option>\n                            <mat-option value=\"Jansen Viss\">Jansen Viss</mat-option>\n\n                        </mat-select>\n\n                    </mat-form-field>\n                    <br/>\n\n\n                    <mat-form-field>\n                        <input matInput placeholder=\"Coating\" formControlName=\"coating\" required>\n                    </mat-form-field>\n                    <mat-form-field>\n                        <input matInput placeholder=\"Glassamenstelling\" formControlName=\"glassamenstelling\" required>\n                    </mat-form-field>\n                    <br/>\n\n                    <mat-form-field class=\"row\">\n                        <input matInput placeholder=\"Hoeveelheid\" formControlName=\"hoeveelheid\" required>\n                    </mat-form-field>\n                    <mat-form-field class=\"row\">\n                        <input matInput placeholder=\"Afmetingen\" formControlName=\"afmetingen\" required>\n                    </mat-form-field>\n                    <mat-form-field>\n                        <input matInput placeholder=\"Gewicht\" formControlName=\"weight\" required>\n                    </mat-form-field>\n\n                    <mat-form-field>\n                        <mat-select formControlName=\"metric\" placeholder=\"Eenheid\">\n                            <mat-option value=\"kg\">kg</mat-option>\n                            <mat-option value=\"ton\">ton</mat-option>\n                            <mat-option value=\"ton\">Vierkante meter</mat-option>\n                        </mat-select>\n                    </mat-form-field>\n\n                    <mat-form-field>\n                        <input matInput placeholder=\"Vraagprijs per eenheid\" formControlName=\"vraagPrijsPerEenheid\" required>\n                    </mat-form-field>\n                    <mat-form-field>\n                        <input matInput placeholder=\"Totale vraagprijs\" formControlName=\"vraagPrijsTotaal\" required>\n                    </mat-form-field>\n                    <br/>\n\n                    <mat-form-field class=\"row\">\n                        <mat-select formControlName=\"transportInbegrepen\" placeholder=\"Transport inbegrepen\">\n                            <mat-option value=\"true\">Ja</mat-option>\n                            <mat-option value=\"false\">Neen</mat-option>\n                        </mat-select>\n                    </mat-form-field>\n                    <mat-form-field class=\"row\">\n                        <input matInput placeholder=\"Status\" formControlName=\"status\" required>\n                    </mat-form-field>\n\n                    <mat-form-field class=\"row\">\n                        <mat-select formControlName=\"concept\" placeholder=\"Concept\" required>\n                            <mat-option value=\"tehuur\">Te huur</mat-option>\n                            <mat-option value=\"tekoop\">Te koop</mat-option>\n\n\n                        </mat-select>\n\n                    </mat-form-field>\n                    <div>\n                        <button mat-raised-button color=\"primary\" [disabled]=\"!secondFormGroup.valid\">Opslaan</button>\n                    </div>\n                </form>\n\n            </div>\n            <!-- / CONTENT -->\n\n        </div>\n        <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n</div>"
+module.exports = "<div class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n    <!-- TOP BACKGROUND -->\n    <div class=\"top-bg mat-accent-bg\"></div>\n    <!-- / TOP BACKGROUND -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n        <!-- CONTENT HEADER -->\n        <div class=\"header white-fg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n\n            <button class=\"mr-0 mr-sm-16 \" mat-icon-button [routerLink]=\"'/catharina/oostkaart'\">\n                <mat-icon>arrow_back</mat-icon>\n            </button>\n\n            <h2> Oogstkaartartikel</h2>\n\n            <div>\n                    <button (click)=\"updateItem()\" mat-raised-button class=\"reference-button mat-white-bg m-16 mt-sm-0\" color=\"primary\" [disabled]=\"!changed\">Opslaan</button>\n                 </div>\n\n\n        </div>\n        <!-- / CONTENT HEADER -->\n\n        <!-- CONTENT CARD -->\n        <div class=\"content-card mat-white-bg\">\n\n            <!-- CONTENT TOOLBAR -->\n            <div  class=\"toolbar px-24 py-8\">\n                <div *ngIf=\"oogstkaartitem\">\n\n\n                <div (click)=\"setproductstatus()\" class=\"\" *ngIf=\"oogstkaartitem?.onlineStatus\">\n                        <a mat-raised-button class=\"reference-button \n                    mat-green-bg\">\n                            <mat-icon>add</mat-icon>\n                            <span>Product online</span>\n                        </a>\n                    </div>\n        \n                    <div (click)=\"setproductstatus()\"  class=\"p-12\" *ngIf=\"!oogstkaartitem?.onlineStatus\">\n                            <a mat-raised-button class=\"reference-button \n                            mat-red-bg\">\n                                    <mat-icon>add</mat-icon>\n                                    <span>product offline</span>\n                                </a>\n                    </div>\n                </div>\n\n                <div>\n                        <a mat-raised-button (click)=\"deleteproduct()\" class=\"reference-button \n                    mat-red-bg ml-12 \">\n                            <mat-icon>delete</mat-icon>\n                            <span>Verwijder product</span>\n                        </a>\n                </div>\n\n               \n\n\n            </div>\n\n         \n            <!-- / CONTENT TOOLBAR -->\n\n            <!-- CONTENT -->\n            <div class=\"content p-24\" fusePerfectScrollbar>\n                    <mat-progress-bar *ngIf=\"loading\" color=\"warn\" mode=\"indeterminate\"></mat-progress-bar>\n               \n               <mat-tab-group  *ngIf=\"!loading\">\n                    <mat-tab label=\"Algemeen\">\n                        <div class=\"m-12\">\n                            <form  [formGroup]=\"secondFormGroup\">\n                                    <mat-form-field class=\"row\">\n                                        <input matInput placeholder=\"Artikel\" formControlName=\"artikelnaam\" required>\n                                    </mat-form-field>\n                                    <br/>\n                                    <mat-form-field class=\"row\">\n                                        <input matInput placeholder=\"Omschrijving\" formControlName=\"omschrijving\" required>\n                                    </mat-form-field>\n                                    <mat-form-field class=\"row\">\n                                        <mat-select formControlName=\"categorie\" placeholder=\"Selecteer een categorie\">\n                                            <mat-option value=\"jansenprofiel\">Jansenprofiel</mat-option>\n                                            <mat-option value=\"constructieprofiel\">Constructieprofiel</mat-option>\n                                            <mat-option value=\"deur\">Deur</mat-option>\n                                            <mat-option value=\"raam\">Raam</mat-option>\n                                            <mat-option value=\"geveldeel\">Geveldeel</mat-option>\n                                            <mat-option value=\"overige\">Overige</mat-option>\n                \n                                        </mat-select>\n                \n                                    </mat-form-field>\n                \n                                    <mat-form-field class=\"row\">\n                                        <mat-select formControlName=\"jansenserie\" placeholder=\"Jansenserie\">\n                                            <mat-option value=\"ART-15\">ART-15</mat-option>\n                                            <mat-option value=\"Janisol ARTE\">Janisol ARTE</mat-option>\n                                            <mat-option value=\"Economy\">Economy</mat-option>\n                                            <mat-option value=\"Janisol\">Janisol</mat-option>\n                                            <mat-option value=\"janisol HI\">Janisol HI</mat-option>\n                                            <mat-option value=\"Janisol 2\">Janisol 2</mat-option>\n                                            <mat-option value=\"Janisol C4\">Janisol C4</mat-option>\n                                            <mat-option value=\"Jansen Viss\">Jansen Viss</mat-option>\n                \n                                        </mat-select>\n                \n                                    </mat-form-field>\n                                    <br/>\n                \n                \n                                   \n                \n                                    <mat-form-field class=\"row\">\n                                        <input matInput placeholder=\"Hoeveelheid\" formControlName=\"hoeveelheid\" required>\n                                    </mat-form-field>\n                                    \n                                    <mat-form-field>\n                                        <input matInput placeholder=\"Vraagprijs per eenheid\" formControlName=\"vraagPrijsPerEenheid\" required>\n                                    </mat-form-field>\n                                    <mat-form-field>\n                                        <input matInput placeholder=\"Totale vraagprijs\" formControlName=\"vraagPrijsTotaal\" required>\n                                    </mat-form-field>\n                                    <br/>\n                \n                                    \n                \n                                    <mat-form-field class=\"row\">\n                                            <mat-select formControlName=\"concept\" placeholder=\"Concept\" required>\n                                              <mat-option value=\"Te huur\">Te huur</mat-option>\n                                              <mat-option value=\"Te Koop\">Te koop</mat-option>\n                                              <mat-option value=\"Te Koop of Te huur\">Te koop of te huur</mat-option>\n                          \n                          \n                                            </mat-select>\n                          \n                                          </mat-form-field>\n                                    <mat-form-field>\n                                            <input matInput formControlName=\"datumBeschikbaar\" [matDatepicker]=\"picker\" placeholder=\"Beschikbaar vanaf\">\n                                            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                                            <mat-datepicker #picker></mat-datepicker>\n                                          </mat-form-field>\n                                   \n                                </form>\n                            </div>\n                    </mat-tab>\n                    <mat-tab label=\"Specificaties\">\n\n                            <div  class=\"m-12\">\n                                    <span>\n                                      <button (click)=\"addSpecificatie()\" mat-mini-fab color=\"accent\">\n                                          <mat-icon  class=\"m-4\" class=\"mat-24\" >add</mat-icon>\n                                        </button>\n                                        Voeg nieuwe specificatie toe\n                                        </span>\n                    \n                                  </div>\n\n                            <div class=\"m-12\">\n                            <div *ngFor=\"let item of oogstkaartitem?.specificaties; let i = index \" class=\"row\">\n                                    <span class=\"m-12\">\n                                      \n                                      <button (click)=\"removeSpecificatie(i)\" mat-mini-fab color=\"warn\">\n                                        <mat-icon class=\"mat-24\">remove</mat-icon>\n                                      </button>\n                    \n                                    </span>\n                                    <mat-form-field>\n                                      <input matInput (click)=\"changedstate()\" [(ngModel)]=\"item.specificatieSleutel\" placeholder=\"Specificatie\" required>\n                                    </mat-form-field>\n                                    <mat-form-field>\n                                      <input matInput (click)=\"changedstate()\" [(ngModel)]=\"item.specificatieValue\"  placeholder=\"Waarde\" required>\n                                    </mat-form-field>\n                                    <mat-form-field>\n                                      <input matInput  (click)=\"changedstate()\" [(ngModel)]=\"item.specificatieOmschrijving\" placeholder=\"Omschrijving\">\n                                    </mat-form-field>\n                                  </div>\n\n                            </div>\n                    </mat-tab>\n                    <mat-tab label=\"Afbeeldingen\">\n                            \n                            <mat-tab-group>\n                                    <mat-tab  *ngIf=\"oogstkaartitem.avatar\" label=\"Voorgrond foto\">\n\n                                            <mat-progress-spinner *ngIf=\"loading\" color=\"accent\" mode=\"indeterminate\">\n                                                </mat-progress-spinner>\n                                                <img [hidden]=\"loading\" (load)=\"onLoad()\" currentsrc [src]=\"currentsrc\" />\n\n\n                                    </mat-tab>\n                                    <mat-tab label=\"Fotogallerij\"><ks-modal-gallery [modalImages]=\"images\"></ks-modal-gallery></mat-tab>\n                                  </mat-tab-group>\n                    </mat-tab>\n\n                </mat-tab-group>\n             \n                  \n\n            </div>\n            <!-- / CONTENT -->\n\n        </div>\n        <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n</div>"
 
 /***/ }),
 
@@ -6390,11 +6403,14 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__confirmdelete_confirmdelete_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/item/confirmdelete/confirmdelete.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_models__ = __webpack_require__("./src/app/models/models.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angular_modal_gallery__ = __webpack_require__("./node_modules/angular-modal-gallery/angular-modal-gallery.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_Util__ = __webpack_require__("./src/app/models/Util.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6410,6 +6426,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var ItemComponent = /** @class */ (function () {
     function ItemComponent(dialog, OogstkaartService, route, router, snackBar, _formBuilder) {
         this.dialog = dialog;
@@ -6418,35 +6437,39 @@ var ItemComponent = /** @class */ (function () {
         this.router = router;
         this.snackBar = snackBar;
         this._formBuilder = _formBuilder;
+        this.images = [];
+        this.rootplace = __WEBPACK_IMPORTED_MODULE_8__models_Util__["a" /* Utils */].getRoot().replace("/api", "");
     }
     ItemComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (data) {
+            _this.loading = true;
             _this.OogstkaartService.getOogstkaartItem(data['id']).subscribe(function (res) {
                 _this.oogstkaartitem = res;
-                _this.secondFormGroup = _this._formBuilder.group({
-                    omschrijving: [res.omschrijving, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    jansenserie: [res.jansenserie, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    coating: [res.coating, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    glassamenstelling: [res.glassamenstelling, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    afmetingen: [res.afmetingen, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    weight: [res.weight.weightX, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    vraagPrijsPerEenheid: [res.vraagPrijsPerEenheid, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    vraagPrijsTotaal: [res.vraagPrijsTotaal, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    status: [res.status, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    artikelnaam: [res.artikelnaam, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    categorie: [res.category, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    metric: [res.weight.metric, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    transportInbegrepen: [res.transportInbegrepen, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    hoeveelheid: [res.hoeveelheid, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
-                    concept: [res.concept, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["j" /* Validators */].required],
+                _this.oogstkaartitem.gallery.forEach(function (element) {
+                    _this.images.push(new __WEBPACK_IMPORTED_MODULE_7_angular_modal_gallery__["a" /* Image */](element.afbeeldingID, { img: _this.rootplace + '/uploads/image/' + element.uri,
+                        description: element.omschrijving }));
                 });
+                _this.currentsrc = _this.rootplace + '/uploads/image/' + _this.oogstkaartitem.avatar.uri;
+                _this.secondFormGroup = _this._formBuilder.group({
+                    omschrijving: [res.omschrijving, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required],
+                    jansenserie: [res.jansenserie, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required],
+                    vraagPrijsPerEenheid: [res.vraagPrijsPerEenheid, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+                    vraagPrijsTotaal: [res.vraagPrijsTotaal, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+                    artikelnaam: [res.artikelnaam, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required],
+                    categorie: [res.category, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required],
+                    hoeveelheid: [res.hoeveelheid, [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+                    concept: [res.concept, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required],
+                    datumBeschikbaar: [res.datumBeschikbaar, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["j" /* Validators */].required]
+                });
+                _this.onChanges();
             }, function (err) {
+                _this.loading = false;
                 _this.snackBar.open("Geen product gevonden", "", {
                     duration: 2000
                 });
                 _this.router.navigate(["catharina/oostkaart"]);
-            });
+            }, function () { return _this.loading = false; });
         });
     };
     ItemComponent.prototype.setproductstatus = function () {
@@ -6465,21 +6488,58 @@ var ItemComponent = /** @class */ (function () {
         }
     };
     ItemComponent.prototype.deleteproduct = function () {
+        var _this = this;
         var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_0__confirmdelete_confirmdelete_component__["a" /* ConfirmdeleteComponent */], {
             width: '600px',
             data: { name: this.oogstkaartitem.artikelnaam, id: this.oogstkaartitem.oogstkaartItemID }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
+            _this.router.navigate(['/catharina/oostkaart']);
         });
     };
+    ItemComponent.prototype.onChanges = function () {
+        var _this = this;
+        this.secondFormGroup.valueChanges.subscribe(function (val) {
+            _this.changedstate();
+            for (var key in val) {
+                var value = val[key];
+                _this.oogstkaartitem[key] = value;
+            }
+        });
+    };
+    ItemComponent.prototype.changedstate = function () {
+        if (this.secondFormGroup.valid) {
+            this.changed = true;
+        }
+        else {
+            this.changed = false;
+        }
+    };
+    ItemComponent.prototype.removeSpecificatie = function (i) {
+        if (i !== -1) {
+            this.changedstate();
+            this.oogstkaartitem.specificaties.splice(i, 1);
+        }
+    };
+    ItemComponent.prototype.addSpecificatie = function () {
+        this.changedstate();
+        this.oogstkaartitem.specificaties.push(new __WEBPACK_IMPORTED_MODULE_1__models_models__["e" /* Specificatie */]());
+    };
+    ItemComponent.prototype.updateItem = function () {
+        var _this = this;
+        this.loading = true;
+        this.OogstkaartService.UpdateOogstkaartitem(this.oogstkaartitem).subscribe(function (res) { _this.changed = false; }, function (err) { return _this.loading = false; }, function () { return _this.loading = false; });
+    };
+    ItemComponent.prototype.onLoad = function () {
+        this.loading = false;
+    };
     ItemComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
             selector: 'app-item',
             template: __webpack_require__("./src/app/main/content/catharina/oogstkaart/item/item.component.html"),
             styles: [__webpack_require__("./src/app/main/content/catharina/oogstkaart/item/item.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_material__["i" /* MatDialog */], __WEBPACK_IMPORTED_MODULE_1__oogstkaart_service__["a" /* OogstkaartService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_material__["F" /* MatSnackBar */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_material__["i" /* MatDialog */], __WEBPACK_IMPORTED_MODULE_2__oogstkaart_service__["a" /* OogstkaartService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["d" /* Router */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["F" /* MatSnackBar */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["b" /* FormBuilder */]])
     ], ItemComponent);
     return ItemComponent;
 }());
@@ -6495,19 +6555,23 @@ var ItemComponent = /** @class */ (function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OogstkaartModule", function() { return OogstkaartModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__item_item_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/item/item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__oogstkaartlist_oogstkaartlist_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartlist/oogstkaartlist.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__oogstkaartform_oogstkaartform_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartform/oogstkaartform.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__auth_token_guard__ = __webpack_require__("./src/app/auth/token.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_app_auth_auth_module__ = __webpack_require__("./src/app/auth/auth.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__swimlane_ngx_datatable__ = __webpack_require__("./node_modules/@swimlane/ngx-datatable/release/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__swimlane_ngx_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__swimlane_ngx_datatable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__item_confirmdelete_confirmdelete_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/item/confirmdelete/confirmdelete.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__oogstkaartlist_oogstkaartlist_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartlist/oogstkaartlist.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__oogstkaartform_oogstkaartform_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartform/oogstkaartform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__auth_token_guard__ = __webpack_require__("./src/app/auth/token.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_app_auth_auth_module__ = __webpack_require__("./src/app/auth/auth.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_datatable__ = __webpack_require__("./node_modules/@swimlane/ngx-datatable/release/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_datatable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__item_confirmdelete_confirmdelete_component__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/item/confirmdelete/confirmdelete.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ngx_file_drop__ = __webpack_require__("./node_modules/ngx-file-drop/ngx-file-drop.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular_modal_gallery__ = __webpack_require__("./node_modules/angular-modal-gallery/angular-modal-gallery.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__material_material_module__ = __webpack_require__("./src/app/material/material.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6527,41 +6591,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
 var routes = [
     {
         path: 'catharina/oostkaart',
-        component: __WEBPACK_IMPORTED_MODULE_2__oogstkaartlist_oogstkaartlist_component__["a" /* OogstkaartlistComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_token_guard__["a" /* TokenGuard */]]
+        component: __WEBPACK_IMPORTED_MODULE_3__oogstkaartlist_oogstkaartlist_component__["a" /* OogstkaartlistComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_10__auth_token_guard__["a" /* TokenGuard */]]
     },
     {
         path: 'catharina/newproduct',
-        component: __WEBPACK_IMPORTED_MODULE_7__oogstkaartform_oogstkaartform_component__["a" /* OogstkaartformComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_token_guard__["a" /* TokenGuard */]]
+        component: __WEBPACK_IMPORTED_MODULE_8__oogstkaartform_oogstkaartform_component__["a" /* OogstkaartformComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_10__auth_token_guard__["a" /* TokenGuard */]]
     },
     {
         path: 'catharina/item/:id',
         component: __WEBPACK_IMPORTED_MODULE_0__item_item_component__["a" /* ItemComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_token_guard__["a" /* TokenGuard */]]
+        canActivate: [__WEBPACK_IMPORTED_MODULE_10__auth_token_guard__["a" /* TokenGuard */]]
     }
 ];
 var OogstkaartModule = /** @class */ (function () {
     function OogstkaartModule() {
     }
     OogstkaartModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["NgModule"])({
+        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"],
-                __WEBPACK_IMPORTED_MODULE_6__fuse_shared_module__["a" /* FuseSharedModule */],
-                __WEBPACK_IMPORTED_MODULE_11__swimlane_ngx_datatable__["NgxDatatableModule"],
-                __WEBPACK_IMPORTED_MODULE_10_app_auth_auth_module__["AuthModule"],
-                __WEBPACK_IMPORTED_MODULE_5__angular_router__["e" /* RouterModule */].forChild(routes),
-                __WEBPACK_IMPORTED_MODULE_8__agm_core__["a" /* AgmCoreModule */].forRoot({
+                __WEBPACK_IMPORTED_MODULE_14_ngx_file_drop__["a" /* FileDropModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"],
+                __WEBPACK_IMPORTED_MODULE_7__fuse_shared_module__["a" /* FuseSharedModule */],
+                __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_datatable__["NgxDatatableModule"],
+                __WEBPACK_IMPORTED_MODULE_11_app_auth_auth_module__["AuthModule"],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["w" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["J" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["q" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["A" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_16__material_material_module__["a" /* MaterialModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_router__["e" /* RouterModule */].forChild(routes),
+                __WEBPACK_IMPORTED_MODULE_15_angular_modal_gallery__["b" /* ModalGalleryModule */],
+                __WEBPACK_IMPORTED_MODULE_9__agm_core__["a" /* AgmCoreModule */].forRoot({
                     apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
                 }),
             ],
-            declarations: [__WEBPACK_IMPORTED_MODULE_7__oogstkaartform_oogstkaartform_component__["a" /* OogstkaartformComponent */], __WEBPACK_IMPORTED_MODULE_2__oogstkaartlist_oogstkaartlist_component__["a" /* OogstkaartlistComponent */], __WEBPACK_IMPORTED_MODULE_0__item_item_component__["a" /* ItemComponent */], __WEBPACK_IMPORTED_MODULE_12__item_confirmdelete_confirmdelete_component__["a" /* ConfirmdeleteComponent */]],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_12__item_confirmdelete_confirmdelete_component__["a" /* ConfirmdeleteComponent */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_1__oogstkaart_service__["a" /* OogstkaartService */]]
+            declarations: [__WEBPACK_IMPORTED_MODULE_8__oogstkaartform_oogstkaartform_component__["a" /* OogstkaartformComponent */], __WEBPACK_IMPORTED_MODULE_3__oogstkaartlist_oogstkaartlist_component__["a" /* OogstkaartlistComponent */], __WEBPACK_IMPORTED_MODULE_0__item_item_component__["a" /* ItemComponent */], __WEBPACK_IMPORTED_MODULE_13__item_confirmdelete_confirmdelete_component__["a" /* ConfirmdeleteComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_13__item_confirmdelete_confirmdelete_component__["a" /* ConfirmdeleteComponent */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_2__oogstkaart_service__["a" /* OogstkaartService */]]
         })
     ], OogstkaartModule);
     return OogstkaartModule;
@@ -6597,15 +6674,15 @@ var OogstkaartService = /** @class */ (function () {
     function OogstkaartService(http, auth) {
         this.http = http;
         this.auth = auth;
-        this.link = 'api/Oogstkaart';
-        this.locationlink = "api/Oogstkaart/Location";
-        this.adminlink = "api/Oogstkaart/mapvi/api/Oogstkaart/productstatusew";
+        this.link = 'Oogstkaart';
+        this.locationlink = "Oogstkaart/Location";
+        this.adminlink = "Oogstkaart/productstatus";
     }
     OogstkaartService.prototype.GetOogstkaartitems = function () {
-        return this.http.get(this.link, { headers: this.auth.getAuthorizationHeaders() });
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + this.link, { headers: this.auth.getAuthorizationHeaders() });
     };
     OogstkaartService.prototype.postOogstkaartItem = function (item) {
-        return this.http.post(this.link, item, { headers: this.auth.getAuthorizationHeaders() });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + this.link, item, { headers: this.auth.getAuthorizationHeaders() });
     };
     /**
      * PostLocation
@@ -6623,13 +6700,13 @@ var OogstkaartService = /** @class */ (function () {
         return this.http.get(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + this.link + '/' + id, { headers: this.auth.getAuthorizationHeaders() });
     };
     OogstkaartService.prototype.PostSetStatusProduct = function (id) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + '/api/Oogstkaart/productstatus/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + 'Oogstkaart/productstatus/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
     };
     /**
      * DeleteItem
      */
     OogstkaartService.prototype.DeleteItem = function (id) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + '/api/Oogstkaart/delete/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + 'Oogstkaart/delete/' + id, {}, { headers: this.auth.getAuthorizationHeaders() });
     };
     /**
      * PostFile
@@ -6641,7 +6718,10 @@ var OogstkaartService = /** @class */ (function () {
         headers.append('Authorization', 'Bearer ' + this.auth.getToken().access_token);
         // headers.append('Content-Type', 'multipart/form-data');
         headers.append('Accept', 'application/json');
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + "/api/Oogstkaart/oogstkaartavatar/" + id, formData, { headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + "Oogstkaart/oogstkaartavatar/" + id, formData, { headers: headers });
+    };
+    OogstkaartService.prototype.UpdateOogstkaartitem = function (item) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__models_Util__["a" /* Utils */].getRoot() + "Oogstkaart/update", item, { headers: this.auth.getAuthorizationHeaders() });
     };
     OogstkaartService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -6657,7 +6737,7 @@ var OogstkaartService = /** @class */ (function () {
 /***/ "./src/app/main/content/catharina/oogstkaart/oogstkaartform/oogstkaartform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-layout simple fullwidth\" fusePerfectScrollbar>\n\n  <!-- HEADER -->\n  <div class=\"header mat-accent-bg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n    <h2>Nieuw artikel toevoegen</h2>\n  </div>\n  <!-- / HEADER -->\n\n  <!-- CONTENT -->\n  <div class=\"content p-24 mat-white-bg\">\n\n    <div class=\"container\">\n\n      <div class=\"mb-5\">\n        <mat-progress-bar class=\"example-margin\" [color]=\"color\" [mode]=\"mode\" [value]=\"stepper.selectedIndex * 33.33\">\n        </mat-progress-bar>\n      </div>\n\n      <div class=\"row align-items-center \">\n\n        <div class=\"col\">\n        </div>\n        <div class=\"col\">\n          <mat-horizontal-stepper [linear]=\"isLinear\" #stepper=\"matHorizontalStepper\">\n\n            <mat-step [stepControl]=\"secondFormGroup\">\n              <form [formGroup]=\"secondFormGroup\">\n                <ng-template matStepLabel>Uw artikel</ng-template>\n\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Artikel\" formControlName=\"artikelnaam\" required>\n                </mat-form-field>\n                <br/>\n                <mat-form-field class=\"row\">\n                  <textarea matInput name=\"description\" formControlName=\"omschrijving\" placeholder=\"Omschrijving\" rows=\"5\">\n          </textarea>\n                </mat-form-field>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"categorie\" placeholder=\"Selecteer een categorie\">\n                    <mat-option value=\"jansenprofiel\">Jansenprofiel</mat-option>\n                    <mat-option value=\"constructieprofiel\">Constructieprofiel</mat-option>\n                    <mat-option value=\"deur\">Deur</mat-option>\n                    <mat-option value=\"raam\">Raam</mat-option>\n                    <mat-option value=\"geveldeel\">Geveldeel</mat-option>\n                    <mat-option value=\"overige\">Overige</mat-option>\n\n                  </mat-select>\n\n                </mat-form-field>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"jansenserie\" placeholder=\"Jansenserie\">\n                    <mat-option value=\"ART-15\">ART-15</mat-option>\n                    <mat-option value=\"janisol ARTE\">Janisol ARTE</mat-option>\n                    <mat-option value=\"economy\">Economy</mat-option>\n                    <mat-option value=\"janisol\">Janisol</mat-option>\n                    <mat-option value=\"janisol HI\">Janisol HI</mat-option>\n                    <mat-option value=\"Janisol 2\">Janisol 2</mat-option>\n                    <mat-option value=\"Janisol C4\">Janisol C4</mat-option>\n                    <mat-option value=\"Jansen Viss\">Jansen Viss</mat-option>\n\n                  </mat-select>\n\n                </mat-form-field>\n                <br/>\n\n\n                <mat-form-field>\n                  <input matInput placeholder=\"Coating\" formControlName=\"coating\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput placeholder=\"Glassamenstelling\" formControlName=\"glassamenstelling\" required>\n                </mat-form-field>\n                <br/>\n\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Hoeveelheid\" formControlName=\"hoeveelheid\" required>\n                </mat-form-field>\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Afmetingen\" formControlName=\"afmetingen\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput placeholder=\"Gewicht\" formControlName=\"weight\" required>\n                </mat-form-field>\n\n                <mat-form-field>\n                  <mat-select formControlName=\"metric\" placeholder=\"Eenheid\">\n                    <mat-option value=\"kg\">kg</mat-option>\n                    <mat-option value=\"ton\">ton</mat-option>\n                    <mat-option value=\"ton\">Vierkante meter</mat-option>\n                  </mat-select>\n                </mat-form-field>\n\n                <mat-form-field>\n                  <input matInput placeholder=\"Vraagprijs per eenheid\" formControlName=\"vraagPrijsPerEenheid\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput placeholder=\"Totale vraagprijs\" formControlName=\"vraagPrijsTotaal\" required>\n                </mat-form-field>\n                <br/>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"transportInbegrepen\" placeholder=\"Transport inbegrepen\">\n                    <mat-option value=\"true\">Ja</mat-option>\n                    <mat-option value=\"false\">Neen</mat-option>\n                  </mat-select>\n                </mat-form-field>\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Status\" formControlName=\"status\" required>\n                </mat-form-field>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"concept\" placeholder=\"Concept\" required>\n                    <mat-option value=\"Te huur\">Te huur</mat-option>\n                    <mat-option value=\"Te Koop\">Te koop</mat-option>\n                    <mat-option value=\"Te Koop of Te huur\">Te koop of te huur</mat-option>\n\n\n                  </mat-select>\n\n                </mat-form-field>\n                <div>\n                  <button mat-raised-button color=\"warn\" matStepperPrevious>Terug</button>\n                  <button mat-raised-button color=\"primary\" [disabled]=\"!secondFormGroup.valid\" (click)=\"postartikel()\">Volgende</button>\n                </div>\n              </form>\n            </mat-step>\n\n            <mat-step>\n              <div class=\"row\">\n                <ng-template matStepLabel>Locatie</ng-template>\n              </div>\n              <button mat-raised-button color=\"primary\" (click)='postLocation()' [disabled]=\"selectedlocation.lat == null\" class=\"mb-2\"\n                mat-raised-button>Volgende</button>\n\n              <h5>Selecteer de locatie van uw artikel</h5>\n\n\n\n              <p fxLayout=\"row\" fxLayoutAlign=\"start start\">\n                <agm-map (mapClick)=\"getlocation($event)\" [latitude]=\"51.2627187555929\" [zoom]=\"zoom\" [longitude]=\"4.5024117984374925\">\n                  <agm-marker [latitude]=\"selectedlocation?.lat\" [longitude]=\"selectedlocation?.lng\"></agm-marker>\n                </agm-map>\n              </p>\n\n            </mat-step>\n            <mat-step [stepControl]=\"thirdFormGroup\">\n              <ng-template matStepLabel>Upload foto's</ng-template>\n              <h1>Upload een productfoto als voorbeeld</h1>\n              <button mat-raised-button color=\"primary\" (click)='complete()' [disabled]=\"!buttonuploadzone\" class=\"mb-2\"\n              mat-raised-button>Volgende</button>\n              <input #file type=\"file\" multiple (change)=\"upload(file.files)\" />\n              <br/>\n              <span style=\"font-weight:bold;color:green;\" *ngIf=\"progress > 0 && progress < 100\">\n                {{progress}}%\n              </span>\n\n              <span style=\"font-weight:bold;color:green;\" *ngIf=\"message\">\n                {{message}}\n              </span>\n\n              <div class=\"row\">\n                <img *ngIf=\"avatarpreviewurl\" class=\"heightimg\" [src]=\"avatarpreviewurl\">\n\n              </div>\n\n\n              <div>\n              </div>\n            </mat-step>\n            <mat-step>\n              <ng-template matStepLabel>Geregistreerd</ng-template>\n\n              <div class=\"mt-5\">\n                <div *ngIf=\"postsucces; else error\">\n                  <div class=\"alert alert-success\" role=\"alert\">\n                    <strong>Uw product werd succesvol in onze database gezet.</strong>\n                  </div>\n                </div>\n\n                <ng-template #error>\n\n                  <div class=\"alert alert-danger\" role=\"alert\">\n                    <p>Foutcode:\n                      <strong> {{err?.status}} </strong>\n                    </p>\n                    <strong>Uw product werd niet succesvol in onze database gezet.</strong> Probeer het opnieuw.\n                  </div>\n\n                </ng-template>\n\n                <div>\n                  <button mat-raised-button color=\"primary\" (click)=\"stepper.reset()\">Nieuw artikel</button>\n                  <button mat-raised-button color=\"primary\" [routerLink]=\"'/catharina/oogstkaart'\">Uw oogstkaartartikelen</button>\n\n                </div>\n\n              </div>\n            </mat-step>\n          </mat-horizontal-stepper>\n\n        </div>\n        <div class=\"col\">\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <!-- / CONTENT -->\n\n</div>"
+module.exports = "<div class=\"page-layout simple fullwidth\" fusePerfectScrollbar>\n\n  <!-- HEADER -->\n  <div class=\"header mat-accent-bg p-24\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n    <h2>Nieuw artikel toevoegen</h2>\n  </div>\n  <!-- / HEADER -->\n\n  <!-- CONTENT -->\n  <div class=\"content p-24 mat-white-bg\">\n\n    <div class=\"container\">\n\n      <div class=\"mb-5\">\n        <mat-progress-bar class=\"example-margin\" [color]=\"color\" [mode]=\"mode\" [value]=\"stepper.selectedIndex * 20\">\n        </mat-progress-bar>\n      </div>\n\n      <div class=\"row align-items-center \">\n\n        <div class=\"col\">\n        </div>\n        <div class=\"col\">\n          <mat-horizontal-stepper [linear]=\"isLinear\" #stepper=\"matHorizontalStepper\">\n\n            <mat-step [stepControl]=\"secondFormGroup\">\n              <form [formGroup]=\"secondFormGroup\">\n                <ng-template matStepLabel>Uw artikel</ng-template>\n\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Artikel\" formControlName=\"artikelnaam\" required>\n                </mat-form-field>\n                <br/>\n                <mat-form-field class=\"row\">\n                  <textarea matInput name=\"description\" formControlName=\"omschrijving\" placeholder=\"Omschrijving\" rows=\"5\">\n          </textarea>\n                </mat-form-field>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"categorie\" placeholder=\"Selecteer een categorie\">\n                    <mat-option value=\"jansenprofiel\">Jansenprofiel</mat-option>\n                    <mat-option value=\"constructieprofiel\">Constructieprofiel</mat-option>\n                    <mat-option value=\"deur\">Deur</mat-option>\n                    <mat-option value=\"raam\">Raam</mat-option>\n                    <mat-option value=\"geveldeel\">Geveldeel</mat-option>\n                    <mat-option value=\"overige\">Overige</mat-option>\n\n                  </mat-select>\n\n                </mat-form-field>\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"jansenserie\" placeholder=\"Jansenserie\">\n                    <mat-option value=\"ART-15\">ART-15</mat-option>\n                    <mat-option value=\"janisol ARTE\">Janisol ARTE</mat-option>\n                    <mat-option value=\"economy\">Economy</mat-option>\n                    <mat-option value=\"janisol\">Janisol</mat-option>\n                    <mat-option value=\"janisol HI\">Janisol HI</mat-option>\n                    <mat-option value=\"Janisol 2\">Janisol 2</mat-option>\n                    <mat-option value=\"Janisol C4\">Janisol C4</mat-option>\n                    <mat-option value=\"Jansen Viss\">Jansen Viss</mat-option>\n\n                  </mat-select>\n\n                </mat-form-field>\n                <br/>\n\n\n\n\n                <mat-form-field class=\"row\">\n                  <input matInput placeholder=\"Hoeveelheid\" formControlName=\"hoeveelheid\" required>\n                </mat-form-field>\n\n\n                <mat-form-field>\n                  <input matInput placeholder=\"Vraagprijs per eenheid\" formControlName=\"vraagPrijsPerEenheid\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput placeholder=\"Totale vraagprijs\" formControlName=\"vraagPrijsTotaal\" required>\n                </mat-form-field>\n                <br/>\n\n\n                <mat-form-field class=\"row\">\n                  <mat-select formControlName=\"concept\" placeholder=\"Concept\" required>\n                    <mat-option value=\"Te huur\">Te huur</mat-option>\n                    <mat-option value=\"Te Koop\">Te koop</mat-option>\n                    <mat-option value=\"Te Koop of Te huur\">Te koop of te huur</mat-option>\n\n\n                  </mat-select>\n\n                </mat-form-field>\n\n                <mat-form-field>\n                    <input matInput formControlName=\"datumBeschikbaar\" [matDatepicker]=\"picker\" placeholder=\"Beschikbaar vanaf\">\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                    <mat-datepicker #picker></mat-datepicker>\n                  </mat-form-field>\n\n                <div>\n                  <button mat-raised-button color=\"warn\" matStepperPrevious>Terug</button>\n                  <button mat-raised-button color=\"primary\" [disabled]=\"!secondFormGroup.valid\" (click)=\"nextstep()\">Volgende</button>\n                </div>\n              </form>\n            </mat-step>\n\n            <mat-step>\n              <ng-template matStepLabel>Specificaties</ng-template>\n\n              <div  class=\"m-12\">\n                <span>\n                  <button mat-mini-fab color=\"accent\">\n                      <mat-icon (click)=\"addSpecificatie()\" class=\"m-4\" class=\"mat-24\" >add</mat-icon>\n                    </button>\n                    Voeg nieuwe specificatie toe\n                    </span>\n\n              </div>\n\n              <div *ngFor=\"let item of specificaties; let i = index \" class=\"row\">\n                <span class=\"m-12\">\n                  \n                  <button mat-mini-fab color=\"warn\">\n                    <mat-icon (click)=\"removeItem(i)\" class=\"mat-24\">remove</mat-icon>\n                  </button>\n\n                </span>\n                <mat-form-field>\n                  <input matInput [(ngModel)]=\"specificaties[i].specificatieSleutel\" placeholder=\"Specificatie\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput [(ngModel)]=\"specificaties[i].specificatieValue\"  placeholder=\"Waarde\" required>\n                </mat-form-field>\n                <mat-form-field>\n                  <input matInput [(ngModel)]=\"specificaties[i].specificatieOmschrijving\" placeholder=\"Omschrijving\">\n                </mat-form-field>\n              </div>\n\n              <div>\n                  <button mat-raised-button color=\"warn\" matStepperPrevious>Terug</button>\n                  <button mat-raised-button color=\"primary\" [disabled]=\"!secondFormGroup.valid\" (click)=\"postartikel()\">Volgende</button>\n                </div>\n\n            </mat-step>\n\n            <mat-step>\n              <div class=\"row\">\n                <ng-template matStepLabel>Locatie</ng-template>\n              </div>\n              <button mat-raised-button color=\"primary\" (click)='postLocation()' [disabled]=\"selectedlocation.lat == null\" class=\"mb-2\"\n                mat-raised-button>Volgende</button>\n\n              <h5>Selecteer de locatie van uw artikel</h5>\n\n\n\n              <p fxLayout=\"row\" fxLayoutAlign=\"start start\">\n                <agm-map (mapClick)=\"getlocation($event)\" [latitude]=\"51.2627187555929\" [zoom]=\"zoom\" [longitude]=\"4.5024117984374925\">\n                  <agm-marker [latitude]=\"selectedlocation?.lat\" [longitude]=\"selectedlocation?.lng\"></agm-marker>\n                </agm-map>\n              </p>\n\n            </mat-step>\n            <mat-step [stepControl]=\"thirdFormGroup\">\n              <ng-template matStepLabel>Upload foto's</ng-template>\n              <h1>Upload een productfoto als voorbeeld</h1>\n              <button mat-raised-button color=\"primary\" (click)='complete()' [disabled]=\"!buttonuploadzone\" class=\"mb-2\" mat-raised-button>Volgende</button>\n              <input #file type=\"file\" multiple (change)=\"upload(file.files)\" />\n              <button mat-raised-button color=\"primary\" *ngIf=\"uploaderror\" (click)='upload()' class=\"mb-2\" mat-raised-button>Probeer opnieuw</button>\n\n              <br/>\n              <span style=\"font-weight:bold;color:green;\" *ngIf=\"progress > 0 && progress < 100\">\n                {{progress}}%\n              </span>\n\n              <span style=\"font-weight:bold;color:green;\" *ngIf=\"message\">\n                {{message}}\n              </span>\n\n              <h1>Upload fotogallerij</h1>\n\n              <div class=\"my-2\">\n                  <file-drop headertext=\"Sleep uw foto's hier\" (onFileDrop)=\"dropped($event)\" \n                  >\n                    \n                  </file-drop>\n                  <button mat-raised-button color=\"primary\" (click)='uploadfotos()' [disabled]=\"files.length == 0\" class=\"my-2\" mat-raised-button>Upload foto's</button>\n\n                  <div class=\"upload-table\">\n                      <table class=\"table\">\n                          <thead>\n                              <tr>\n                                  <th>Foto's</th>\n                              </tr>\n                          </thead>\n                          <tbody class=\"upload-name-style\">\n                              <tr *ngFor=\"let item of files; let i=index\">\n                                  <td><strong>{{ item.relativePath }}</strong></td>\n                              </tr>\n                          </tbody>\n                      </table>\n                  </div>\n\n              </div>\n\n\n              <div>\n              </div>\n            </mat-step>\n            <mat-step>\n              <ng-template matStepLabel>Geregistreerd</ng-template>\n\n              <div class=\"mt-5\">\n                <div *ngIf=\"postsucces; else error\">\n                  <div class=\"alert alert-success\" role=\"alert\">\n                    <strong>Uw product werd succesvol in onze database gezet.</strong>\n                  </div>\n                </div>\n\n                <ng-template #error>\n\n                  <div class=\"alert alert-danger\" role=\"alert\">\n                    <p>Foutcode:\n                      <strong> {{err?.status}} </strong>\n                    </p>\n                    <strong>Uw product werd niet succesvol in onze database gezet.</strong> Probeer het opnieuw.\n                  </div>\n\n                </ng-template>\n\n                <div>\n                  <button mat-raised-button color=\"primary\" (click)=\"reset()\">Nieuw artikel</button>\n                  <button mat-raised-button color=\"primary\" [routerLink]=\"'/catharina/oogstkaart'\">Uw oogstkaartartikelen</button>\n\n                </div>\n\n              </div>\n            </mat-step>\n          </mat-horizontal-stepper>\n\n        </div>\n        <div class=\"col\">\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <!-- / CONTENT -->\n\n</div>"
 
 /***/ }),
 
@@ -6673,13 +6753,15 @@ module.exports = ":host .content {\n  max-width: 960px; }\n\n:host agm-map {\n  
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OogstkaartformComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_models__ = __webpack_require__("./src/app/models/models.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_models__ = __webpack_require__("./src/app/models/models.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__oogstkaart_service__ = __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaart.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_models__ = __webpack_require__("./src/app/models/models.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_Util__ = __webpack_require__("./src/app/models/Util.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6689,6 +6771,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -6714,24 +6798,21 @@ var OogstkaartformComponent = /** @class */ (function () {
         this.value = 50;
         this.buttondisabled = false;
         this.buttonuploadzone = false;
+        this.uploaderror = false;
+        this.specificaties = [];
+        this.files = [];
     }
     OogstkaartformComponent.prototype.ngOnInit = function () {
         this.secondFormGroup = this._formBuilder.group({
-            omschrijving: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            jansenserie: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            coating: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            glassamenstelling: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            afmetingen: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            weight: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            vraagPrijsPerEenheid: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            vraagPrijsTotaal: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            status: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            artikelnaam: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            categorie: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            metric: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            transportInbegrepen: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            hoeveelheid: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
-            concept: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
+            omschrijving: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required],
+            jansenserie: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required],
+            vraagPrijsPerEenheid: ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+            vraagPrijsTotaal: ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+            artikelnaam: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required],
+            categorie: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required],
+            hoeveelheid: ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].pattern('^[0-9]{1,45}$')]],
+            concept: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required],
+            datumBeschikbaar: ['']
         });
         this.thirdFormGroup = this._formBuilder.group({
             productimage: null,
@@ -6739,23 +6820,17 @@ var OogstkaartformComponent = /** @class */ (function () {
     };
     OogstkaartformComponent.prototype.postartikel = function () {
         var _this = this;
-        var item = new __WEBPACK_IMPORTED_MODULE_5__models_models__["d" /* OogstKaartItem */];
-        item.weight = new __WEBPACK_IMPORTED_MODULE_5__models_models__["e" /* Weight */];
+        var item = new __WEBPACK_IMPORTED_MODULE_6__models_models__["d" /* OogstKaartItem */];
         item.hoeveelheid = this.secondFormGroup.value.hoeveelheid;
         item.omschrijving = this.secondFormGroup.value.omschrijving;
         item.artikelnaam = this.secondFormGroup.value.artikelnaam;
         item.jansenserie = this.secondFormGroup.value.jansenserie;
-        item.coating = this.secondFormGroup.value.coating;
         item.category = this.secondFormGroup.value.categorie;
         item.concept = this.secondFormGroup.value.concept;
-        item.glassamenstelling = this.secondFormGroup.value.glassamenstelling;
-        item.afmetingen = this.secondFormGroup.value.afmetingen;
-        item.weight.weightX = this.secondFormGroup.value.weight;
-        item.weight.metric = this.secondFormGroup.value.metric;
+        item.datumBeschikbaar = this.secondFormGroup.value.beschikbaarvanaf;
         item.vraagPrijsPerEenheid = this.secondFormGroup.value.vraagPrijsPerEenheid;
         item.vraagPrijsTotaal = this.secondFormGroup.value.vraagPrijsTotaal;
-        item.status = this.secondFormGroup.value.status;
-        item.transportInbegrepen = this.secondFormGroup.value.transportInbegrepen;
+        item.specificaties = this.specificaties;
         if (this.buttondisabled == false) {
             this.buttondisabled = true;
             this.oogstkaartservice.postOogstkaartItem(item).subscribe(function (res) {
@@ -6764,27 +6839,28 @@ var OogstkaartformComponent = /** @class */ (function () {
                 _this.postsucces = true;
                 _this.stepper.next();
             }, function (err) {
-                _this.buttondisabled = false;
-                _this.err = err;
-                _this.postsucces = false;
-                _this.stepper.selectedIndex = 3;
+                _this.onPostError(err);
             }, function () {
                 _this.buttondisabled = false;
             });
         }
     };
+    OogstkaartformComponent.prototype.onPostError = function (err) {
+        this.buttondisabled = false;
+        this.err = err;
+        this.postsucces = false;
+        this.stepper.selectedIndex = 4;
+    };
     OogstkaartformComponent.prototype.postLocation = function () {
         var _this = this;
-        var location = new __WEBPACK_IMPORTED_MODULE_5__models_models__["c" /* LocationOogstKaartItem */]();
+        var location = new __WEBPACK_IMPORTED_MODULE_6__models_models__["c" /* LocationOogstKaartItem */]();
         location.latitude = this.selectedlocation.lat;
         location.longtitude = this.selectedlocation.lng;
         this.oogstkaartservice.PostLocation(this.oogstkaartID, location).subscribe(function (res) {
             _this.stepper.next();
         }, function (err) {
             _this.deleteItem(_this.oogstkaartID);
-            _this.err = err;
-            _this.postsucces = false;
-            _this.stepper.selectedIndex = 4;
+            _this.onPostError(err);
         });
     };
     OogstkaartformComponent.prototype.getlocation = function ($event) {
@@ -6805,6 +6881,7 @@ var OogstkaartformComponent = /** @class */ (function () {
                     _this.stepper.next();
                 }, function (err) {
                     _this.deleteItem(_this.oogstkaartID);
+                    _this.onPostError(err);
                 });
             };
         }
@@ -6818,45 +6895,101 @@ var OogstkaartformComponent = /** @class */ (function () {
             var file = files_1[_i];
             formData.append(file.name, file);
         }
-        var uploadReq = new __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["g" /* HttpRequest */]('POST', "http://jansenbyods.com/api/Oogstkaart/oogstkaartavatar/" + this.oogstkaartID, formData, {
+        var uploadReq = new __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["g" /* HttpRequest */]('POST', __WEBPACK_IMPORTED_MODULE_8__models_Util__["a" /* Utils */].getRoot() + "Oogstkaart/oogstkaartavatar/" + this.oogstkaartID, formData, {
             reportProgress: true,
             headers: this.auth.getAuthorizationHeaders()
         });
         this.http.request(uploadReq).subscribe(function (event) {
-            if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["d" /* HttpEventType */].UploadProgress)
+            if (event.type === __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["d" /* HttpEventType */].UploadProgress)
                 _this.progress = Math.round(100 * event.loaded / event.total);
-            else if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["d" /* HttpEventType */].Response) {
+            else if (event.type === __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["d" /* HttpEventType */].Response) {
                 console.log(event.type);
                 _this.buttonuploadzone = true;
             }
-        });
+        }, function (err) { return _this.uploaderror = true; });
     };
     OogstkaartformComponent.prototype.deleteItem = function (id) {
         var _this = this;
         console.log("item removed");
         this.oogstkaartservice.DeleteItem(id).subscribe(function (res) {
             _this.postsucces = false;
-            _this.stepper.selectedIndex = 3;
-        });
+            _this.stepper.selectedIndex = 4;
+        }, function (err) { return _this.onPostError(err); });
     };
     OogstkaartformComponent.prototype.complete = function () {
-        this.stepper.selectedIndex = 3;
+        this.stepper.selectedIndex = 4;
+    };
+    OogstkaartformComponent.prototype.addSpecificatie = function () {
+        this.specificaties.push(new __WEBPACK_IMPORTED_MODULE_0__models_models__["e" /* Specificatie */]());
+    };
+    OogstkaartformComponent.prototype.reset = function () {
+        this.stepper.reset();
+        this.specificaties = [];
+    };
+    OogstkaartformComponent.prototype.removeItem = function (index) {
+        if (index !== -1) {
+            this.specificaties.splice(index, 1);
+        }
+    };
+    OogstkaartformComponent.prototype.dropped = function (event) {
+        for (var _i = 0, _a = event.files; _i < _a.length; _i++) {
+            var droppedFile = _a[_i];
+            if (droppedFile.fileEntry.isFile && this.isImage(droppedFile.relativePath)) {
+                this.files.push(droppedFile);
+            }
+        }
+    };
+    OogstkaartformComponent.prototype.uploadfotos = function () {
+        var _this = this;
+        var formData = new FormData();
+        this.files.forEach(function (element) {
+            var fileEntry = element.fileEntry;
+            fileEntry.file(function (file) {
+                formData.append(file.name, file);
+            });
+        });
+        var uploadReq = new __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["g" /* HttpRequest */]('POST', __WEBPACK_IMPORTED_MODULE_8__models_Util__["a" /* Utils */].getRoot() + "Oogstkaart/files/" + this.oogstkaartID, formData, {
+            reportProgress: true,
+            headers: this.auth.getAuthorizationHeaders()
+        });
+        this.http.request(uploadReq).subscribe(function (event) {
+            if (event.type === __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["d" /* HttpEventType */].UploadProgress)
+                _this.progress = Math.round(100 * event.loaded / event.total);
+            else if (event.type === __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["d" /* HttpEventType */].Response) {
+                console.log(event.type);
+            }
+        }, function (err) { return _this.uploaderror = true; });
+    };
+    OogstkaartformComponent.prototype.getExtension = function (filename) {
+        var parts = filename.split('.');
+        return parts[parts.length - 1];
+    };
+    OogstkaartformComponent.prototype.isImage = function (filename) {
+        var ext = this.getExtension(filename);
+        switch (ext.toLowerCase()) {
+            case 'jpg':
+            case 'gif':
+            case 'bmp':
+            case 'png':
+                return true;
+        }
+        return false;
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('fileInput'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__angular_core__["ElementRef"])
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["ViewChild"])('fileInput'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_core__["ElementRef"])
     ], OogstkaartformComponent.prototype, "fileInput", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('stepper'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__angular_material__["I" /* MatStepper */])
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["ViewChild"])('stepper'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4__angular_material__["I" /* MatStepper */])
     ], OogstkaartformComponent.prototype, "stepper", void 0);
     OogstkaartformComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
             selector: 'app-oogstkaartform',
             template: __webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartform/oogstkaartform.component.html"),
             styles: [__webpack_require__("./src/app/main/content/catharina/oogstkaart/oogstkaartform/oogstkaartform.component.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_4__oogstkaart_service__["a" /* OogstkaartService */], __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_0__auth_auth_service__["a" /* AuthService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_5__oogstkaart_service__["a" /* OogstkaartService */], __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__auth_auth_service__["a" /* AuthService */]])
     ], OogstkaartformComponent);
     return OogstkaartformComponent;
 }());
@@ -6868,7 +7001,7 @@ var OogstkaartformComponent = /** @class */ (function () {
 /***/ "./src/app/main/content/catharina/oogstkaart/oogstkaartlist/oogstkaartlist.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"ngx-datatable\" class=\"page-layout simple fullwidth\" fusePerfectScrollbar>\n\n    <!-- HEADER -->\n    <div class=\"header mat-accent-bg p-24 h-160\" fxLayout=\"column\" fxLayoutAlign=\"center center\" fxLayout.gt-xs=\"row\" fxLayoutAlign.gt-xs=\"space-between center\">\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" fxLayout.gt-xs=\"column\" fxLayoutAlign.gt-xs=\"center start\">\n            <div class=\"black-fg\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                <mat-icon class=\"secondary-text s-16\">home</mat-icon>\n                <mat-icon class=\"secondary-text s-16\">chevron_right</mat-icon>\n                <span class=\"secondary-text\">Oogstkaart</span>\n            </div>\n            <div class=\"h2 mt-16\">Oogstkaartartikelen</div>\n        </div>\n\n        <a mat-raised-button class=\"reference-button mat-white-bg mt-16 mt-sm-0\" [routerLink]=\"'../newproduct'\">\n            <mat-icon>add</mat-icon>\n            <span>Nieuw product toevoegen</span>\n        </a>\n    </div>\n    <!-- / HEADER -->\n\n    <!-- CONTENT -->\n    <div class=\"content p-24\">\n\n\n        <ngx-datatable (activate)='onUserEvent($event)' class=\"material\" [rows]=\"rows\" [loadingIndicator]=\"loadingIndicator\" [columnMode]=\"'force'\"\n            [headerHeight]=\"48\" [footerHeight]=\"56\" [rowHeight]=\"'auto'\" [scrollbarH]=\"true\" [reorderable]=\"reorderable\" [limit]=\"10\">\n\n            <ngx-datatable-column [width]=\"48\" [canAutoResize]=\"true\" [sortable]=\"true\">\n                <ng-template ngx-datatable-header-template let-value=\"value\" let-allRowsSelected=\"allRowsSelected\" let-selectFn=\"selectFn\">\n                    <mat-checkbox [checked]=\"allRowsSelected\" (change)=\"selectFn(!allRowsSelected)\"></mat-checkbox>\n                </ng-template>\n\n                <ng-template ngx-datatable-cell-template let-value=\"value\" let-isSelected=\"isSelected\" let-onCheckboxChangeFn=\"onCheckboxChangeFn\">\n                    <mat-checkbox [checked]=\"isSelected\" (change)=\"onCheckboxChangeFn($event)\"></mat-checkbox>\n                </ng-template>\n            </ngx-datatable-column>\n\n            <ngx-datatable-column name=\"ID\" prop=\"oogstkaartItemID\"></ngx-datatable-column>\n\n            <ngx-datatable-column name=\"Artikel\" prop=\"artikelnaam\"></ngx-datatable-column>\n\n            <ngx-datatable-column name=\"Categorie\" prop=\"category\"></ngx-datatable-column>\n            <ngx-datatable-column name=\"Hoeveelheid\" prop=\"hoeveelheid\"></ngx-datatable-column>\n            <ngx-datatable-column name=\"Aangemaakt op\" prop=\"createDate\"></ngx-datatable-column>\n            <ngx-datatable-column name=\"Online\" prop=\"onlineStatus\">\n\n                <ng-template let-value=\"value\" ngx-datatable-cell-template>\n\n\n                    <mat-icon *ngIf=\"value; else other\" class=\"active-icon mat-green-600-bg s-16\">check</mat-icon>\n                    <ng-template #other>\n\n                        <mat-icon class=\"active-icon mat-red-500-bg s-16\">close</mat-icon>\n\n                    </ng-template>\n\n                </ng-template>\n\n\n\n            </ngx-datatable-column>\n        </ngx-datatable>\n\n    </div>\n\n</div>"
+module.exports = "<div id=\"ngx-datatable\" class=\"page-layout simple fullwidth\" fusePerfectScrollbar>\n\n    <!-- HEADER -->\n    <div class=\"header mat-accent-bg p-24 h-160\" fxLayout=\"column\" fxLayoutAlign=\"center center\" fxLayout.gt-xs=\"row\" fxLayoutAlign.gt-xs=\"space-between center\">\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" fxLayout.gt-xs=\"column\" fxLayoutAlign.gt-xs=\"center start\">\n            <div class=\"black-fg\" fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                <mat-icon class=\"secondary-text s-16\">home</mat-icon>\n                <mat-icon class=\"secondary-text s-16\">chevron_right</mat-icon>\n                <span class=\"secondary-text\">Oogstkaart</span>\n            </div>\n            <div class=\"h2 mt-16\">Oogstkaartartikelen</div>\n        </div>\n\n        <a mat-raised-button class=\"reference-button mat-white-bg mt-16 mt-sm-0\" [routerLink]=\"'../newproduct'\">\n            <mat-icon>add</mat-icon>\n            <span>Nieuw product toevoegen</span>\n        </a>\n    </div>\n    <!-- / HEADER -->\n\n    <!-- CONTENT -->\n    <div class=\"content p-24\">\n\n        <mat-progress-bar *ngIf=\"!rows\" color=\"warn\" mode=\"indeterminate\"></mat-progress-bar>\n\n\n        <mat-form-field class=\"example-full-width\">\n            <input matInput type='text' placeholder='artikelnaam'\n                (keyup)='updateFilter($event)'>\n\n        </mat-form-field>\n\n        <ngx-datatable (activate)='onUserEvent($event)' class=\"material\" [rows]=\"rows\" [loadingIndicator]=\"loadingIndicator\" [columnMode]=\"'force'\"\n            [headerHeight]=\"48\" [footerHeight]=\"56\" [rowHeight]=\"'auto'\" [scrollbarH]=\"true\" [reorderable]=\"reorderable\" [limit]=\"10\">\n\n            <ngx-datatable-column [width]=\"48\" [canAutoResize]=\"true\" [sortable]=\"true\">\n                <ng-template ngx-datatable-header-template let-value=\"value\" let-allRowsSelected=\"allRowsSelected\" let-selectFn=\"selectFn\">\n                    <mat-checkbox [checked]=\"allRowsSelected\" (change)=\"selectFn(!allRowsSelected)\"></mat-checkbox>\n                </ng-template>\n\n                <ng-template ngx-datatable-cell-template let-value=\"value\" let-isSelected=\"isSelected\" let-onCheckboxChangeFn=\"onCheckboxChangeFn\">\n                    <mat-checkbox [checked]=\"isSelected\" (change)=\"onCheckboxChangeFn($event)\"></mat-checkbox>\n                </ng-template>\n            </ngx-datatable-column>\n\n            <ngx-datatable-column name=\"ID\" prop=\"oogstkaartItemID\"></ngx-datatable-column>\n\n            <ngx-datatable-column name=\"Artikel\" prop=\"artikelnaam\"></ngx-datatable-column>\n\n            <ngx-datatable-column name=\"Categorie\" prop=\"category\"></ngx-datatable-column>\n            <ngx-datatable-column name=\"Hoeveelheid\" prop=\"hoeveelheid\"></ngx-datatable-column>\n            <ngx-datatable-column name=\"Aangemaakt op\" prop=\"createDate\">\n            </ngx-datatable-column>\n            \n            <ngx-datatable-column name=\"Online\" prop=\"onlineStatus\">\n\n                <ng-template let-value=\"value\" ngx-datatable-cell-template>\n                    <mat-icon *ngIf=\"value; else other\" class=\"active-icon mat-green-600-bg s-16\">check</mat-icon>\n                    <ng-template #other>\n\n                        <mat-icon class=\"active-icon mat-red-500-bg s-16\">close</mat-icon>\n\n                    </ng-template>\n\n                </ng-template>\n\n\n\n            </ngx-datatable-column>\n        </ngx-datatable>\n\n    </div>\n\n</div>"
 
 /***/ }),
 
@@ -6918,6 +7051,14 @@ var OogstkaartlistComponent = /** @class */ (function () {
             var item = e.row;
             this.router.navigate(['catharina/item/', item.oogstkaartItemID]);
         }
+    };
+    OogstkaartlistComponent.prototype.updateFilter = function (event) {
+        var val = event.target.value.toLowerCase();
+        console.log(event);
+        var temp = this.temp.filter(function (d) {
+            return d.Artikel.toLowerCase().indexOf(val) !== -1 || !val;
+        });
+        this.rows = temp;
     };
     OogstkaartlistComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
@@ -7062,7 +7203,8 @@ var FuseContentComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fuse_shared_module__ = __webpack_require__("./src/@fuse/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_main_content_content_component__ = __webpack_require__("./src/app/main/content/content.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular_modal_gallery__ = __webpack_require__("./node_modules/angular-modal-gallery/angular-modal-gallery.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_main_content_content_component__ = __webpack_require__("./src/app/main/content/content.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7073,20 +7215,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var FuseContentModule = /** @class */ (function () {
     function FuseContentModule() {
     }
     FuseContentModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3_app_main_content_content_component__["a" /* FuseContentComponent */]
+                __WEBPACK_IMPORTED_MODULE_4_app_main_content_content_component__["a" /* FuseContentComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_router__["e" /* RouterModule */],
                 __WEBPACK_IMPORTED_MODULE_2__fuse_shared_module__["a" /* FuseSharedModule */],
+                __WEBPACK_IMPORTED_MODULE_3_angular_modal_gallery__["b" /* ModalGalleryModule */].forRoot()
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3_app_main_content_content_component__["a" /* FuseContentComponent */]
+                __WEBPACK_IMPORTED_MODULE_4_app_main_content_content_component__["a" /* FuseContentComponent */]
             ]
         })
     ], FuseContentModule);
@@ -7848,8 +7992,9 @@ var Utils = /** @class */ (function () {
         }
         return this.productionlink;
     };
-    Utils.devlink = 'http://10.211.55.3:45455/';
-    Utils.productionlink = 'http://jansenbyods.com/';
+    Utils.devlink = 'http://10.211.55.3:45455/api/';
+    Utils.productionlink = 'http://jansenbyods.com/api/';
+    Utils.inDevelopment = false;
     return Utils;
 }());
 
@@ -7863,10 +8008,11 @@ var Utils = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Address; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Company; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Weight; });
+/* unused harmony export Weight */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LocationOogstKaartItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return OogstKaartItem; });
-/* unused harmony export Avatar */
+/* unused harmony export Afbeelding */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Specificatie; });
 var Address = /** @class */ (function () {
     function Address() {
     }
@@ -7897,10 +8043,16 @@ var OogstKaartItem = /** @class */ (function () {
     return OogstKaartItem;
 }());
 
-var Avatar = /** @class */ (function () {
-    function Avatar() {
+var Afbeelding = /** @class */ (function () {
+    function Afbeelding() {
     }
-    return Avatar;
+    return Afbeelding;
+}());
+
+var Specificatie = /** @class */ (function () {
+    function Specificatie() {
+    }
+    return Specificatie;
 }());
 
 

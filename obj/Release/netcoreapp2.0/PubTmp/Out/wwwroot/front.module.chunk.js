@@ -1,5 +1,151 @@
 webpackJsonp(["front.module"],{
 
+/***/ "./node_modules/angular-image-slider/esm5/angular-image-slider.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SliderModule; });
+/* unused harmony export ɵa */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_animations__ = __webpack_require__("./node_modules/@angular/animations/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var SliderComponent = (function () {
+    function SliderComponent() {
+        this.state = 'void';
+        this.disableSliderButtons = false;
+    }
+    /**
+     * @return {?}
+     */
+    SliderComponent.prototype.ngOnInit = function () {
+        this.imageUrls = this.images;
+    };
+    /**
+     * @param {?} arr
+     * @param {?} reverse
+     * @return {?}
+     */
+    SliderComponent.prototype.imageRotate = function (arr, reverse) {
+        if (reverse)
+            arr.unshift(arr.pop());
+        else
+            arr.push(arr.shift());
+        return arr;
+    };
+    /**
+     * @return {?}
+     */
+    SliderComponent.prototype.moveLeft = function () {
+        if (this.disableSliderButtons) {
+            return;
+        }
+        this.state = 'right';
+        this.imageRotate(this.imageUrls, true);
+    };
+    /**
+     * @return {?}
+     */
+    SliderComponent.prototype.moveRight = function () {
+        if (this.disableSliderButtons) {
+            return;
+        }
+        this.state = 'left';
+        this.imageRotate(this.imageUrls, false);
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    SliderComponent.prototype.onFinish = function ($event) {
+        this.state = 'void';
+        this.disableSliderButtons = false;
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    SliderComponent.prototype.onStart = function ($event) {
+        this.disableSliderButtons = true;
+    };
+    return SliderComponent;
+}());
+SliderComponent.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                selector: 'angular-image-slider',
+                template: "<div id=\"container\">\n  <div class=\"overlay-left\"></div>\n  <div class=\"overlay-right\"></div>\n  <div id=\"grid\" class=\"image-cropper\">\n    <img *ngFor=\"let url of imageUrls; let i = index\"\n      [@move]=\"state\"\n      (@move.done)=\"onFinish($event)\"\n      (@move.start)=\"onStart($event)\"\n      [attr.class]=\"i\"\n      [src]=\"url\"\n      alt=\"\" />\n  </div>\n  <div>\n    <a id=\"slider-buttons-left\" (click)=\"moveLeft()\">&#10094;</a>\n    <a id=\"slider-buttons-right\" (click)=\"moveRight()\">&#10095;</a>\n  </div>\n</div>",
+                styles: ["#container{\n   position:relative;\n   overflow-x:hidden;\n}\n#grid{\n  display:grid;\n  height:150;\n  grid-template-columns:repeat(3, 1fr);\n  grid-template-rows:300px;\n  grid-column-gap:20px;\n}\n.overlay-left{\n    position:absolute;\n    display:inline-block;\n    display:grid;\n    width:7rem;\n    height:100%;\n    top:0%;\n    left:0;\n    bottom:0;\n    background-color:white;\n    z-index:1;\n    cursor:pointer;\n}\n.overlay-right{\n    position:absolute;\n    display:inline-block;\n    display:grid;\n    width:7rem;\n    height:100%;\n    top:0%;\n    right:0;\n    bottom:0;\n    background-color:white;\n    z-index:1;\n    cursor:pointer;\n}\n#grid > div{\n  background-color:gray;\n}\n#slider-buttons-left{\n  position:absolute;\n  z-index:1000;\n  top:130px;\n  float:left;\n  cursor:pointer;\n  font-size:250%;\n  color:#778899;\n  left:60px;\n}\n#slider-buttons-right{\n  position:absolute;\n  top:130px;\n  z-index:1000;\n  float:right;\n  cursor:pointer;\n  font-size:250%;\n  color:#778899;\n  right:60px;\n}\n.image-cropper{\n    height:300px;\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n    -webkit-box-pack:center;\n        -ms-flex-pack:center;\n            justify-content:center;\n    -webkit-box-align:center;\n        -ms-flex-align:center;\n            align-items:center;\n}\n.image-cropper img{\n    max-width:100%;\n    max-height:100%;\n    display:block;\n    margin:0 auto;\n}"],
+                animations: [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["p" /* trigger */])('move', [
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["m" /* state */])('in', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["n" /* style */])({ transform: 'translateX(0)' })),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["o" /* transition */])('void => left', [
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["n" /* style */])({ transform: 'translateX(100%)' }),
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200)
+                        ]),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["o" /* transition */])('left => void', [
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["n" /* style */])({ transform: 'translateX(0)' }))
+                        ]),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["o" /* transition */])('void => right', [
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["n" /* style */])({ transform: 'translateX(-100%)' }),
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200)
+                        ]),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["o" /* transition */])('right => void', [
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["n" /* style */])({ transform: 'translateX(0)' }))
+                        ])
+                    ])
+                ]
+            },] },
+];
+/** @nocollapse */
+SliderComponent.ctorParameters = function () { return []; };
+SliderComponent.propDecorators = {
+    "images": [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+};
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var SliderModule = (function () {
+    function SliderModule() {
+    }
+    return SliderModule;
+}());
+SliderModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"], args: [{
+                imports: [
+                    __WEBPACK_IMPORTED_MODULE_2__angular_common__["CommonModule"]
+                ],
+                declarations: [
+                    SliderComponent
+                ],
+                exports: [SliderComponent]
+            },] },
+];
+/** @nocollapse */
+SliderModule.ctorParameters = function () { return []; };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+//# sourceMappingURL=angular-image-slider.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17177,12 +17323,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__agm_core__ = __webpack_require__("./node_modules/@agm/core/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__oogstkaart_map_itemview_itemview_component__ = __webpack_require__("./src/app/main/content/front/oogstkaart-map/itemview/itemview.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__oogstkaart_map_detailview_detailview_component__ = __webpack_require__("./src/app/main/content/front/oogstkaart-map/detailview/detailview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular_image_slider__ = __webpack_require__("./node_modules/angular-image-slider/esm5/angular-image-slider.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angular_modal_gallery__ = __webpack_require__("./node_modules/angular-modal-gallery/angular-modal-gallery.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -17218,8 +17370,11 @@ var FrontModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3__angular_common__["CommonModule"],
                 __WEBPACK_IMPORTED_MODULE_6__fuse_shared_module__["a" /* FuseSharedModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_router__["e" /* RouterModule */].forChild(routes),
+                __WEBPACK_IMPORTED_MODULE_12_angular_image_slider__["a" /* SliderModule */],
                 __WEBPACK_IMPORTED_MODULE_7__material_material_module__["a" /* MaterialModule */],
+                __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
                 __WEBPACK_IMPORTED_MODULE_1__fuse_components_navigation_navigation_module__["a" /* FuseNavigationModule */],
+                __WEBPACK_IMPORTED_MODULE_14_angular_modal_gallery__["b" /* ModalGalleryModule */],
                 __WEBPACK_IMPORTED_MODULE_9__agm_core__["a" /* AgmCoreModule */].forRoot({
                     apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
                 }),
@@ -17383,7 +17538,7 @@ var LandermapService = /** @class */ (function () {
 /***/ "./src/app/main/content/front/oogstkaart-map/detailview/detailview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"product\" class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n  <!-- TOP BACKGROUND -->\n  <div class=\"top-bg mat-accent-bg\">\n\n  </div>\n  <!-- / TOP BACKGROUND -->\n\n  <!-- CENTER -->\n  <div class=\"center\">\n\n    <!-- HEADER -->\n    <div class=\"header white-fg\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n\n      <!-- APP TITLE -->\n      <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n\n        <button class=\"mr-0 mr-sm-16\" mat-icon-button [routerLink]=\"'/lander/map'\">\n          <mat-icon>arrow_back</mat-icon>\n        </button>\n\n        <div fxLayout=\"column\" fxLayoutAlign=\"start start\" *fuseIfOnDom [@animate]=\"{value:'*',params:{delay:'100ms',x:'-25px'}}\">\n            <h1>{{item?.artikelnaam}}</h1>\n\n          <div class=\"subtitle secondary-text\">\n            <span>Product uitgelicht</span>\n          </div>\n        </div>\n      </div>\n\n      <button mat-raised-button\n                    class=\"save-product-button mat-white-bg mt-16 mt-sm-0\">\n                <span> <h3> {{item.Views}} keer bekeken </h3></span>\n            </button>\n      </div>\n      <!-- / APP TITLE -->\n\n\n\n\n    <!-- / HEADER -->\n\n    <!-- CONTENT CARD -->\n    <div class=\"content-card mat-white-bg\"  >\n\n      <!-- CONTENT -->\n      <div class=\"content\">\n\n          <div name=\"productForm\" class=\"product w-100-p\" fxLayout=\"column\" >\n\n              <img [src]=\"'http://jansenbyods.com/img/' + item.avatar?.uri\">\n            \n            </div>\n\n        <div name=\"productForm\" class=\"product w-100-p\" fxLayout=\"column\" >\n\n          <mat-tab-group (selectedTabChange)=\"checkmap($event)\"> \n\n            <mat-tab label=\"Algemeen\">\n              <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                <table class=\"simple\">\n                    <thead>\n                        <tr>\n                            <th>Naam</th>\n                            <th>Categorie</th>\n                            <th>Concept</th>\n                            <th>Gemaakt op</th>\n                           \n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>\n                                <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                    <span class=\" text-truncate\">\n                                      \n                                      {{item.artikelnaam}}\n\n                                    </span>\n                                </div>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\"> \n\n                                    {{item.category}}\n\n                                </span>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\">\n                                    {{item.concept}}\n\n                                </span>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\">\n                                    {{item.createDate}}\n\n                                </span>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <table class=\"simple\">\n                    <thead>\n                        <tr>\n                            <th>Hoeveelheid</th>\n            <th>Jansenserie</th>\n            <th>Status</th>\n            <th>Transport inbegrepen</th>\n                           \n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>\n                                <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                                    <span class=\" text-truncate\">\n                                        {{item.hoeveelheid}}\n\n                                    </span>\n                                </div>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\">\n                                    {{item.jansenserie}}\n\n                                   </span>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\"> \n                                    {{item.status}}\n\n                                </span>\n                            </td>\n                            <td>\n                                <span class=\" text-truncate\">\n                                    {{item.transportInbegrepen ? 'Ja' : 'Nee'}}\n\n                                  </span>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n\n              </div>\n            </mat-tab>\n\n            <mat-tab label=\"Foto's\">\n              <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                <div fxLayout=\"row wrap\" fxLayoutAlign=\"start start\">\n\n\n                </div>\n              </div>\n            </mat-tab>\n\n            <mat-tab label=\"Contact\">\n              <div class=\"tab-content p-24\" fusePerfectScrollbar>\n              </div>\n            </mat-tab>\n\n            <mat-tab label=\"Kaart\">\n              <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                  <agm-map *ngIf=\"!hidemap\"  [latitude]=\"item.location.latitude\" [zoom]=\"7\" [longitude]=\"item.location.longtitude\" #map>\n\n            <agm-marker [latitude]=\"item.location.latitude\" [longitude]=\"item.location.longtitude\"></agm-marker>\n                    </agm-map>\n              </div>\n            </mat-tab>\n          </mat-tab-group>\n        </div>\n        <!-- / CONTENT -->\n\n      </div>\n      </div>\n  </div>\n</div>"
+module.exports = "<div id=\"product\" class=\"page-layout carded fullwidth\" fusePerfectScrollbar>\n\n    <!-- TOP BACKGROUND -->\n    <div class=\"top-bg mat-accent-bg\">\n\n    </div>\n    <!-- / TOP BACKGROUND -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n        <!-- HEADER -->\n        <div class=\"header white-fg\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n\n            <!-- APP TITLE -->\n            <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n\n                <button class=\"mr-0 mr-sm-16\" mat-icon-button [routerLink]=\"'/lander/map'\">\n                    <mat-icon>arrow_back</mat-icon>\n                </button>\n\n                <div fxLayout=\"column\" fxLayoutAlign=\"start start\" *fuseIfOnDom [@animate]=\"{value:'*',params:{delay:'100ms',x:'-25px'}}\">\n                    <h1>{{item?.artikelnaam}}</h1>\n\n                    <div class=\"subtitle secondary-text\">\n                        <span>Product uitgelicht</span>\n                    </div>\n                </div>\n            </div>\n\n            <button mat-raised-button class=\"save-product-button mat-white-bg mt-16 mt-sm-0\">\n                <span>\n                    <h3> {{item.Views}} keer bekeken </h3>\n                </span>\n            </button>\n        </div>\n        <!-- / APP TITLE -->\n\n\n\n\n        <!-- / HEADER -->\n\n        <!-- CONTENT CARD -->\n        <div class=\"content-card mat-white-bg\">\n\n            <!-- CONTENT -->\n            <div class=\"content\">\n\n                <div name=\"productForm\" class=\"product\" fxLayout=\"column\">\n\n                        <mat-progress-spinner *ngIf=\"loading\" color=\"accent\" mode=\"indeterminate\">\n                            </mat-progress-spinner>\n                            <img [hidden]=\"loading\" (load)=\"onLoad()\" currentsrc [src]=\"currentsrc\" />\n                         \n\n                </div>\n\n                <div name=\"productForm\" class=\"product w-100-p\" fxLayout=\"column\">\n\n                    <mat-tab-group (selectedTabChange)=\"checkmap($event)\">\n\n                        <mat-tab label=\"Algemeen\">\n                            <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                                <mat-list>\n                                    <mat-list-item>\n                                        <h3 mat-line>Artikel</h3>\n                                        <p mat-line> {{item.artikelnaam}} </p>\n                                    </mat-list-item>\n                                    <mat-divider></mat-divider>\n                                    <mat-list-item>\n                                        <h3 mat-line>Categorie</h3>\n                                        <p mat-line> {{item.category}} </p>\n                                    </mat-list-item>\n                                    <mat-divider></mat-divider>\n                                    <mat-list-item>\n                                        <h3 mat-line>Jansenserie</h3>\n                                        <p mat-line> {{item.jansenserie}} </p>\n                                    </mat-list-item>\n                                    <mat-divider></mat-divider>\n                                    <mat-list-item>\n                                        <h3 mat-line>Hoeveelheid</h3>\n                                        <p mat-line> {{item.hoeveelheid}} </p>\n                                    </mat-list-item>\n                                    <mat-divider></mat-divider>\n                                    <mat-list-item>\n                                        <h3 mat-line>Concept</h3>\n                                        <p mat-line> {{item.concept}} </p>\n                                    </mat-list-item>\n                                    <mat-divider></mat-divider>\n                                    <mat-list-item>\n                                        <h3 mat-line>Gemaakt</h3>\n                                        <p mat-line> {{item.createDate | date}} </p>\n                                    </mat-list-item>\n                                </mat-list>\n\n                                <mat-list *ngIf=\"item.specificaties.length > 0\">\n                                        <h3 mat-subheader>Specificaties</h3>\n                                        <mat-list-item *ngFor=\"let specificatie of item.specificaties\">\n                                          <mat-icon mat-list-icon>folder</mat-icon>\n                                          <h4 mat-line>{{specificatie.specificatieSleutel}}</h4>\n                                          <p mat-line> {{specificatie.specificatieValue}} </p>\n                                          <p mat-line> {{specificatie.specificatieOmschrijving}} </p>\n                                        </mat-list-item>\n                                        <mat-divider></mat-divider>\n                                </mat-list>\n\n                            </div>\n                        </mat-tab>\n\n                        <mat-tab label=\"Foto's\">\n                            <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                                <div fxLayout=\"row wrap\" fxLayoutAlign=\"start start\">\n\n                                    <ks-modal-gallery [modalImages]=\"images\"></ks-modal-gallery>\n\n                                </div>\n                            </div>\n                        </mat-tab>\n\n                        <mat-tab label=\"Contact\">\n                            <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                            </div>\n                        </mat-tab>\n\n                        <mat-tab label=\"Kaart\">\n                            <div class=\"tab-content p-24\" fusePerfectScrollbar>\n                                <agm-map *ngIf=\"!hidemap\" [latitude]=\"item.location.latitude\" [zoom]=\"12\" [longitude]=\"item.location.longtitude\" #map>\n\n                                    <agm-marker [iconUrl]=\"'assets/icons/markers/' + item.category + '.png'\" [latitude]=\"item.location.latitude\" [longitude]=\"item.location.longtitude\"></agm-marker>\n                                </agm-map>\n                            </div>\n                        </mat-tab>\n                    </mat-tab-group>\n\n                   \n                </div>\n                <!-- / CONTENT -->\n\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -17404,6 +17559,8 @@ module.exports = "#product .header .product-image {\n  overflow: hidden;\n  widt
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fuse_services_config_service__ = __webpack_require__("./src/@fuse/services/config.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fuse_animations__ = __webpack_require__("./src/@fuse/animations/index.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_Util__ = __webpack_require__("./src/app/models/Util.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_modal_gallery__ = __webpack_require__("./node_modules/angular-modal-gallery/angular-modal-gallery.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17418,16 +17575,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DetailviewComponent = /** @class */ (function () {
     function DetailviewComponent(router, landerservice, fuseConfig) {
+        var _this = this;
         this.router = router;
         this.landerservice = landerservice;
         this.fuseConfig = fuseConfig;
         this.zoom = 10;
+        this.imagesources = [];
+        this.slideConfig = { "slidesToShow": 4, "slidesToScroll": 4 };
+        this.images = [];
+        this.loading = true;
         this.item = this.landerservice.oogstkaartitem;
-        console.log(this.item);
+        this.rootplace = __WEBPACK_IMPORTED_MODULE_5__models_Util__["a" /* Utils */].getRoot().replace("/api", "");
         if (this.item === undefined) {
             this.router.navigate(['lander/map']);
+        }
+        else {
+            this.currentsrc = this.rootplace + '/uploads/image/' + this.item.avatar.uri;
+            this.item.gallery.forEach(function (element) {
+                _this.images.push(new __WEBPACK_IMPORTED_MODULE_6_angular_modal_gallery__["a" /* Image */](element.afbeeldingID, { img: _this.rootplace + '/uploads/image/' + element.uri,
+                    description: element.omschrijving }));
+            });
         }
         this.fuseConfig.setConfig({
             layout: {
@@ -17448,6 +17619,11 @@ var DetailviewComponent = /** @class */ (function () {
             this.hidemap = true;
         }
     };
+    DetailviewComponent.prototype.onLoad = function () {
+        this.loading = false;
+    };
+    DetailviewComponent.prototype.test = function ($event) {
+    };
     DetailviewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
             selector: 'app-detailview',
@@ -17467,7 +17643,7 @@ var DetailviewComponent = /** @class */ (function () {
 /***/ "./src/app/main/content/front/oogstkaart-map/itemview/itemview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n<div class=\"card\">\n\n  <!-- PREVIEW -->\n  <div class=\"card-preview\">\n\n      <div class=\"fuse-card\">\n\n          <img [src]=\"'http://jansenbyods.com/img/' + data.item.avatar?.uri\">\n\n          <div class=\"p-16\">\n              <h1>{{item.artikelnaam}}</h1>\n          </div>\n\n          <div class=\"p-8 pt-0\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n              <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                  <button mat-button (click)=\"onNoClick()\"  color=\"accent\">Terug</button>\n                  <button mat-button (click)=\"openDetailview()\" color=\"accent\">Meer</button>\n              </div>\n\n\n      </div>\n\n  </div>\n  <!-- / PREVIEW -->\n\n\n</div>"
+module.exports = "<div class=\"card\">\n\n    <!-- PREVIEW -->\n    <div class=\"card-preview\">\n\n        <div class=\"fuse-card\">\n\n            <mat-progress-spinner *ngIf=\"loading\" color=\"accent\" mode=\"indeterminate\">\n            </mat-progress-spinner>\n            <img [hidden]=\"loading\" (load)=\"onLoad()\" [src]=\"rootplace + '/uploads/image/' + data.item.avatar?.uri\" />\n\n\n            <div class=\"p-16\">\n                <h1>{{item.artikelnaam}}</h1>\n            </div>\n\n            <div class=\"p-8 pt-0\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n                <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n                    <button mat-button (click)=\"onNoClick()\" color=\"accent\">Terug</button>\n                    <button mat-button (click)=\"openDetailview()\" color=\"accent\">Meer info</button>\n                </div>\n\n\n            </div>\n\n        </div>\n        <!-- / PREVIEW -->\n\n\n    </div>"
 
 /***/ }),
 
@@ -17517,21 +17693,26 @@ var ItemviewComponent = /** @class */ (function () {
         this.landermapservice = landermapservice;
         this.router = router;
         this.card9Expanded = false;
+        this.loading = true;
         this.item = data.item;
         this.landermapservice.oogstkaartitem = this.item;
+        this.rootplace = __WEBPACK_IMPORTED_MODULE_5__models_Util__["a" /* Utils */].getRoot().replace("/api", "");
     }
     ItemviewComponent.prototype.onNoClick = function () {
         this.dialogRef.close();
     };
     ItemviewComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.post(__WEBPACK_IMPORTED_MODULE_5__models_Util__["a" /* Utils */].getRoot() + '/api/Oogstkaart/view/' + this.data.id, null).subscribe(function (res) {
+        this.http.post(__WEBPACK_IMPORTED_MODULE_5__models_Util__["a" /* Utils */].getRoot() + 'Oogstkaart/view/' + this.data.id, null).subscribe(function (res) {
             _this.item.Views = res;
         });
     };
     ItemviewComponent.prototype.openDetailview = function () {
         this.router.navigate(['lander/detail', this.item.oogstkaartItemID]);
         this.dialogRef.close();
+    };
+    ItemviewComponent.prototype.onLoad = function () {
+        this.loading = false;
     };
     ItemviewComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
@@ -17553,14 +17734,14 @@ var ItemviewComponent = /** @class */ (function () {
 /***/ "./src/app/main/content/front/oogstkaart-map/oogstkaart-map.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"page-layout carded left-sidenav\" fusePerfectScrollbar>\n\n  <!-- TOP BACKGROUND -->\n  <div class=\"top-bg mat-accent-bg\">\n\n  </div>\n  <!-- / TOP BACKGROUND -->\n\n  <mat-sidenav-container>\n\n    <!-- SIDENAV -->\n    <mat-sidenav class=\"sidenav\" align=\"start\" opened=\"true\" mode=\"side\" fuseMatSidenavHelper=\"carded-left-sidenav\" mat-is-locked-open=\"gt-md\">\n\n      <!-- SIDENAV HEADER -->\n      <div class=\"header p-24\" ngClass=\"mat-accent-bg\" ngClass.gt-md=\"white-fg\">\n\n\n      </div>\n      <!-- / SIDENAV HEADER -->\n\n      <!-- SIDENAV CONTENT -->\n      <div class=\"content p-24 primary\" fusePerfectScrollbar>\n        <button class=\"mat-accent-bg m-4\" routerLink='' mat-menu-item>\n          <mat-icon>home</mat-icon>\n          <span>Home</span>\n        </button>\n\n        <!--\n          <mat-chip-list  >\n            <mat-chip *ngFor=\"let id of filtersid\" selected=\"true\" >\n              {{id}} <mat-icon class=\"chip\">cancel</mat-icon>\n            </mat-chip> \n          </mat-chip-list>\n\n        -->\n        <h1>Filter\n          <h5> {{oogstkaartitems?.length }} producten</h5>\n        </h1>\n\n        <mat-accordion>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Categorie\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['jansenprofiel']\" id=\"jansenprofiel\" name=\"category\" (change)=\"filtertoggle($event)\">Jansenprofiel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['constructieprofiel']\" id=\"constructieprofiel\" name=\"category\" (change)=\"filtertoggle($event)\">Constructieprofiel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['deur']\" id=\"deur\" name=\"category\" (change)=\"filtertoggle($event)\">Deur</mat-checkbox>\n            <br/>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['raam']\" id=\"raam\" name=\"category\" (change)=\"filtertoggle($event)\">Raam</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['geveldeel']\" id=\"geveldeel\" name=\"category\" (change)=\"filtertoggle($event)\">Geveldeel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['overige']\" id=\"overige\" name=\"category\" (change)=\"filtertoggle($event)\">Overige</mat-checkbox>\n\n          </mat-expansion-panel>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Jansenserie\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n\n            <mat-checkbox id=\"ART-15\" name=\"serie\" (change)=\"filtertoggle($event)\">ART-15</mat-checkbox>\n            <mat-checkbox id=\"Janisol ARTE\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol ARTE</mat-checkbox>\n            <mat-checkbox id=\"Economy\" name=\"serie\" (change)=\"filtertoggle($event)\">Economy</mat-checkbox>\n            <mat-checkbox id=\"Janisol\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol</mat-checkbox>\n            <mat-checkbox id=\"Janisol HI\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol HI</mat-checkbox>\n            <mat-checkbox id=\"Janisol 2\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol 2</mat-checkbox>\n            <mat-checkbox id=\"Janisol C4\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol C4</mat-checkbox>\n            <mat-checkbox id=\"Janisol Viss\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol Viss</mat-checkbox>\n\n\n\n\n          </mat-expansion-panel>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Concept\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n\n            <mat-checkbox id=\"concept\" name=\"Te huur\" (change)=\"filtertoggle($event)\">Te huur</mat-checkbox>\n            <mat-checkbox id=\"concept\" name=\"Te koop\" (change)=\"filtertoggle($event)\">Te koop</mat-checkbox>\n\n          </mat-expansion-panel>\n        </mat-accordion>\n\n      </div>\n      <!-- / SIDENAV CONTENT -->\n\n    </mat-sidenav>\n    <!-- / SIDENAV -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n      <!-- CONTENT HEADER -->\n      <div class=\"header white-fg p-24\">\n\n      </div>\n      <!-- / CONTENT HEADER -->\n\n      <!-- CONTENT CARD -->\n      <div class=\"content-card mat-white-bg\">\n\n        <!-- CONTENT TOOLBAR -->\n        <div class=\"toolbar px-24 py-8\">\n          <button mat-button class=\"mat-icon-button sidenav-toggle\" fuseMatSidenavToggler=\"carded-left-sidenav\" fxHide.gt-md>\n            <mat-icon>menu</mat-icon>\n          </button>\n\n          <h1>ODS Oogstkaart</h1>\n        </div>\n        <!-- / CONTENT TOOLBAR -->\n\n        <!-- CONTENT -->\n        <mat-progress-bar *ngIf=\"!itemsloading\" mode=\"indeterminate\"></mat-progress-bar>\n\n        <div class=\"content p-24\" fusePerfectScrollbar>\n\n          <agm-map [latitude]=\"51.2627187555929\" [zoom]=\"zoom\" [longitude]=\"4.5024117984374925\">\n\n            <agm-marker (markerClick)=\"opendialog(item)\" *ngFor=\"let item of oogstkaartitems;\" [iconUrl]=\"'assets/icons/markers/' + item.category + '.png'\"\n              [latitude]=\"item.location.latitude\" [longitude]=\"item.location.longtitude\">\n            </agm-marker>\n          </agm-map>\n        </div>\n        <!-- / CONTENT -->\n\n      </div>\n      <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n  </mat-sidenav-container>\n\n</div>"
+module.exports = "\n<div class=\"page-layout carded left-sidenav\" fusePerfectScrollbar>\n\n  <!-- TOP BACKGROUND -->\n  <div class=\"top-bg mat-accent-bg\">\n\n  </div>\n  <!-- / TOP BACKGROUND -->\n\n  <mat-sidenav-container>\n\n    <!-- SIDENAV -->\n    <mat-sidenav class=\"sidenav\" align=\"start\" opened=\"true\" mode=\"side\" fuseMatSidenavHelper=\"carded-left-sidenav\" mat-is-locked-open=\"gt-md\">\n\n      <!-- SIDENAV HEADER -->\n      <div class=\"header p-24\" ngClass=\"mat-accent-bg\" ngClass.gt-md=\"white-fg\">\n\n\n      </div>\n      <!-- / SIDENAV HEADER -->\n\n      <!-- SIDENAV CONTENT -->\n      <div class=\"content p-24 primary\" fusePerfectScrollbar>\n        <button class=\"mat-accent-bg m-4\" routerLink='' mat-menu-item>\n          <mat-icon>home</mat-icon>\n          <span>Home</span>\n        </button>\n\n        <!--\n          <mat-chip-list  >\n            <mat-chip *ngFor=\"let id of filtersid\" selected=\"true\" >\n              {{id}} <mat-icon class=\"chip\">cancel</mat-icon>\n            </mat-chip> \n          </mat-chip-list>\n\n        -->\n        <h1>Filter\n          <h5> {{oogstkaartitems?.length }} producten</h5>\n        </h1>\n\n        <mat-slide-toggle\n          color=\"accent\"\n         >\n        Artikelview\n      </mat-slide-toggle>\n\n        <mat-accordion>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Categorie\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['jansenprofiel']\" id=\"jansenprofiel\" name=\"category\" (change)=\"filtertoggle($event)\">Jansenprofiel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['constructieprofiel']\" id=\"constructieprofiel\" name=\"category\" (change)=\"filtertoggle($event)\">Constructieprofiel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['deur']\" id=\"deur\" name=\"category\" (change)=\"filtertoggle($event)\">Deur</mat-checkbox>\n            <br/>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['raam']\" id=\"raam\" name=\"category\" (change)=\"filtertoggle($event)\">Raam</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['geveldeel']\" id=\"geveldeel\" name=\"category\" (change)=\"filtertoggle($event)\">Geveldeel</mat-checkbox>\n            <mat-checkbox [(ngModel)]=\"filters.categorie['overige']\" id=\"overige\" name=\"category\" (change)=\"filtertoggle($event)\">Overige</mat-checkbox>\n\n          </mat-expansion-panel>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Jansenserie\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n\n            <mat-checkbox id=\"ART-15\" name=\"serie\" (change)=\"filtertoggle($event)\">ART-15</mat-checkbox>\n            <mat-checkbox id=\"Janisol ARTE\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol ARTE</mat-checkbox>\n            <mat-checkbox id=\"Economy\" name=\"serie\" (change)=\"filtertoggle($event)\">Economy</mat-checkbox>\n            <mat-checkbox id=\"Janisol\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol</mat-checkbox>\n            <mat-checkbox id=\"Janisol HI\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol HI</mat-checkbox>\n            <mat-checkbox id=\"Janisol 2\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol 2</mat-checkbox>\n            <mat-checkbox id=\"Janisol C4\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol C4</mat-checkbox>\n            <mat-checkbox id=\"Janisol Viss\" name=\"serie\" (change)=\"filtertoggle($event)\">Janisol Viss</mat-checkbox>\n\n\n\n\n          </mat-expansion-panel>\n          <mat-expansion-panel>\n            <mat-expansion-panel-header>\n              <mat-panel-title>\n                Concept\n              </mat-panel-title>\n\n            </mat-expansion-panel-header>\n\n            <mat-checkbox id=\"concept\" name=\"Te huur\" (change)=\"filtertoggle($event)\">Te huur</mat-checkbox>\n            <mat-checkbox id=\"concept\" name=\"Te koop\" (change)=\"filtertoggle($event)\">Te koop</mat-checkbox>\n\n          </mat-expansion-panel>\n        </mat-accordion>\n\n      </div>\n      <!-- / SIDENAV CONTENT -->\n\n    </mat-sidenav>\n    <!-- / SIDENAV -->\n\n    <!-- CENTER -->\n    <div class=\"center\">\n\n      <!-- CONTENT HEADER -->\n      <div class=\"header white-fg p-24\">\n\n      </div>\n      <!-- / CONTENT HEADER -->\n\n      <!-- CONTENT CARD -->\n      <div class=\"content-card mat-white-bg\">\n\n        <!-- CONTENT TOOLBAR -->\n        <div class=\"toolbar px-24 py-8\">\n          <button mat-button class=\"mat-icon-button sidenav-toggle\" fuseMatSidenavToggler=\"carded-left-sidenav\" fxHide.gt-md>\n            <mat-icon>menu</mat-icon>\n          </button>\n\n          <h1>ODS Oogstkaart</h1>\n        </div>\n        <!-- / CONTENT TOOLBAR -->\n\n        <!-- CONTENT -->\n        <mat-progress-bar *ngIf=\"!itemsloading\" color=\"accent\" mode=\"indeterminate\"></mat-progress-bar>\n\n        <div class=\"content p-24\" fusePerfectScrollbar>\n\n          <agm-map [latitude]=\"51.2627187555929\" [zoom]=\"zoom\" [longitude]=\"4.5024117984374925\">\n\n            <agm-marker (markerClick)=\"opendialog(item)\" *ngFor=\"let item of oogstkaartitems;\" [iconUrl]=\"'assets/icons/markers/' + item.category + '.png'\"\n              [latitude]=\"item.location.latitude\" [longitude]=\"item.location.longtitude\">\n            </agm-marker>\n          </agm-map>\n        </div>\n        <!-- / CONTENT -->\n\n      </div>\n      <!-- / CONTENT CARD -->\n\n    </div>\n    <!-- / CENTER -->\n\n  </mat-sidenav-container>\n\n</div>"
 
 /***/ }),
 
 /***/ "./src/app/main/content/front/oogstkaart-map/oogstkaart-map.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "agm-map {\n  height: 100%;\n  width: 100%; }\n\nmat-chip {\n  margin: 10px; }\n\nmat-icon {\n  margin: 0 5px; }\n\n.matspinnerparent > mat-spinner {\n  margin: 0 auto; }\n"
+module.exports = "agm-map {\n  height: 100%;\n  width: 100%; }\n\nmat-chip, mat-slide-toggle {\n  margin: 10px; }\n\nmat-icon {\n  margin: 0 5px; }\n\n.matspinnerparent > mat-spinner {\n  margin: 0 auto; }\n"
 
 /***/ }),
 
@@ -17577,6 +17758,7 @@ module.exports = "agm-map {\n  height: 100%;\n  width: 100%; }\n\nmat-chip {\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__itemview_itemview_component__ = __webpack_require__("./src/app/main/content/front/oogstkaart-map/itemview/itemview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_Util__ = __webpack_require__("./src/app/models/Util.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17593,6 +17775,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var OogstkaartMapComponent = /** @class */ (function () {
     function OogstkaartMapComponent(fuseConfig, http, dialog, landermapservice) {
         this.fuseConfig = fuseConfig;
@@ -17600,7 +17783,7 @@ var OogstkaartMapComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.landermapservice = landermapservice;
         this.zoom = 7;
-        this.link = 'http://jansenbyods.com/api/Oogstkaart/mapview';
+        this.link = 'Oogstkaart/mapview';
         this.filters = {
             categorie: [
                 { jansenprofiel: false },
@@ -17622,7 +17805,7 @@ var OogstkaartMapComponent = /** @class */ (function () {
     }
     OogstkaartMapComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get(this.link).subscribe(function (res) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_7__models_Util__["a" /* Utils */].getRoot() + this.link).subscribe(function (res) {
             _this.oogstkaartitems = res;
             _this.activatefilters(res);
             _this.itemsloading = true;

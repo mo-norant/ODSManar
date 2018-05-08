@@ -1,3 +1,4 @@
+import { MatStepperModule } from '@angular/material';
 import { TokenGuard } from './auth/token.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        MatStepperModule,
         RouterModule.forRoot(appRoutes),
         TranslateModule.forRoot(),
         NgbModule.forRoot(),

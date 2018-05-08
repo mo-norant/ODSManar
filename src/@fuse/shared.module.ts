@@ -6,26 +6,27 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FuseDirectivesModule } from '@fuse/directives/directives';
 import { FusePipesModule } from '@fuse/pipes/pipes.module';
-import { MaterialModule } from 'app/material/material.module';
 
 @NgModule({
     imports  : [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+
         FlexLayoutModule,
+
         FuseDirectivesModule,
-        FusePipesModule,
-        MaterialModule
+        FusePipesModule
     ],
     exports  : [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+
         FlexLayoutModule,
+
         FuseDirectivesModule,
-        FusePipesModule,
-        MaterialModule
+        FusePipesModule
     ]
 })
 export class FuseSharedModule

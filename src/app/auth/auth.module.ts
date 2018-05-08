@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { FuseSharedModule } from '@fuse/shared.module';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatProgressBarModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { RegisterComponent } from './register/register.component';
 import { RegistercompanyComponent } from './registercompany/registercompany.component';
+import { FuseSharedModule } from '../../@fuse/shared.module';
 
 
 const appRoutes: Routes = [
@@ -34,6 +34,9 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
+    MatOptionModule,
+ MatSelectModule,
     FuseSharedModule],
   declarations: [LoginComponent, RegisterComponent, RegistercompanyComponent],
   providers: [AuthService, TokenGuard]

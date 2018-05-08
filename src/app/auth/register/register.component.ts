@@ -85,6 +85,8 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['auth/companyregistration']);
                }, err => this.err = err, () => this.loading = false);
            })
+       }else{
+           console.log("wachtwoorden zijn niet")
        }
 
     }
