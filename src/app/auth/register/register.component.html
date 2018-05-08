@@ -48,6 +48,9 @@
                     <mat-error *ngIf="registerFormErrors.password.required">
                         Password is required
                     </mat-error>
+                    <mat-error *ngIf="registerFormErrors.password.pattern">
+                            Wachtwoord moet minstens een hoofdletter en getal bevatten.
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
@@ -58,18 +61,19 @@
                     <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
                         Passwords must match
                     </mat-error>
+         
                 </mat-form-field>
 
                 <div class="terms" fxLayout="row" fxLayoutAlign="center center">
-                    <mat-checkbox name="terms" aria-label="Accept" required>
-                        <span>Accept</span>
+                    <mat-checkbox formControlName="terms"  name="terms" aria-label="Accept" required>
+                        <span>Accepteer onze</span>
                     </mat-checkbox>
-                    <a href="#">terms and conditions</a>
+                    <a href="#"> algemene voorwaarden</a>
                 </div>
 
                 <button (click)="register()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
-                        [disabled]="registerForm.invalid">
-                    CREATE AN ACCOUNT
+                        [disabled]="registerForm.invalid || loading">
+                    Maak een account aan
                 </button>
 
             </form>

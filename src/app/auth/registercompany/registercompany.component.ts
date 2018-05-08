@@ -1,3 +1,4 @@
+import { CustomValidators } from '@floydspace/ngx-validation';
 import { Company, Weight, Address } from './../../models/models';
 import { Component, OnInit } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';

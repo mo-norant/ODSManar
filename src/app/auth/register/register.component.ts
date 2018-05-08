@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { FuseConfigService } from '@fuse/services/config.service';
 import { Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
+import { CustomValidators } from '@floydspace/ngx-validation';
 
 @Component({
     selector: 'app-register',
@@ -16,9 +17,10 @@ export class RegisterComponent implements OnInit {
 
     registerForm: FormGroup;
     registerFormErrors: any;
-
+    terms: boolean = false;
     loading : boolean;
     err;
+
 
     constructor(
         private fuseConfig: FuseConfigService,
@@ -43,11 +45,14 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
+
+
         this.registerForm = this.formBuilder.group({
             Name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required],
-            passwordConfirm: ['', [Validators.required]]
+            password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$/)]],
+            passwordConfirm: ['', [Validators.required]],
+            terms : ['', [Validators.required]]
         });
 
         this.registerForm.valueChanges.subscribe(() => {
@@ -70,6 +75,8 @@ export class RegisterComponent implements OnInit {
             if (control && control.dirty && !control.valid) {
                 this.registerFormErrors[field] = control.errors;
             }
+
+
         }
     }
 
@@ -79,11 +86,16 @@ export class RegisterComponent implements OnInit {
            let user : RegisterUser = new RegisterUser(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.passwordConfirm, this.registerForm.value.Name);
            
            this.loading = true;
+        
+           
+            
            this.auth.createUser(user).subscribe(res => {
                this.auth.login(this.registerForm.value.email, this.registerForm.value.password).subscribe(res => {
                 this.auth.saveToken(res);
                 this.router.navigate(['auth/companyregistration']);
                }, err => this.err = err, () => this.loading = false);
+           }, () => {
+               this.loading = false;
            })
        }else{
            console.log("wachtwoorden zijn niet")

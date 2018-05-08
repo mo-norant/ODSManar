@@ -8,6 +8,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
 import { RegisterComponent } from './register/register.component';
 import { RegistercompanyComponent } from './registercompany/registercompany.component';
 import { FuseSharedModule } from '../../@fuse/shared.module';
+import { CustomFormsModule } from '@floydspace/ngx-validation';
 
 
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     MatProgressBarModule,
     MatOptionModule,
  MatSelectModule,
+ CustomFormsModule,
     FuseSharedModule],
   declarations: [LoginComponent, RegisterComponent, RegistercompanyComponent],
   providers: [AuthService, TokenGuard]
