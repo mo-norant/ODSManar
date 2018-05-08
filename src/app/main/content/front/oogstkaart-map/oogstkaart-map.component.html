@@ -1,4 +1,3 @@
-
 <div class="page-layout carded left-sidenav" fusePerfectScrollbar>
 
   <!-- TOP BACKGROUND -->
@@ -38,11 +37,9 @@
           <h5> {{oogstkaartitems?.length }} producten</h5>
         </h1>
 
-        <mat-slide-toggle
-          color="accent"
-         >
-        Artikelview
-      </mat-slide-toggle>
+        <mat-slide-toggle color="accent"  [(ngModel)]="artikelview">
+          Artikelview
+        </mat-slide-toggle>
 
         <mat-accordion>
           <mat-expansion-panel>
@@ -129,12 +126,38 @@
 
         <div class="content p-24" fusePerfectScrollbar>
 
-          <agm-map [latitude]="51.2627187555929" [zoom]="zoom" [longitude]="4.5024117984374925">
+          <agm-map *ngIf="!artikelview" [latitude]="51.2627187555929" [zoom]="zoom" [longitude]="4.5024117984374925">
 
             <agm-marker (markerClick)="opendialog(item)" *ngFor="let item of oogstkaartitems;" [iconUrl]="'assets/icons/markers/' + item.category + '.png'"
               [latitude]="item.location.latitude" [longitude]="item.location.longtitude">
             </agm-marker>
           </agm-map>
+
+
+          <div *ngIf="artikelview">
+            <div class="ui-g">
+              <div *ngFor="let item of oogstkaartitems" class="ui-g-12 ui-md-6 ui-lg-3">
+                <p-card>
+                  <p-header class="ui-card-title">
+                    {{item.artikelnaam}}
+                  </p-header>
+                  <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
+                  </mat-progress-spinner>
+                  <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />
+      
+                  Body Content
+                  <p-footer>
+                      <button (click)="openDetailview(item.oogstkaartItemID)" mat-button (click)="openDetailview(item.oogstkaartItemID)" color="accent">Meer info</button>
+                  </p-footer>
+                </p-card>
+              </div>
+
+              
+            </div>
+
+
+          </div>
+
         </div>
         <!-- / CONTENT -->
 

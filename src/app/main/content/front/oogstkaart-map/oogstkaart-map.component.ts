@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import * as _ from "lodash";
 import { ItemviewComponent } from './itemview/itemview.component';
 import { Utils } from '../../../../models/Util';
+import { Router } from '@angular/router';
 
 
 
@@ -22,11 +23,13 @@ export class OogstkaartMapComponent implements OnInit {
   oogstkaartitems: OogstKaartItem[]
 
   zoom = 7
-  itemsloading : boolean
-
+  itemsloading: boolean
   navigation
+  artikelview: boolean;
+  rootplace: string;
 
   link = 'Oogstkaart/mapview';
+
 
   filters = {
     categorie: [
@@ -54,7 +57,8 @@ export class OogstkaartMapComponent implements OnInit {
     private fuseConfig: FuseConfigService,
     private http: HttpClient,
     public dialog: MatDialog,
-    public landermapservice: LandermapService
+    public landermapservice: LandermapService,
+    private router: Router
   ) {
 
 
@@ -66,13 +70,14 @@ export class OogstkaartMapComponent implements OnInit {
       }
     });
 
+    this.rootplace = Utils.getRoot().replace("/api", "");
 
   }
 
   ngOnInit() {
 
     this.http.get<OogstKaartItem[]>(Utils.getRoot() + this.link).subscribe(res => {
-      
+
       this.oogstkaartitems = res;
       this.activatefilters(res);
       this.itemsloading = true;
@@ -84,10 +89,13 @@ export class OogstkaartMapComponent implements OnInit {
 
   opendialog(item: OogstKaartItem): void {
 
-    
+
+
     let dialogRef = this.dialog.open(ItemviewComponent, {
-      data: { item: item,
-      id : item.oogstkaartItemID }
+      data: {
+        item: item,
+        id: item.oogstkaartItemID
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -102,7 +110,7 @@ export class OogstkaartMapComponent implements OnInit {
     if ($event.source.id in this.oogstkaartitems) {
     }
 
-   
+
 
 
   }
@@ -123,8 +131,20 @@ export class OogstkaartMapComponent implements OnInit {
   }
 
 
+  loading: boolean = true
+  onLoad() {
+    this.loading = false;
+  }
 
 
+  openDetailview(id : number){
+    this.landermapservice.oogstkaartitem = this.oogstkaartitems.filter(i => i.oogstkaartItemID == id)[0];
+    this.router.navigate(['lander/detail/', id]);
+  }
+
+  
 
 }
+
+
 

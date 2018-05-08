@@ -16,6 +16,7 @@ import { DetailviewComponent } from './oogstkaart-map/detailview/detailview.comp
 import { SliderModule } from 'angular-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalGalleryModule } from 'angular-modal-gallery';
+import {CardModule} from 'primeng/card';
 
 const routes: Route[] = [
   {
@@ -43,6 +44,7 @@ const routes: Route[] = [
     NgbModule,
     FuseNavigationModule,
     ModalGalleryModule,
+    CardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
     }),
