@@ -19,6 +19,7 @@ namespace AngularSPAWebAPI.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Specificatie> Specificaties { get; set; }
         public DbSet<Afbeelding> Afbeeldingen { get; set; }
+        public DbSet<File> Files { get; set; }
 
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

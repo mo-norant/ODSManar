@@ -29,7 +29,7 @@ export class DetailviewComponent implements OnInit {
   currentsrc: string;
 
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
-  images: Image[] = [];
+  images: any[] = [];
 
  
   constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
@@ -41,9 +41,9 @@ export class DetailviewComponent implements OnInit {
     }
     else{
      this.currentsrc = this.rootplace + '/uploads/image/' + this.item.avatar.uri;
+     this.images.push({source: this.currentsrc, alt:'Description for' + this.item.oogstkaartItemID  , title:this.item.artikelnaam})
       this.item.gallery.forEach(element => {
-        this.images.push(new Image(element.afbeeldingID, {img : this.rootplace +  '/uploads/image/' + element.uri,
-        description: element.omschrijving}));
+        this.images.push({source: this.rootplace +  '/uploads/image/' + element.uri, alt:'Description for' + element.uri  , title:this.item.artikelnaam})
       });
 
       
@@ -85,6 +85,10 @@ onLoad() {
 
 test($event){
 
+}
+
+openModal($event){
+console.log($event)
 }
 
 }

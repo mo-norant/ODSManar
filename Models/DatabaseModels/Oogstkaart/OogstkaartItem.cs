@@ -26,5 +26,6 @@ namespace AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart
         public Afbeelding Avatar { get; set; }
     public ICollection<Specificatie> Specificaties { get; set; }
     public ICollection<Afbeelding> Gallery { get; set; }
-    }
+    public ICollection<File> Files { get; set; }
+  }
 }

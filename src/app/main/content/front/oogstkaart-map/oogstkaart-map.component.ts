@@ -32,14 +32,14 @@ export class OogstkaartMapComponent implements OnInit {
 
 
   filters = {
-    categorie: [
-      { jansenprofiel: false },
-      { constructieprofiel: false },
-      { deur: false },
-      { raam: false },
-      { geveldeel: false },
-      { overige: false }
-    ]
+    categorie: {
+      jansenprofiel: false,
+      constructieprofiel: false,
+      deur: false,
+      raam: false,
+      geveldeel: false,
+      overige: false
+    }
   }
 
   icons: [
@@ -79,7 +79,6 @@ export class OogstkaartMapComponent implements OnInit {
     this.http.get<OogstKaartItem[]>(Utils.getRoot() + this.link).subscribe(res => {
 
       this.oogstkaartitems = res;
-      this.activatefilters(res);
       this.itemsloading = true;
     }, err => {
       this.itemsloading = true;
@@ -105,30 +104,11 @@ export class OogstkaartMapComponent implements OnInit {
 
   filtertoggle($event) {
 
-    console.log($event)
-
-    if ($event.source.id in this.oogstkaartitems) {
-    }
-
-
-
+        
 
   }
 
-  activatefilters(oogstkaartitems: OogstKaartItem[]) {
-
-    oogstkaartitems.forEach(element => {
-      this.filtersid.push(element.category);
-    });
-
-    this.filtersid = _.uniq(this.filtersid);
-
-    this.filtersid.forEach(element => {
-      this.filters.categorie[element] = true;
-    });
-
-
-  }
+  
 
 
   loading: boolean = true

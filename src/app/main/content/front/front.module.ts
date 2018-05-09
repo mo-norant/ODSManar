@@ -17,6 +17,7 @@ import { SliderModule } from 'angular-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalGalleryModule } from 'angular-modal-gallery';
 import {CardModule} from 'primeng/card';
+import {GalleriaModule} from 'primeng/galleria';
 
 const routes: Route[] = [
   {
@@ -45,6 +46,7 @@ const routes: Route[] = [
     FuseNavigationModule,
     ModalGalleryModule,
     CardModule,
+    GalleriaModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC20RLiyVsvMLncki9JQdKuIpHdBdSXTY0'
     }),

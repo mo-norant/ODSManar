@@ -11,6 +11,6 @@ namespace AngularSPAWebAPI.Models.DatabaseModels.General
         public string URI { get; set; }
         public DateTime Create { get; set; }
         public string Name { get; set; }
-    public string Omschrijving { get; set; }
+        public string Omschrijving { get; set; }
   }
 }

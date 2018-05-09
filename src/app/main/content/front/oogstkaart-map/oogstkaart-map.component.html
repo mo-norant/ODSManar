@@ -43,13 +43,13 @@
               </mat-panel-title>
 
             </mat-expansion-panel-header>
-            <mat-checkbox [(ngModel)]="filters.categorie['jansenprofiel']" id="jansenprofiel" name="category" (change)="filtertoggle($event)">Jansenprofiel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie['constructieprofiel']" id="constructieprofiel" name="category" (change)="filtertoggle($event)">Constructieprofiel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie['deur']" id="deur" name="category" (change)="filtertoggle($event)">Deur</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.jansenprofiel" id="jansenprofiel" name="category" (change)="filtertoggle($event)">Jansenprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.constructieprofiel" id="constructieprofiel" name="category" (change)="filtertoggle($event)">Constructieprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.deur" id="deur" name="category" (change)="filtertoggle($event)">Deur</mat-checkbox>
             <br/>
-            <mat-checkbox [(ngModel)]="filters.categorie['raam']" id="raam" name="category" (change)="filtertoggle($event)">Raam</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie['geveldeel']" id="geveldeel" name="category" (change)="filtertoggle($event)">Geveldeel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie['overige']" id="overige" name="category" (change)="filtertoggle($event)">Overige</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.raam" id="raam" name="category" (change)="filtertoggle($event)">Raam</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.geveldeel" id="geveldeel" name="category" (change)="filtertoggle($event)">Geveldeel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.overige" id="overige" name="category" (change)="filtertoggle($event)">Overige</mat-checkbox>
 
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -130,7 +130,7 @@
 
           <div *ngIf="artikelview">
             <div class="ui-g">
-              <div *ngFor="let item of oogstkaartitems" class="ui-g-12 ui-md-6 ui-lg-3">
+              <div *ngFor="let item of oogstkaartitems" (click)="openDetailview(item.oogstkaartItemID)" class="ui-g-12 ui-md-6 ui-lg-3">
                 <p-card>
                   <p-header class="ui-card-title ml-15">
                     {{item.artikelnaam}}
@@ -139,7 +139,11 @@
                   </mat-progress-spinner>
                   <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />
                         <p-footer>
-                      <button (click)="openDetailview(item.oogstkaartItemID)" mat-raised-button (click)="openDetailview(item.oogstkaartItemID)" color="accent">Meer info</button>
+                      <button (click)="openDetailview(item.oogstkaartItemID)" mat-icon-button (click)="openDetailview(item.oogstkaartItemID)" color="accent">
+                          <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_right
+
+                            </mat-icon>
+                      </button>
                   </p-footer>
                 </p-card>
               </div>

@@ -19,6 +19,10 @@
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
+                <div class="product-image mr-8 mr-sm-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        <img *ngIf="currentsrc" [src]="currentsrc">
+                    </div>
+
                 <div fxLayout="column" fxLayoutAlign="start start" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <h1>{{item?.artikelnaam}}</h1>
 
@@ -46,94 +50,89 @@
 
             <!-- CONTENT -->
 
-                <div class="ui-g">
-                    <div class="ui-g-12 ui-md-3 ui-lg-3">
-                        <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
-                        </mat-progress-spinner>
-                        <img [hidden]="loading" (load)="onLoad()" currentsrc [src]="currentsrc" />
+            <div class="container">
+                    <div class="row">
+                      
+                      <div class="col-6">
+                            <mat-tab-group (selectedTabChange)="checkmap($event)">
 
+                                    <mat-tab label="Algemeen">
+                                        <div class="tab-content p-24" fusePerfectScrollbar>
+                                            <mat-list>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Artikel</h3>
+                                                    <p mat-line> {{item.artikelnaam}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Categorie</h3>
+                                                    <p mat-line> {{item.category}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Jansenserie</h3>
+                                                    <p mat-line> {{item.jansenserie}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Hoeveelheid</h3>
+                                                    <p mat-line> {{item.hoeveelheid}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Concept</h3>
+                                                    <p mat-line> {{item.concept}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <h3 mat-line>Gemaakt</h3>
+                                                    <p mat-line> {{item.createDate | date}} </p>
+                                                </mat-list-item>
+                                            </mat-list>
+        
+                                            <mat-list *ngIf="item.specificaties.length > 0">
+                                                <h3 mat-subheader>Specificaties</h3>
+                                                <mat-list-item *ngFor="let specificatie of item.specificaties">
+                                                    <mat-icon mat-list-icon>folder</mat-icon>
+                                                    <h4 mat-line>{{specificatie.specificatieSleutel}}</h4>
+                                                    <p mat-line> {{specificatie.specificatieValue}} </p>
+                                                    <p mat-line> {{specificatie.specificatieOmschrijving}} </p>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                            </mat-list>
+        
+                                        </div>
+                                    </mat-tab>
+        
+                                    <mat-tab label="Foto's">
+                                        <div class="tab-content p-24" fusePerfectScrollbar>
+                                            <div fxLayout="row wrap" fxLayoutAlign="start start">
+        
+                                                    <p-galleria [images]="images" panelWidth="1000" panelHeight="313" [showCaption]="true"></p-galleria>
+        
+                                            </div>
+                                        </div>
+                                    </mat-tab>
+        
+                                    <mat-tab label="Contact">
+                                        <div class="tab-content p-24" fusePerfectScrollbar>
+                                        </div>
+                                    </mat-tab>
+        
+                                    <mat-tab label="Kaart">
+                                        <div class="tab-content p-24" fusePerfectScrollbar>
+                                            <agm-map *ngIf="!hidemap" [latitude]="item.location.latitude" [zoom]="12" [longitude]="item.location.longtitude" #map>
+                                                <agm-marker [iconUrl]="'assets/icons/markers/' + item.category + '.png'" [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
+                                            </agm-map>
+                                        </div>
+                                    </mat-tab>
+                                </mat-tab-group>
+                      </div>
+                     
                     </div>
-                    <div class="ui-g-12 ui-md-3 ui-lg-9">
-                        <mat-tab-group (selectedTabChange)="checkmap($event)">
+                  </div>
 
-                            <mat-tab label="Algemeen">
-                                <div class="tab-content p-24" fusePerfectScrollbar>
-                                    <mat-list>
-                                        <mat-list-item>
-                                            <h3 mat-line>Artikel</h3>
-                                            <p mat-line> {{item.artikelnaam}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <h3 mat-line>Categorie</h3>
-                                            <p mat-line> {{item.category}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <h3 mat-line>Jansenserie</h3>
-                                            <p mat-line> {{item.jansenserie}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <h3 mat-line>Hoeveelheid</h3>
-                                            <p mat-line> {{item.hoeveelheid}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <h3 mat-line>Concept</h3>
-                                            <p mat-line> {{item.concept}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <h3 mat-line>Gemaakt</h3>
-                                            <p mat-line> {{item.createDate | date}} </p>
-                                        </mat-list-item>
-                                    </mat-list>
-
-                                    <mat-list *ngIf="item.specificaties.length > 0">
-                                        <h3 mat-subheader>Specificaties</h3>
-                                        <mat-list-item *ngFor="let specificatie of item.specificaties">
-                                            <mat-icon mat-list-icon>folder</mat-icon>
-                                            <h4 mat-line>{{specificatie.specificatieSleutel}}</h4>
-                                            <p mat-line> {{specificatie.specificatieValue}} </p>
-                                            <p mat-line> {{specificatie.specificatieOmschrijving}} </p>
-                                        </mat-list-item>
-                                        <mat-divider></mat-divider>
-                                    </mat-list>
-
-                                </div>
-                            </mat-tab>
-
-                            <mat-tab label="Foto's">
-                                <div class="tab-content p-24" fusePerfectScrollbar>
-                                    <div fxLayout="row wrap" fxLayoutAlign="start start">
-
-                                        <ks-modal-gallery [modalImages]="images"></ks-modal-gallery>
-
-                                    </div>
-                                </div>
-                            </mat-tab>
-
-                            <mat-tab label="Contact">
-                                <div class="tab-content p-24" fusePerfectScrollbar>
-                                </div>
-                            </mat-tab>
-
-                            <mat-tab label="Kaart">
-                                <div class="tab-content p-24" fusePerfectScrollbar>
-                                    <agm-map *ngIf="!hidemap" [latitude]="item.location.latitude" [zoom]="12" [longitude]="item.location.longtitude" #map>
-
-                                        <agm-marker [iconUrl]="'assets/icons/markers/' + item.category + '.png'" [latitude]="item.location.latitude" [longitude]="item.location.longtitude"></agm-marker>
-                                    </agm-map>
-                                </div>
-                            </mat-tab>
-                        </mat-tab-group>
-                    </div>
-
-
-                <!-- / CONTENT -->
-
-            </div>
+               
         </div>
     </div>
 </div>
