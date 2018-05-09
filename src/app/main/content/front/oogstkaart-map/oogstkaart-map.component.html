@@ -1,3 +1,4 @@
+
 <div class="page-layout carded left-sidenav" fusePerfectScrollbar>
 
   <!-- TOP BACKGROUND -->
@@ -30,7 +31,7 @@
             Artikelview
           </mat-slide-toggle>
         <h1>Filter
-          <h5> {{oogstkaartitems?.length }} producten</h5>
+          <h5> {{filtered?.length }} producten</h5>
         </h1>
 
       
@@ -59,14 +60,14 @@
 
             </mat-expansion-panel-header>
 
-            <mat-checkbox id="ART-15" name="serie" (change)="filtertoggle($event)">ART-15</mat-checkbox>
-            <mat-checkbox id="Janisol ARTE" name="serie" (change)="filtertoggle($event)">Janisol ARTE</mat-checkbox>
-            <mat-checkbox id="Economy" name="serie" (change)="filtertoggle($event)">Economy</mat-checkbox>
-            <mat-checkbox id="Janisol" name="serie" (change)="filtertoggle($event)">Janisol</mat-checkbox>
-            <mat-checkbox id="Janisol HI" name="serie" (change)="filtertoggle($event)">Janisol HI</mat-checkbox>
-            <mat-checkbox id="Janisol 2" name="serie" (change)="filtertoggle($event)">Janisol 2</mat-checkbox>
-            <mat-checkbox id="Janisol C4" name="serie" (change)="filtertoggle($event)">Janisol C4</mat-checkbox>
-            <mat-checkbox id="Janisol Viss" name="serie" (change)="filtertoggle($event)">Janisol Viss</mat-checkbox>
+            <mat-checkbox id="ART-15" name="serie" [(ngModel)]="filters.serie.ART15" (ngModelChange)="filtertoggle($event)">ART-15</mat-checkbox>
+            <mat-checkbox id="Janisol ARTE" name="serie"[(ngModel)]="filters.serie.janisolARTE" (ngModelChange)="filtertoggle($event)">Janisol ARTE</mat-checkbox>
+            <mat-checkbox id="Economy" name="serie" [(ngModel)]="filters.serie.economy" (ngModelChange)="filtertoggle($event)">Economy</mat-checkbox>
+            <mat-checkbox id="Janisol" name="serie" [(ngModel)]="filters.serie.janisol" (ngModelChange)="filtertoggle($event)">Janisol</mat-checkbox>
+            <mat-checkbox id="Janisol HI" name="serie" [(ngModel)]="filters.serie.janisolHI" (ngModelChange)="filtertoggle($event)">Janisol HI</mat-checkbox>
+            <mat-checkbox id="Janisol 2" name="serie" [(ngModel)]="filters.serie.janisol2" (ngModelChange)="filtertoggle($event)">Janisol 2</mat-checkbox>
+            <mat-checkbox id="Janisol C4" name="serie"  [(ngModel)]="filters.serie.janisolC4"(ngModelChange)="filtertoggle($event)">Janisol C4</mat-checkbox>
+            <mat-checkbox id="Janisol Viss" name="serie" [(ngModel)]="filters.serie.jansenViss" (ngModelChange)="filtertoggle($event)">Janisol Viss</mat-checkbox>
 
 
 
@@ -80,8 +81,6 @@
 
             </mat-expansion-panel-header>
 
-            <mat-checkbox id="concept" name="Te huur" (change)="filtertoggle($event)">Te huur</mat-checkbox>
-            <mat-checkbox id="concept" name="Te koop" (change)="filtertoggle($event)">Te koop</mat-checkbox>
 
           </mat-expansion-panel>
         </mat-accordion>
@@ -121,7 +120,7 @@
 
           <agm-map *ngIf="!artikelview" [latitude]="51.2627187555929" [zoom]="zoom" [longitude]="4.5024117984374925">
 
-            <agm-marker (markerClick)="opendialog(item)" *ngFor="let item of oogstkaartitems;" [iconUrl]="'assets/icons/markers/' + item.category + '.png'"
+            <agm-marker (markerClick)="opendialog(item)" *ngFor="let item of filtered;" [iconUrl]="'assets/icons/markers/' + item.category + '.png'"
               [latitude]="item.location.latitude" [longitude]="item.location.longtitude">
             </agm-marker>
           </agm-map>
@@ -129,7 +128,7 @@
 
           <div *ngIf="artikelview">
             <div class="ui-g">
-              <div *ngFor="let item of oogstkaartitems" (click)="openDetailview(item.oogstkaartItemID)" class="ui-g-12 ui-md-6 ui-lg-3">
+              <div *ngFor="let item of filtered" (click)="openDetailview(item.oogstkaartItemID)" class="ui-g-12 ui-md-6 ui-lg-3">
                 <p-card>
                   <div class="row">
                       <p-header class="ui-card-title">

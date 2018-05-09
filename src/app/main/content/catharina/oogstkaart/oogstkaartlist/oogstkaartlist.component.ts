@@ -42,7 +42,7 @@ export class OogstkaartlistComponent implements OnInit {
   onUserEvent(e) {
     if (e.type == "click") {
       let item: OogstKaartItem = e.row;
-      this.router.navigate(['catharina/item/', item.oogstkaartItemID]);
+      this.router.navigate(['dashboard/item/', item.oogstkaartItemID]);
 
 
     }

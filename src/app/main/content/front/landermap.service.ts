@@ -1,21 +1,12 @@
 import { Injectable } from '@angular/core';
 import { OogstKaartItem } from '../../../models/models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class LandermapService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
-  
-  private _oogstkaartitem : OogstKaartItem;
-  public get oogstkaartitem() : OogstKaartItem {
-    return this._oogstkaartitem;
-  }
-  public set oogstkaartitem(v : OogstKaartItem) {
-    this._oogstkaartitem = v;
-  }
-  
-  
   private _navigation =     [{
       'title' : 'Login',
       'type' : 'item',
@@ -28,6 +19,19 @@ export class LandermapService {
     'icon' : 'add',
     'url' : '/auth/register'
 },]
+
+
+  public getItem(id : number){
+    return this.http.get<OogstKaartItem>('')
+  }
+
+  private _oogstkaartitem : OogstKaartItem;
+  public get oogstkaartitem() : OogstKaartItem {
+    return this._oogstkaartitem;
+  }
+  public set oogstkaartitem(v : OogstKaartItem) {
+    this._oogstkaartitem = v;
+  }
   public get navigation() {
     return this._navigation;
   }

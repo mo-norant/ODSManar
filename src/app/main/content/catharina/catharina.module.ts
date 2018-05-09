@@ -12,18 +12,18 @@ import { FuseWidgetModule } from '@fuse/components';
 
 const routes: Route[] = [
   {
-    path: 'catharina',
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [TokenGuard]
   },
   {
-    path: 'catharina/oostkaart',
+    path: 'dashboard/oostkaart',
     loadChildren: './oogstkaart/oogstkaart.module#OogstkaartModule',
     canActivateChild: [TokenGuard]
   },
   {
-    path: 'catharina/**',
-    redirectTo: 'catharina'
+    path: 'dashboard/**',
+    redirectTo: 'dashboard'
   },
 
 ];

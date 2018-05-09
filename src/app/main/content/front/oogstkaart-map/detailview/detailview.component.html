@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <button mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0">
+            <button *ngIf='item.Views' mat-raised-button class="save-product-button mat-white-bg mt-16 mt-sm-0">
                 <span>
                     <h3> {{item.Views}} keer bekeken </h3>
                 </span>
@@ -88,9 +88,7 @@
                                                         <span>
                                                         <mat-icon *ngIf="item.transportInbegrepen; else other" class="active-icon mat-green-600-bg s-16">check</mat-icon>
                                                         <ng-template #other>
-                                    
                                                             <mat-icon class="active-icon mat-red-500-bg s-16">close</mat-icon>
-                                    
                                                         </ng-template>
                                                     </span>
                                                     </mat-list-item>

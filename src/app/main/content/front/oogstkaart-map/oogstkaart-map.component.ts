@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
 export class OogstkaartMapComponent implements OnInit {
 
   oogstkaartitems: OogstKaartItem[]
+  filtered : OogstKaartItem[]
 
   zoom = 7
   itemsloading: boolean
@@ -30,6 +31,7 @@ export class OogstkaartMapComponent implements OnInit {
 
   link = 'Oogstkaart/mapview';
 
+ 
 
   filters = {
     categorie: {
@@ -39,6 +41,16 @@ export class OogstkaartMapComponent implements OnInit {
       raam: false,
       geveldeel: false,
       overige: false
+    },
+    serie: {
+      ART15 : false,
+      janisolARTE: false,
+      economy: false,
+      janisol : false,
+      janisolHI: false,
+      janisol2: false,
+      janisolC4:false,
+      jansenViss:false
     }
   }
 
@@ -79,6 +91,7 @@ export class OogstkaartMapComponent implements OnInit {
     this.http.get<OogstKaartItem[]>(Utils.getRoot() + this.link).subscribe(res => {
 
       this.oogstkaartitems = res;
+      this.filtered = this.oogstkaartitems;
       this.itemsloading = true;
     }, err => {
       this.itemsloading = true;
@@ -104,21 +117,53 @@ export class OogstkaartMapComponent implements OnInit {
 
   filtertoggle($event) {
 
-    let templist = [];
+
+    let tempcategorie = []
+    let tempmerklist = []
 
     for (let key in this.filters.categorie) {
-      if(this.filters.categorie[key]){
-        templist.push(this.filters.categorie[key]);
-        console.log(templist)
+      if (this.filters.categorie[key]) {
+        tempcategorie.push(key);
       }
-      
+    }
+
+    for (let key in this.filters.serie) {
+      if (this.filters.serie[key]) {
+        tempmerklist.push(key);
+      }
+    }
+
+    if(tempcategorie.length != 0){
+      this.filtered = [];
+      tempcategorie.forEach(category => {
+        this.oogstkaartitems.forEach(element => {
+          if(element.category === category){
+            this.filtered.push(element);
+          }
+        });
+      });
+    }
+    if(tempmerklist.length != 0){
+      this.filtered = [];
+      tempmerklist.forEach(merk => {
+        this.oogstkaartitems.forEach(element => {
+          if(element.jansenserie.toLowerCase() === merk.toLowerCase()){
+            this.filtered.push(element);
+          }
+        });
+      });
+    }
+    else{
+      this.filtered = this.oogstkaartitems;
+    }
+
+
   }
 
-      
 
+  filterCategory(){
+    
   }
-
-  
 
 
   loading: boolean = true
@@ -127,12 +172,12 @@ export class OogstkaartMapComponent implements OnInit {
   }
 
 
-  openDetailview(id : number){
+  openDetailview(id: number) {
     this.landermapservice.oogstkaartitem = this.oogstkaartitems.filter(i => i.oogstkaartItemID == id)[0];
     this.router.navigate(['lander/detail/', id]);
   }
 
-  
+
 
 }
 

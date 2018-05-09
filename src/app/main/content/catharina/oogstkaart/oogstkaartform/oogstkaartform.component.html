@@ -51,14 +51,14 @@
 
                 <mat-form-field class="row">
                   <mat-select formControlName="jansenserie" placeholder="Jansenserie">
-                    <mat-option value="ART-15">ART-15</mat-option>
-                    <mat-option value="janisol ARTE">Janisol ARTE</mat-option>
+                    <mat-option value="ART15">ART-15</mat-option>
+                    <mat-option value="janisolARTE">Janisol ARTE</mat-option>
                     <mat-option value="economy">Economy</mat-option>
                     <mat-option value="janisol">Janisol</mat-option>
-                    <mat-option value="janisol HI">Janisol HI</mat-option>
-                    <mat-option value="Janisol 2">Janisol 2</mat-option>
-                    <mat-option value="Janisol C4">Janisol C4</mat-option>
-                    <mat-option value="Jansen Viss">Jansen Viss</mat-option>
+                    <mat-option value="janisolHI">Janisol HI</mat-option>
+                    <mat-option value="Janisol2">Janisol 2</mat-option>
+                    <mat-option value="JanisolC4">Janisol C4</mat-option>
+                    <mat-option value="JansenViss">Jansen Viss</mat-option>
 
                   </mat-select>
 
@@ -79,9 +79,15 @@
                 <mat-form-field>
                   <input matInput placeholder="Totale vraagprijs" formControlName="vraagPrijsTotaal" required>
                 </mat-form-field>
+                
                 <br/>
 
-
+                <mat-form-field class="row">
+                    <mat-select formControlName="transportInbegrepen" placeholder="Neen" required>
+                      <mat-option value="false">Neen</mat-option>
+                      <mat-option value="true">Ja</mat-option>
+                    </mat-select>
+                    </mat-form-field>
                 <mat-form-field class="row">
                   <mat-select formControlName="concept" placeholder="Concept" required>
                     <mat-option value="Te huur">Te huur</mat-option>
@@ -216,6 +222,8 @@
                 <div *ngIf="postsucces; else error">
                   <div class="alert alert-success" role="alert">
                     <strong>Uw product werd succesvol in onze database gezet.</strong>
+                    <button mat-raised-button color="primary" [routerLink]="['/lander/detail/', oogstkaartID]">Bekijk uw product</button>
+
                   </div>
                 </div>
 
@@ -232,7 +240,7 @@
 
                 <div>
                   <button mat-raised-button color="primary" (click)="reset()">Nieuw artikel</button>
-                  <button mat-raised-button color="primary" [routerLink]="'/catharina/oogstkaart'">Uw oogstkaartartikelen</button>
+                  <button mat-raised-button color="primary" [routerLink]="'/dashboard/oogstkaart'">Uw oogstkaartartikelen</button>
 
                 </div>
 

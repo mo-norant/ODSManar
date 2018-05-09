@@ -58,7 +58,9 @@ export class ItemComponent implements OnInit {
           categorie: [res.category, Validators.required],
           hoeveelheid: [res.hoeveelheid, [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
           concept: [res.concept, Validators.required],
-          datumBeschikbaar: [res.datumBeschikbaar, Validators.required]
+          datumBeschikbaar: [res.datumBeschikbaar, Validators.required],
+          transportInbegrepen: ['', Validators.required]
+
         });
         this.onChanges();
 
@@ -67,7 +69,7 @@ export class ItemComponent implements OnInit {
         this.snackBar.open("Geen product gevonden", "", {
           duration: 2000
         }); 
-        this.router.navigate(["catharina/oostkaart"])
+        this.router.navigate(["dashboard/oostkaart"])
       }, () => this.loading = false)
     });
 
@@ -99,7 +101,7 @@ export class ItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['/catharina/oostkaart']);
+      this.router.navigate(['/dashboard/oostkaart']);
     });  }
 
     onChanges(): void {

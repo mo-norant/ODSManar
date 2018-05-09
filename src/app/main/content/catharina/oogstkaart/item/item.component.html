@@ -10,7 +10,7 @@
         <!-- CONTENT HEADER -->
         <div class="header white-fg p-24" fxLayout="row" fxLayoutAlign="start center">
 
-            <button class="mr-0 mr-sm-16 " mat-icon-button [routerLink]="'/catharina/oostkaart'">
+            <button class="mr-0 mr-sm-16 " mat-icon-button [routerLink]="'/dashboard/oostkaart'">
                 <mat-icon>arrow_back</mat-icon>
             </button>
 
@@ -94,17 +94,20 @@
                                     </mat-form-field>
                 
                                     <mat-form-field class="row">
-                                        <mat-select formControlName="jansenserie" placeholder="Jansenserie">
-                                            <mat-option value="ART-15">ART-15</mat-option>
-                                            <mat-option value="Janisol ARTE">Janisol ARTE</mat-option>
-                                            <mat-option value="Economy">Economy</mat-option>
-                                            <mat-option value="Janisol">Janisol</mat-option>
-                                            <mat-option value="janisol HI">Janisol HI</mat-option>
-                                            <mat-option value="Janisol 2">Janisol 2</mat-option>
-                                            <mat-option value="Janisol C4">Janisol C4</mat-option>
-                                            <mat-option value="Jansen Viss">Jansen Viss</mat-option>
-                
-                                        </mat-select>
+                                            <mat-form-field class="row">
+                                                    <mat-select formControlName="jansenserie" placeholder="Jansenserie">
+                                                      <mat-option value="ART15">ART-15</mat-option>
+                                                      <mat-option value="janisolARTE">Janisol ARTE</mat-option>
+                                                      <mat-option value="economy">Economy</mat-option>
+                                                      <mat-option value="janisol">Janisol</mat-option>
+                                                      <mat-option value="janisolHI">Janisol HI</mat-option>
+                                                      <mat-option value="Janisol2">Janisol 2</mat-option>
+                                                      <mat-option value="JanisolC4">Janisol C4</mat-option>
+                                                      <mat-option value="JansenViss">Jansen Viss</mat-option>
+                                  
+                                                    </mat-select>
+                                  
+                                                  </mat-form-field>
                 
                                     </mat-form-field>
                                     <br/>
@@ -124,7 +127,12 @@
                                     </mat-form-field>
                                     <br/>
                 
-                                    
+                                    <mat-form-field class="row">
+                                            <mat-select formControlName="transportInbegrepen" placeholder="Neen" required>
+                                              <mat-option value="false">Neen</mat-option>
+                                              <mat-option value="true">Ja</mat-option>
+                                            </mat-select>
+                                            </mat-form-field>
                 
                                     <mat-form-field class="row">
                                             <mat-select formControlName="concept" placeholder="Concept" required>

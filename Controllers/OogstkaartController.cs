@@ -406,10 +406,25 @@ namespace AngularSPAWebAPI.Controllers
     public async Task<IActionResult> GetAdmin()
     {
       var artikels = await context.OogstkaartItems.Where(i => i.OnlineStatus == true).Include(i => i.Location).Where(i => i.Location != null).Include(i => i.Avatar)
-      .Include(i => i.Gallery).Include(i => i.Specificaties).ToListAsync();
+      .Include(i => i.Gallery).Include(i => i.Specificaties).Include(i => i.Files).ToListAsync();
       return Ok(artikels);
     }
 
+    [AllowAnonymous]
+    [HttpGet("mapview/{id}")]
+    public async Task<IActionResult> GetItemFromRoute([FromRoute] int id )
+    {
+      var artikel = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Include(i => i.Location).Where(i => i.Location != null).Include(i => i.Avatar)
+      .Include(i => i.Gallery).Include(i => i.Specificaties).Include(i => i.Files).FirstOrDefaultAsync();
 
+      if(artikel == null)
+      {
+        return BadRequest();
+      }
+
+      return Ok(artikel);
     }
+
+
+  }
 }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { OogstKaartItem } from '../../../../../models/models';
 import { FuseConfigService } from '../../../../../../@fuse/services/config.service';
 import { fuseAnimations } from '../../../../../../@fuse/animations';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AgmMap } from '@agm/core';
 import { Utils } from '../../../../../models/Util';
 import {
@@ -32,12 +32,16 @@ export class DetailviewComponent implements OnInit {
   images: any[] = [];
 
  
-  constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService ) {
+  constructor(private router : Router, private landerservice: LandermapService, private fuseConfig: FuseConfigService, private route :ActivatedRoute ) {
 
     this.item = this.landerservice.oogstkaartitem;
     this.rootplace = Utils.getRoot().replace("/api", "");
     if(this.item === undefined){
-      this.router.navigate(['lander/map'])
+      this.route.params.subscribe(data => {
+        this.landerservice.getItem(data['id']).subscribe(data => {
+          this.item = data;
+        })
+      })
     }
     else{
      this.currentsrc = this.rootplace + '/uploads/image/' + this.item.avatar.uri;

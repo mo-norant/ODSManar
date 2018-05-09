@@ -18,20 +18,20 @@ import { MaterialModule } from '../../../../material/material.module';
 
 const routes: Routes = [
   {
-      path     : 'catharina/oostkaart',
+      path     : 'dashboard/oostkaart',
       component: OogstkaartlistComponent,
       canActivate: [TokenGuard]
 
       
   },
   {
-    path     : 'catharina/newproduct',
+    path     : 'dashboard/newproduct',
     component: OogstkaartformComponent,
     canActivate: [TokenGuard]
 
   },
   {
-    path     : 'catharina/item/:id',
+    path     : 'dashboard/item/:id',
     component: ItemComponent,
     canActivate: [TokenGuard]
   }

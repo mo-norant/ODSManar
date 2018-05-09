@@ -74,7 +74,8 @@ export class OogstkaartformComponent implements OnInit {
       categorie: ['', Validators.required],
       hoeveelheid: ['', [Validators.required, Validators.pattern('^[0-9]{1,45}$')]],
       concept: ['', Validators.required],
-      datumBeschikbaar: ['']
+      datumBeschikbaar: [''],
+      transportInbegrepen: ['', Validators.required]
     });
 
     this.thirdFormGroup = this._formBuilder.group({
@@ -96,6 +97,7 @@ export class OogstkaartformComponent implements OnInit {
     item.vraagPrijsPerEenheid = this.secondFormGroup.value.vraagPrijsPerEenheid;
     item.vraagPrijsTotaal = this.secondFormGroup.value.vraagPrijsTotaal;
     item.specificaties = this.specificaties;
+    item.transportInbegrepen = this.secondFormGroup.value.transportinbegrepen;
   
     if(this.buttondisabled == false){
       this.buttondisabled = true;
