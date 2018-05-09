@@ -104,7 +104,17 @@ export class OogstkaartMapComponent implements OnInit {
 
   filtertoggle($event) {
 
-        
+    let templist = [];
+
+    for (let key in this.filters.categorie) {
+      if(this.filters.categorie[key]){
+        templist.push(this.filters.categorie[key]);
+        console.log(templist)
+      }
+      
+  }
+
+      
 
   }
 

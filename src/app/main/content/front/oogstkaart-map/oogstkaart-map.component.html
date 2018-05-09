@@ -41,15 +41,14 @@
               <mat-panel-title>
                 Categorie
               </mat-panel-title>
-
             </mat-expansion-panel-header>
-            <mat-checkbox [(ngModel)]="filters.categorie.jansenprofiel" id="jansenprofiel" name="category" (change)="filtertoggle($event)">Jansenprofiel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie.constructieprofiel" id="constructieprofiel" name="category" (change)="filtertoggle($event)">Constructieprofiel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie.deur" id="deur" name="category" (change)="filtertoggle($event)">Deur</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.jansenprofiel" id="jansenprofiel" name="category" (ngModelChange)="filtertoggle($event)">Jansenprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.constructieprofiel" id="constructieprofiel" name="category" (ngModelChange)="filtertoggle($event)">Constructieprofiel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.deur" id="deur" name="category" (ngModelChange)="filtertoggle($event)">Deur</mat-checkbox>
             <br/>
-            <mat-checkbox [(ngModel)]="filters.categorie.raam" id="raam" name="category" (change)="filtertoggle($event)">Raam</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie.geveldeel" id="geveldeel" name="category" (change)="filtertoggle($event)">Geveldeel</mat-checkbox>
-            <mat-checkbox [(ngModel)]="filters.categorie.overige" id="overige" name="category" (change)="filtertoggle($event)">Overige</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.raam" id="raam" name="category" (ngModelChange)="filtertoggle($event)">Raam</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.geveldeel" id="geveldeel" name="category" (ngModelChange)="filtertoggle($event)">Geveldeel</mat-checkbox>
+            <mat-checkbox [(ngModel)]="filters.categorie.overige" id="overige" name="category" (ngModelChange)="filtertoggle($event)">Overige</mat-checkbox>
 
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -132,9 +131,12 @@
             <div class="ui-g">
               <div *ngFor="let item of oogstkaartitems" (click)="openDetailview(item.oogstkaartItemID)" class="ui-g-12 ui-md-6 ui-lg-3">
                 <p-card>
-                  <p-header class="ui-card-title ml-15">
-                    {{item.artikelnaam}}
-                  </p-header>
+                  <div class="row">
+                      <p-header class="ui-card-title">
+                          {{item.artikelnaam}}
+                        </p-header>
+                  </div>
+                 
                   <mat-progress-spinner *ngIf="loading" color="accent" mode="indeterminate">
                   </mat-progress-spinner>
                   <img [hidden]="loading" (load)="onLoad()" [src]="rootplace + '/uploads/image/' + item.avatar?.uri" />

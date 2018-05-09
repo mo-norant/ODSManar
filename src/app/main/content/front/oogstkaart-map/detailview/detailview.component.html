@@ -59,6 +59,10 @@
                                     <mat-tab label="Algemeen">
                                         <div class="tab-content p-24" fusePerfectScrollbar>
                                             <mat-list>
+                                                    <mat-list-item>
+                                                            <h3 mat-line>OogstkaartID</h3>
+                                                            <p mat-line> {{item.oogstkaartItemID}} </p>
+                                                        </mat-list-item>
                                                 <mat-list-item>
                                                     <h3 mat-line>Artikel</h3>
                                                     <p mat-line> {{item.artikelnaam}} </p>
@@ -78,6 +82,18 @@
                                                     <h3 mat-line>Hoeveelheid</h3>
                                                     <p mat-line> {{item.hoeveelheid}} </p>
                                                 </mat-list-item>
+                                                <mat-list-item>
+                                                        <h3 mat-line>Transport Onbegrepen</h3>
+                                                        
+                                                        <span>
+                                                        <mat-icon *ngIf="item.transportInbegrepen; else other" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                                                        <ng-template #other>
+                                    
+                                                            <mat-icon class="active-icon mat-red-500-bg s-16">close</mat-icon>
+                                    
+                                                        </ng-template>
+                                                    </span>
+                                                    </mat-list-item>
                                                 <mat-divider></mat-divider>
                                                 <mat-list-item>
                                                     <h3 mat-line>Concept</h3>
@@ -88,6 +104,7 @@
                                                     <h3 mat-line>Gemaakt</h3>
                                                     <p mat-line> {{item.createDate | date}} </p>
                                                 </mat-list-item>
+                                                
                                             </mat-list>
         
                                             <mat-list *ngIf="item.specificaties.length > 0">

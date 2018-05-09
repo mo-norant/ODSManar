@@ -5,9 +5,9 @@ import { HttpClient } from 'selenium-webdriver/http';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
-import {Observable} from 'rxjs/Observable';
-import {startWith} from 'rxjs/operators/startWith';
-import {map} from 'rxjs/operators/map';
+import { Observable } from 'rxjs/Observable';
+import { startWith } from 'rxjs/operators/startWith';
+import { map } from 'rxjs/operators/map';
 
 
 @Component({
@@ -21,41 +21,47 @@ export class OogstkaartlistComponent implements OnInit {
   loadingIndicator = true;
   reorderable = true;
   temp: any[];
+  searchstring: string;
 
-  constructor(private oogstkaartservice: OogstkaartService, private router : Router)
-  {
-    
+
+  filtered: any[];
+
+  constructor(private oogstkaartservice: OogstkaartService, private router: Router) {
+
   }
 
-  ngOnInit()
-  {
-      this.oogstkaartservice.GetOogstkaartitems().subscribe(res => {
-        this.loadingIndicator = false;
-        this.rows = res;
-       
-      })
+  ngOnInit() {
+    this.oogstkaartservice.GetOogstkaartitems().subscribe(res => {
+      this.loadingIndicator = false;
+      this.rows = res;
+      this.filtered = this.rows;
+
+    })
   }
 
-  onUserEvent ( e ) {
-    if ( e.type == "click" ) {
-        let item : OogstKaartItem = e.row;
-        this.router.navigate(['catharina/item/', item.oogstkaartItemID]);
-       
+  onUserEvent(e) {
+    if (e.type == "click") {
+      let item: OogstKaartItem = e.row;
+      this.router.navigate(['catharina/item/', item.oogstkaartItemID]);
+
 
     }
-} 
+  }
 
-updateFilter(event) {
-  const val = event.target.value.toLowerCase();
+  search($event) {
 
-  console.log(event)
+    $event = $event.toLowerCase();
+    
+    if($event === ''){
+        this.filtered = this.rows;
+    }
+    else{
+      console.log($event);
+      this.filtered = this.rows.filter((i) => i.artikelnaam.toLowerCase().indexOf($event) >= 0 || i.category.toLowerCase().indexOf($event) >= 0 || i.omschrijving.toLowerCase().indexOf($event) >= 0  );
+    }
 
-  const temp = this.temp.filter(function(d) {
-    return d.Artikel.toLowerCase().indexOf(val) !== -1 || !val;
-  });
 
-  this.rows = temp;
-}
 
+  }
 
 }

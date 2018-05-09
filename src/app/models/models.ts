@@ -42,7 +42,8 @@
         vraagPrijsPerEenheid: number;
         vraagPrijsTotaal: number;
         onlineStatus: boolean;
-        concept: string;    
+        concept: string;  
+        transportInbegrepen: boolean;  
         userID: string;  
         Views: number;
         avatar : Afbeelding;

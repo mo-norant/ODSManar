@@ -25,12 +25,12 @@
 
 
         <mat-form-field class="example-full-width">
-            <input matInput type='text' placeholder='artikelnaam'
-                (keyup)='updateFilter($event)'>
+            <input matInput type='text' placeholder='artikelnaam' [(ngModel)]="searchstring"
+            (ngModelChange)="search($event)">
 
         </mat-form-field>
 
-        <ngx-datatable (activate)='onUserEvent($event)' class="material" [rows]="rows" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
+        <ngx-datatable (activate)='onUserEvent($event)' class="material" [rows]="filtered" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
             [headerHeight]="48" [footerHeight]="56" [rowHeight]="'auto'" [scrollbarH]="true" [reorderable]="reorderable" [limit]="10">
 
             <ngx-datatable-column [width]="48" [canAutoResize]="true" [sortable]="true">
