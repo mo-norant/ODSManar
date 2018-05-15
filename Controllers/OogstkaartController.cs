@@ -17,6 +17,7 @@ using System.IO;
 using AngularSPAWebAPI.Models.DatabaseModels.General;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Cors;
+using AngularSPAWebAPI.Models.DatabaseModels.Communication;
 
 namespace AngularSPAWebAPI.Controllers
 {
@@ -383,7 +384,29 @@ namespace AngularSPAWebAPI.Controllers
       
     }
 
+    [AllowAnonymous]
+    [HttpPost("request/{id}")]
+    public async Task<IActionResult> CreateRequest([FromRoute] int id,  [FromBody] Request request )
+    {
 
+      if (!ModelState.IsValid)
+      {
+        return BadRequest();
+      }
+
+      var item = await context.OogstkaartItems.Where(i => i.OogstkaartItemID == id).Include(i => i.Requests).FirstOrDefaultAsync();
+
+      if(item != null)
+      {
+        request.Create = DateTime.Now;
+        request.Status = "review";
+        item.Requests.Add(request);
+        await context.SaveChangesAsync();
+        return Ok();
+      }
+
+      return BadRequest();
+    }
 
     [AllowAnonymous]
     [HttpPost("view/{id}")]

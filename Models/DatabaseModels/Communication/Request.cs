@@ -14,5 +14,6 @@ namespace AngularSPAWebAPI.Models.DatabaseModels.Communication
     public string Message { get; set; }
     public string Status { get; set; }
     public DateTime Create { get; set; }
+    public bool UserViewed { get; set; }
   }
 }
