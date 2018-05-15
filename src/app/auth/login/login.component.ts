@@ -1,3 +1,4 @@
+import { GeneralService } from './../../general.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
         private fuseConfig: FuseConfigService,
         private formBuilder: FormBuilder,
         private auth: AuthService,
-        private router: Router
+        private router: Router,
+        private general: GeneralService
     ) {
         this.fuseConfig.setConfig({
             layout: {
@@ -66,7 +68,14 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
 
             if (!this.auth.tokenExpired() && this.auth.hasToken()) {
-                this.router.navigate(['/catharina']);
+                if(this.auth.decodeToken().role === 'administrator'){
+                    this.general.role = 'administrator';
+                }
+                else{
+                 this.general.role = 'user';
+                this.router.navigate(['catharina']);
+                
+                }
             }
             else {
                 this.loading = false;
@@ -102,7 +111,19 @@ export class LoginComponent implements OnInit {
 
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
             this.auth.saveToken(res);
+
+
+
+            if(this.auth.decodeToken().role === 'administrator'){
+                this.general.role = 'administrator';
+
+            }
+            else{
+             this.general.role = 'user';
+
             this.router.navigate(['catharina']);
+            
+            }
 
         }, err => {
 

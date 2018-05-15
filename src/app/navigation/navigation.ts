@@ -36,3 +36,17 @@ export const navigation = [
         ]
     }
 ];
+
+
+export const adminnavigation = [
+
+    {
+        'id': 'dashboard',
+        'title': 'Dashboard',
+        'type': 'item',
+        'url': 'dashboard/'
+
+
+    }
+];
+

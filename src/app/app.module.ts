@@ -1,3 +1,4 @@
+import { GeneralService } from './general.service';
 import { MatStepperModule } from '@angular/material';
 import { TokenGuard } from './auth/token.guard';
 import { NgModule } from '@angular/core';
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     ],
     bootstrap: [
         AppComponent
-    ]
+    ],
+    providers: [GeneralService]
 })
 export class AppModule {
 }

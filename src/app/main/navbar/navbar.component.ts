@@ -1,3 +1,5 @@
+import { adminnavigation } from './../../navigation/navigation';
+import { GeneralService } from './../../general.service';
 import { Component, Input, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -41,11 +43,22 @@ export class FuseNavbarComponent implements OnDestroy
 
     constructor(
         private sidebarService: FuseSidebarService,
-        private navigationService: FuseNavigationService
+        private navigationService: FuseNavigationService,
+        private general: GeneralService
     )
     {
+
+
+        if(this.general.role === "administrator"){
+            this.navigation = adminnavigation;
+
+        }
+        else{
+            this.navigation = navigation;
+
+        }
+
         // Navigation data
-        this.navigation = navigation;
 
         // Default layout
         this.layout = 'vertical';

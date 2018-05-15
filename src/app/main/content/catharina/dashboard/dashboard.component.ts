@@ -1,3 +1,4 @@
+import { navigation } from './../../../../navigation/navigation';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../../auth/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -16,8 +17,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private auth: AuthService, private router: Router) {
 
-    
-   
 
   }
   ngOnInit() {
