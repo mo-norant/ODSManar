@@ -123,9 +123,19 @@ namespace AngularSPAWebAPI.Controllers
             return new JsonResult(result);
         }
 
-      
 
-        private async Task addToRole(string userName, string roleName)
+    [HttpGet("users")]
+    public async Task<IActionResult> GetAllUsers()
+    {
+
+      var users = await context.Users.ToListAsync();
+
+      return Ok(users);
+    }
+
+
+
+    private async Task addToRole(string userName, string roleName)
         {
             var user = await _userManager.FindByNameAsync(userName);
             await _userManager.AddToRoleAsync(user, roleName);

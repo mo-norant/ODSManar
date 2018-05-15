@@ -45,8 +45,19 @@ export const adminnavigation = [
         'title': 'Dashboard',
         'type': 'item',
         'url': 'dashboard/'
-
-
+    },
+    {
+        'id': 'applications',
+        'title': 'Gebruikersmanager',
+        'type': 'group',
+        'children': [
+            {
+                'id': 'artikelen',
+                'title': 'Alle gebruikers',
+                'type': 'item',
+                'url': 'dashboard/usermanager'
+            }
+        ]
     }
 ];
 
