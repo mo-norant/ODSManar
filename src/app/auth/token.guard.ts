@@ -10,9 +10,7 @@ export class TokenGuard implements CanActivate {
   }
   
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    if (this.auth.tokenExpired()) {
-      console.log("expired")
-      
+    if (this.auth.tokenExpired()) {      
      this.router.navigate(["/auth"])
       return false
     }

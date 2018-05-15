@@ -70,6 +70,8 @@ export class LoginComponent implements OnInit {
             if (!this.auth.tokenExpired() && this.auth.hasToken()) {
                 if(this.auth.decodeToken().role === 'administrator'){
                     this.general.role = 'administrator';
+                    this.router.navigate(['stratus']);
+
                 }
                 else{
                  this.general.role = 'user';
@@ -116,7 +118,7 @@ export class LoginComponent implements OnInit {
 
             if(this.auth.decodeToken().role === 'administrator'){
                 this.general.role = 'administrator';
-
+                this.router.navigate(['stratus']);
             }
             else{
              this.general.role = 'user';

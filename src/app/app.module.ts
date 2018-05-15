@@ -19,6 +19,7 @@ import { FuseMainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { CatharinaModule } from './main/content/catharina/catharina.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StratusModule } from './main/content/stratus/stratus.module';
 
 
 const appRoutes: Routes = [
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
     {
         path: 'catharina',
         loadChildren: './main/content/catharina/catharina.module#CatharinaModule'
+    },
+    {
+        path: 'stratus',
+        loadChildren: './main/content/stratus/stratus.module#StratusModule'
     },
     {
         path: 'lander',
@@ -57,7 +62,8 @@ const appRoutes: Routes = [
         FuseSharedModule,
         FuseMainModule,
         CatharinaModule,
-        AuthModule
+        AuthModule,
+        StratusModule
     ],
     bootstrap: [
         AppComponent
