@@ -4,7 +4,7 @@ export const navigation = [
         'id': 'dashboard',
         'title': 'Dashboard',
         'type': 'item',
-        'url': 'catharina/'
+        'url': 'dashboard/'
 
 
     },
@@ -19,13 +19,13 @@ export const navigation = [
                 'id': 'artikelen',
                 'title': 'Mijn artikelen',
                 'type': 'item',
-                'url': 'catharina/oostkaart'
+                'url': 'dashboard/oostkaart'
             },
             {
                 'id': 'nieuwartikel',
                 'title': 'Nieuw artikel toevoegen',
                 'type': 'item',
-                'url': 'catharina/newproduct'
+                'url': 'dashboard/newproduct'
             },
 
 
