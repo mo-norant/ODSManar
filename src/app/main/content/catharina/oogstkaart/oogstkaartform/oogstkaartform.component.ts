@@ -198,7 +198,7 @@ export class OogstkaartformComponent implements OnInit {
     }, err => this.uploaderror = true);
   }
 
-  private deleteItem(id : number){
+   deleteItem(id : number){
     console.log("item removed")
     this.oogstkaartservice.DeleteItem(id).subscribe( res => {
       this.postsucces = false;
@@ -207,22 +207,22 @@ export class OogstkaartformComponent implements OnInit {
    
   }
 
-  private complete(){
+   complete(){
     this.stepper.selectedIndex = 4;
   }
 
-  private addSpecificatie(){
+   addSpecificatie(){
     
     this.specificaties.push(new Specificatie());
     
   }
 
-  private reset(){
+   reset(){
     this.stepper.reset();
     this.specificaties = [];
   }
 
-  private removeItem(index){
+   removeItem(index){
 
     if (index !== -1) {
       this.specificaties.splice(index, 1);
@@ -244,7 +244,7 @@ export class OogstkaartformComponent implements OnInit {
     }
   }
 
-  private uploadfotos(){
+   uploadfotos(){
     const formData = new FormData();
   
     this.files.forEach(element => {
@@ -271,12 +271,12 @@ export class OogstkaartformComponent implements OnInit {
 
   }
  
-   private getExtension(filename) {
+    getExtension(filename) {
     var parts = filename.split('.');
     return parts[parts.length - 1];
 }
 
-   private isImage(filename) {
+    isImage(filename) {
     var ext = this.getExtension(filename);
     switch (ext.toLowerCase()) {
     case 'jpg':
