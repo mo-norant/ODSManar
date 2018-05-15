@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using AngularSPAWebAPI.Models;
 using AngularSPAWebAPI.Models.DatabaseModels.General;
 using AngularSPAWebAPI.Models.DatabaseModels.Oogstkaart;
+using AngularSPAWebAPI.Models.DatabaseModels.Communication;
 
 namespace AngularSPAWebAPI.Data
 {
@@ -19,7 +20,8 @@ namespace AngularSPAWebAPI.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Specificatie> Specificaties { get; set; }
         public DbSet<Afbeelding> Afbeeldingen { get; set; }
-        public DbSet<File> Files { get; set; }
+    public DbSet<File> Files { get; set; }
+    public DbSet<Request> Requests { get; set; }
 
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
