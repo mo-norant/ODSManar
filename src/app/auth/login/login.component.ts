@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
     private locallogin() {
 
         this.loading = true;
+        this.err = null;
 
         setTimeout(() => {
 
@@ -76,17 +77,17 @@ export class LoginComponent implements OnInit {
                 else{
                  this.general.role = 'user';
                 this.router.navigate(['catharina']);
-                
+
                 }
             }
             else {
                 this.loading = false;
             }
-        
+
         },
             500);
 
-        
+
     }
 
     onLoginFormValuesChanged() {
@@ -110,13 +111,14 @@ export class LoginComponent implements OnInit {
     login() {
 
         this.loading = true;
+        this.err = null;
 
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(res => {
             this.auth.saveToken(res);
 
 
 
-            if(this.auth.decodeToken().role === 'administrator'){
+            if (this.auth.decodeToken().role === 'administrator'){
                 this.general.role = 'administrator';
                 this.router.navigate(['stratus']);
             }
@@ -124,7 +126,7 @@ export class LoginComponent implements OnInit {
              this.general.role = 'user';
 
             this.router.navigate(['catharina']);
-            
+
             }
 
         }, err => {
