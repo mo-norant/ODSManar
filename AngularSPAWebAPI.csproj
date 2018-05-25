@@ -36,7 +36,8 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="wwwroot\uploads\image\" />
+    <Folder Include="wwwroot\uploads\images\" />
+    <Folder Include="wwwroot\uploads\files\" />
   </ItemGroup>
 
   <ItemGroup>

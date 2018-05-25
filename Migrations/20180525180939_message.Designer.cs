@@ -11,9 +11,10 @@ using System;
 namespace AngularSPAWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180525180939_message")]
+    partial class message
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,8 +179,6 @@ namespace AngularSPAWebAPI.Migrations
                     b.Property<string>("CompanyName");
 
                     b.Property<DateTime>("CreateDate");
-
-                    b.Property<string>("Email");
 
                     b.Property<string>("Phone");
 

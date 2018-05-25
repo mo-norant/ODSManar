@@ -22,7 +22,7 @@ namespace AngularSPAWebAPI.Data
         public DbSet<Afbeelding> Afbeeldingen { get; set; }
     public DbSet<File> Files { get; set; }
     public DbSet<Request> Requests { get; set; }
-
+      public DbSet<Message> Messages { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

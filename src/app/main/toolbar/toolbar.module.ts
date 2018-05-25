@@ -14,7 +14,6 @@ import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
     ],
     imports     : [
         RouterModule,
-
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
